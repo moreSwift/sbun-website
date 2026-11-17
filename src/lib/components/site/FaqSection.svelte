@@ -36,7 +36,7 @@
 			{#each faqs as faq, index}
 				<AccordionItem value="item-{index}" class="border-b border-plum/25 py-1">
 					<AccordionTrigger
-						class="py-4 font-display text-[15px] font-semibold tracking-tight text-plum hover:no-underline hover:text-rose-deep sm:text-base"
+						class="items-center gap-4 py-4 font-display text-[15px] font-semibold tracking-tight text-plum hover:no-underline hover:text-rose-deep sm:text-base"
 					>
 						{faq.question}
 					</AccordionTrigger>

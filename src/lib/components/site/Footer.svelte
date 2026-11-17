@@ -2,7 +2,9 @@
 	import ArrowUp from 'phosphor-svelte/lib/ArrowUp';
 	import DiscordLogo from 'phosphor-svelte/lib/DiscordLogo';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
+	import { Separator } from '$lib/components/ui/separator';
 	import Barcode from './Barcode.svelte';
+	import DotGrid from './DotGrid.svelte';
 	import Logo from './Logo.svelte';
 	import {
 		discordUrl,
@@ -43,9 +45,7 @@
 </script>
 
 <footer class="relative overflow-hidden bg-plum text-cream">
-	<div class="pointer-events-none absolute inset-0 opacity-[0.06]">
-		<div class="dot-grid h-full w-full"></div>
-	</div>
+	<DotGrid class="opacity-[0.06]" />
 
 	<div class="relative mx-auto max-w-6xl px-4 py-14 sm:px-6">
 		<div class="grid gap-10 lg:grid-cols-[1.2fr_1.8fr]">
@@ -55,7 +55,7 @@
 					<div>
 						<p class="font-display text-xl font-semibold tracking-tight">Swift Bundler</p>
 						<p class="font-mono text-[9px] uppercase tracking-[0.16em] text-cream/55">
-							Pack once. Ship anywhere.
+							Ship Swift anywhere.
 						</p>
 					</div>
 				</div>
@@ -106,8 +106,10 @@
 			</div>
 		</div>
 
+		<Separator class="mt-12 bg-cream/15" />
+
 		<div
-			class="mt-12 flex flex-col gap-4 border-t border-cream/15 pt-5 sm:flex-row sm:items-end sm:justify-between"
+			class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
 		>
 			<div class="flex items-center gap-4">
 				<Barcode height={26} light class="opacity-40" />

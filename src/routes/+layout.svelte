@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Swift Bundler — Pack once. Ship Swift anywhere.</title>
+	<title>Swift Bundler — Ship Swift anywhere.</title>
 </svelte:head>
 
 {@render children()}

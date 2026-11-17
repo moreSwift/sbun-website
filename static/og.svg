@@ -22,14 +22,16 @@
     <text x="30" y="20" font-family="Menlo, monospace" font-size="12" letter-spacing="3" fill="#70374d">v3.0.0 RELEASE</text>
   </g>
 
-  <text x="72" y="208" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="82" font-weight="700" letter-spacing="-4" fill="#70374d">Pack once.</text>
-  <text x="72" y="292" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="82" font-weight="700" letter-spacing="-4" fill="#70374d">Ship Swift</text>
-  <text x="72" y="376" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="82" font-weight="700" letter-spacing="-4" fill="#70374d">anywhere.</text>
+  <text x="72" y="252" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="96" font-weight="700" letter-spacing="-5" fill="#70374d">Ship Swift</text>
 
-  <path d="M74 392 H112 V382 H220 V396 H330 V378 H438 V392 H500" fill="none" stroke="#c06e7b" stroke-width="10"/>
+  <g transform="translate(62 288) rotate(-1.2)">
+    <rect x="9" y="9" width="520" height="124" fill="#c06e7b" opacity="0.38"/>
+    <rect width="520" height="124" fill="#fff1e3" stroke="#9c4f5f" stroke-width="4"/>
+    <text x="26" y="90" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="92" font-weight="700" letter-spacing="-5" fill="#70374d">anywhere.</text>
+  </g>
 
-  <text x="72" y="458" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="22" fill="#70374d" opacity="0.78">The Xcodeproj-less way to build and ship Swift apps.</text>
-  <text x="72" y="490" font-family="Menlo, monospace" font-size="13" letter-spacing="2" fill="#9c4f5f">macOS · iOS · tvOS · visionOS · LINUX · WINDOWS · ANDROID</text>
+  <text x="72" y="478" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="22" fill="#70374d" opacity="0.78">The Xcodeproj-less way to build and ship Swift apps.</text>
+  <text x="72" y="510" font-family="Menlo, monospace" font-size="13" letter-spacing="2" fill="#9c4f5f">macOS · iOS · tvOS · visionOS · LINUX · WINDOWS · ANDROID</text>
 
   <g transform="translate(830 96) rotate(-4)">
     <rect x="8" y="8" width="300" height="380" fill="#c06e7b" opacity="0.45"/>
