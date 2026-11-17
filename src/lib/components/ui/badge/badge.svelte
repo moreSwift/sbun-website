@@ -11,14 +11,23 @@
 				outline: "border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground",
 				ghost: "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
 				link: "text-primary underline-offset-4 hover:underline",
+				site: "border-plum/25 bg-paper text-plum [a]:hover:bg-peach/60",
+				accent: "border-rose-deep/30 bg-rose/10 text-rose-deep"
 			},
+			size: {
+				default: "h-5 px-2 py-0.5 text-xs",
+				xs: "h-auto px-1.5 py-0.5 text-[8px] leading-none tracking-[0.1em]",
+				sm: "h-auto px-2 py-0.5 text-[9px] leading-none tracking-[0.06em]"
+			}
 		},
 		defaultVariants: {
 			variant: "default",
+			size: "default"
 		},
 	});
 
 	export type BadgeVariant = VariantProps<typeof badgeVariants>["variant"];
+	export type BadgeSize = VariantProps<typeof badgeVariants>["size"];
 </script>
 
 <script lang="ts">
@@ -30,10 +39,12 @@
 		href,
 		class: className,
 		variant = "default",
+		size = "default",
 		children,
 		...restProps
 	}: WithElementRef<HTMLAnchorAttributes> & {
 		variant?: BadgeVariant;
+		size?: BadgeSize;
 	} = $props();
 </script>
 
@@ -42,7 +53,7 @@
 	bind:this={ref}
 	data-slot="badge"
 	{href}
-	class={cn(badgeVariants({ variant }), className)}
+	class={cn(badgeVariants({ variant, size }), className)}
 	{...restProps}
 >
 	{@render children?.()}

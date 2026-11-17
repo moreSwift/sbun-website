@@ -6,8 +6,11 @@
 	import Check from 'phosphor-svelte/lib/Check';
 	import DownloadSimple from 'phosphor-svelte/lib/DownloadSimple';
 	import Terminal from 'phosphor-svelte/lib/Terminal';
+	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
+	import CodeBlock from './CodeBlock.svelte';
 	import CopyButton from './CopyButton.svelte';
+	import DotGrid from './DotGrid.svelte';
 	import PlatformStrip from './PlatformStrip.svelte';
 	import ShippingLabel from './ShippingLabel.svelte';
 	import { artifacts, githubUrl, release } from '$lib/content';
@@ -29,10 +32,11 @@
 	);
 
 	const trust = ['MIT licensed', 'Swift 6', 'Signed installers', 'No .xcodeproj'];
+
 </script>
 
 <section class="relative overflow-hidden border-b border-plum/15">
-	<div class="dot-grid pointer-events-none absolute inset-0 opacity-50"></div>
+	<DotGrid class="opacity-50" />
 	<div
 		class="pointer-events-none absolute -right-32 -top-32 size-[34rem] rounded-full bg-rose/10 blur-3xl"
 	></div>
@@ -46,35 +50,24 @@
 		>
 			<div class="min-w-0">
 				<div class="flex flex-wrap items-center gap-3">
-					<span
-						class="inline-flex items-center gap-2 border border-plum/25 bg-paper px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-plum"
+					<Badge
+						variant="site"
+						class="gap-2 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em]"
 					>
 						<span class="size-1.5 rounded-full bg-rose"></span>
 						v{release.version}
-					</span>
+					</Badge>
 					<span class="label-type text-plum/70">Windows · Linux · Android · Hot reload</span>
 				</div>
 
 				<h1
 					class="mt-6 font-display text-[2.7rem] font-bold leading-[0.94] tracking-[-0.045em] text-plum sm:text-[3.6rem] md:text-[4.35rem]"
 				>
-					Pack once.<br />
 					Ship Swift<br />
-					<span class="relative inline-block">
+					<span
+						class="relative -mr-3 inline-block -rotate-1 border-2 border-rose-deep bg-paper px-3 py-0.5 leading-[1.02] shadow-[5px_5px_0_rgba(112,55,77,0.14)]"
+					>
 						anywhere.
-						<svg
-							class="absolute -bottom-1 left-0 h-2.5 w-full text-rose"
-							viewBox="0 0 240 10"
-							preserveAspectRatio="none"
-							aria-hidden="true"
-						>
-							<path
-								d="M0 7 H28 V3 H92 V8 H150 V2 H204 V7 H240"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="4"
-							/>
-						</svg>
 					</span>
 				</h1>
 
@@ -106,12 +99,19 @@
 
 				<div class="mt-6 min-w-0 max-w-lg">
 					<div
-						class="flex min-w-0 items-center gap-2 border border-plum/20 bg-paper/70 px-3 py-2 backdrop-blur-sm"
+						class="flex min-w-0 items-center gap-2 border border-plum/20 bg-paper/70 bg-clip-border px-3 py-1.5 backdrop-blur-sm"
 					>
 						<Terminal class="size-3.5 shrink-0 text-rose-deep" aria-hidden="true" />
-						<code class="min-w-0 flex-1 truncate font-mono text-[11px] text-plum/85"
-							>mint install moreSwift/swift-bundler@main</code
-						>
+						<div class="min-w-0 flex-1">
+							<CodeBlock
+								code="mint install moreSwift/swift-bundler@main"
+								language="shell"
+								tone="light"
+								size="md"
+								inline
+								wrap
+							/>
+						</div>
 						<CopyButton
 							value="mint install moreSwift/swift-bundler@main"
 							label="Copy Mint command"
@@ -137,7 +137,7 @@
 				</ul>
 			</div>
 
-			<div class="relative min-w-0 lg:pl-4">
+			<div class="relative min-w-0 px-2 sm:px-0 lg:pl-4">
 				<ShippingLabel />
 				<a
 					href="{githubUrl}/releases/tag/{release.tag}"

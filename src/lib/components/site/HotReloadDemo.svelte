@@ -3,6 +3,9 @@
 	import CheckCircle from 'phosphor-svelte/lib/CheckCircle';
 	import Lightning from 'phosphor-svelte/lib/Lightning';
 	import Plus from 'phosphor-svelte/lib/Plus';
+	import { Badge } from '$lib/components/ui/badge';
+	import { Button } from '$lib/components/ui/button';
+	import CodeBlock from './CodeBlock.svelte';
 
 	const labels = ['Crates packed', 'Shipments sent', 'Boxes sealed'];
 
@@ -10,6 +13,10 @@
 	let appLabel = $state(labels[0]);
 	let draftIndex = $state(0);
 	let status = $state<'idle' | 'saving' | 'reloaded'>('idle');
+
+	const snippet = $derived(`Text("${labels[draftIndex]}: \\(count)")
+  .font(.title)
+  .tabularNumbers()`);
 
 	function cycleDraft() {
 		draftIndex = (draftIndex + 1) % labels.length;
@@ -27,35 +34,39 @@
 	}
 </script>
 
-<div
-	class="grid overflow-hidden border border-plum/20 sm:grid-cols-[1.05fr_0.95fr]"
->
+<div class="grid overflow-hidden border border-plum/20 sm:grid-cols-[1.2fr_0.8fr]">
 	<!-- editor -->
 	<div class="flex flex-col bg-plum text-cream">
 		<div class="flex items-center justify-between border-b border-cream/15 px-3 py-2">
 			<span class="font-mono text-[10px] text-cream/75">ContentView.swift</span>
-			<span class="label-type text-cream/35">live</span>
+			<Badge
+				variant="ghost"
+				size="xs"
+				class="px-0 font-mono text-[8px] uppercase tracking-[0.16em] text-cream/45"
+			>
+				live
+			</Badge>
 		</div>
-		<pre
-			class="flex-1 overflow-x-auto px-3 py-3 font-mono text-[10px] leading-[1.7] text-cream/80 sm:text-[10.5px]"><span
-				class="text-rose">Text</span>(<span class="text-peach">"{labels[draftIndex]}: \(count)"</span>)
-  .font(.title)
-  .tabularNumbers()</pre>
+		<div class="min-h-0 flex-1">
+			<CodeBlock code={snippet} language="swift" size="sm" wrap padded={false} class="py-3" />
+		</div>
 		<div class="border-t border-cream/15 p-3">
-			<button
+			<Button
+				variant="outline"
+				size="sm"
 				onclick={cycleDraft}
-				class="label-type w-full border border-cream/20 px-2 py-1.5 text-cream/75 transition-colors hover:border-cream/40 hover:text-cream"
+				class="h-auto w-full rounded-none border-cream/20 bg-transparent py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-cream/70 hover:border-cream/40 hover:bg-cream/10 hover:text-cream"
 			>
 				Next label →
-			</button>
-			<button
+			</Button>
+			<Button
 				onclick={save}
 				disabled={status === 'saving'}
-				class="mt-2 flex w-full items-center justify-center gap-1.5 bg-rose px-2 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-cream transition-colors hover:bg-rose/90 disabled:opacity-60"
+				class="mt-2 h-auto w-full gap-1.5 rounded-none bg-rose py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-cream hover:bg-rose/90"
 			>
 				<ArrowsClockwise class="size-3.5 {status === 'saving' ? 'animate-spin' : ''}" />
 				{status === 'saving' ? 'Swapping dylib…' : 'Save & hot reload'}
-			</button>
+			</Button>
 		</div>
 	</div>
 
@@ -66,24 +77,26 @@
 				<span class="size-2 rounded-full border border-plum/25"></span>
 				<span class="size-2 rounded-full border border-plum/25"></span>
 			</span>
-			<span class="font-mono text-[9px] text-muted-foreground">HelloWorld.app</span>
-			<span class="ml-auto flex items-center gap-1 font-mono text-[8px] text-plum/35">
+			<span class="font-mono text-[9px] text-plum/45">HelloWorld.app</span>
+			<Badge variant="site" size="xs" class="ml-auto gap-1 border-plum/20 bg-transparent font-mono">
 				<span class="size-1.5 rounded-full bg-rose"></span>
 				running
-			</span>
+			</Badge>
 		</div>
 
 		<div class="flex flex-1 flex-col items-center justify-center px-4 py-5 text-center">
-			<p class="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">{appLabel}</p>
+			<p class="font-mono text-[9px] uppercase tracking-[0.16em] text-plum/45">{appLabel}</p>
 			<p class="mt-1 font-display text-4xl font-bold tabular-nums tracking-tight text-plum">
 				{count}
 			</p>
-			<button
+			<Button
+				variant="outline"
+				size="sm"
 				onclick={() => count++}
-				class="mt-3 inline-flex items-center gap-1 border border-plum/25 bg-paper px-2.5 py-1 font-mono text-[9px] text-plum transition-colors hover:border-plum/50 hover:bg-peach/60"
+				class="mt-3 h-auto gap-1 rounded-none border-plum/25 bg-paper px-2.5 py-1 font-mono text-[9px] text-plum hover:border-plum/50 hover:bg-peach/60"
 			>
 				<Plus class="size-3" weight="bold" /> Pack one
-			</button>
+			</Button>
 		</div>
 
 		<div class="min-h-8 border-t border-plum/15 px-3 py-2">
@@ -96,7 +109,7 @@
 					<CheckCircle class="size-3" weight="fill" /> Reloaded in 38 ms · state preserved
 				</p>
 			{:else}
-				<p class="flex items-center gap-1.5 font-mono text-[8.5px] text-plum/40">
+				<p class="flex items-center gap-1.5 font-mono text-[8.5px] text-plum/45">
 					<Lightning class="size-3" /> Edit, save, keep the counter.
 				</p>
 			{/if}

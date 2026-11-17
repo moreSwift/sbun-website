@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
+	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import Logo from './Logo.svelte';
 	import { githubUrl, release } from '$lib/content';
@@ -43,11 +44,13 @@
 				<span class="font-display text-[17px] font-semibold tracking-[-0.02em] text-plum sm:text-lg">
 					Swift Bundler
 				</span>
-				<span
-					class="hidden border border-plum/25 bg-paper px-1.5 py-0.5 font-mono text-[9px] font-medium leading-none text-plum sm:inline-block"
+				<Badge
+					variant="site"
+					size="sm"
+					class="hidden font-mono text-[9px] tracking-[0.1em] sm:inline-flex"
 				>
 					v{release.version}
-				</span>
+				</Badge>
 			</span>
 		</a>
 

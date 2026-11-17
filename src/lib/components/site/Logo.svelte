@@ -7,6 +7,7 @@
 	alt=""
 	width={size}
 	height={size}
-	class="pixelated shrink-0 {className}"
+	class="shrink-0 {className}"
+	style="image-rendering: pixelated"
 	aria-hidden="true"
 />

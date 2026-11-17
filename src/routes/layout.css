@@ -36,6 +36,8 @@
 	--rose-deep: #9c4f5f;
 	--blue: #14639f;
 	--ink: #3c1b28;
+	--terminal-blue: #a9d3ee;
+	--terminal-rose: #e7b1be;
 }
 
 @theme inline {
@@ -52,6 +54,8 @@
 	--color-rose-deep: var(--rose-deep);
 	--color-blue: var(--blue);
 	--color-ink: var(--ink);
+	--color-terminal-blue: var(--terminal-blue);
+	--color-terminal-rose: var(--terminal-rose);
 
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
@@ -109,6 +113,20 @@
 		overflow-x: clip;
 	}
 
+	/* Keep bordered and borderless controls on the same outer dimensions. */
+	button,
+	input,
+	select,
+	textarea,
+	pre,
+	code,
+	[data-slot='button'],
+	[data-slot='badge'],
+	[data-slot='tabs-trigger'],
+	[data-slot='accordion-trigger'] {
+		box-sizing: border-box;
+	}
+
 	h1,
 	h2,
 	h3,
@@ -129,59 +147,8 @@
 }
 
 @layer components {
-	.dot-grid {
-		background-image: radial-gradient(color-mix(in srgb, var(--plum) 13%, transparent) 1px, transparent 1px);
-		background-size: 18px 18px;
-	}
-
-	.paper-grain {
-		background-color: var(--paper);
-		background-image:
-			radial-gradient(color-mix(in srgb, var(--plum) 5%, transparent) 0.5px, transparent 0.5px),
-			radial-gradient(color-mix(in srgb, var(--plum) 4%, transparent) 0.5px, transparent 0.5px);
-		background-size:
-			5px 5px,
-			7px 7px;
-		background-position:
-			0 0,
-			3px 4px;
-	}
-
 	.label-type {
 		@apply font-mono text-[10px] uppercase leading-none tracking-[0.2em];
-	}
-
-	.cut-line {
-		border-top: 1px dashed color-mix(in srgb, var(--plum) 30%, transparent);
-	}
-
-	.pixelated {
-		image-rendering: pixelated;
-	}
-
-	.stamp {
-		border: 2px solid var(--rose-deep);
-		color: var(--rose-deep);
-		box-shadow: inset 0 0 0 2px var(--paper);
-		transform: rotate(-7deg);
-	}
-
-	.barcode {
-		background-image: repeating-linear-gradient(
-			90deg,
-			var(--plum) 0,
-			var(--plum) 1px,
-			transparent 1px,
-			transparent 3px,
-			var(--plum) 3px,
-			var(--plum) 5px,
-			transparent 5px,
-			transparent 9px,
-			var(--plum) 9px,
-			var(--plum) 10px,
-			transparent 10px,
-			transparent 13px
-		);
 	}
 }
 
