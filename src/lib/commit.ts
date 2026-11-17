@@ -3,53 +3,76 @@ import { writable } from 'svelte/store';
 
 const FALLBACK_COMMIT = __SBUN_COMMIT__.toUpperCase();
 const CACHE_KEY = 'sbun-main-commit';
+const MIN_SCANNING_TIME = 900;
 
-export const buildCommit = writable(FALLBACK_COMMIT);
+export type CommitState = {
+	status: 'scanning' | 'ready';
+	value: string;
+};
+
+export const buildCommit = writable<CommitState>({
+	status: 'scanning',
+	value: FALLBACK_COMMIT
+});
 
 let refreshStarted = false;
 
+function readCachedCommit(): string | null {
+	try {
+		const cached = sessionStorage.getItem(CACHE_KEY);
+		return cached && /^[0-9A-F]{7}$/.test(cached) ? cached : null;
+	} catch {
+		return null;
+	}
+}
+
 /**
- * Refresh the build commit from main in the browser, while retaining the
- * build-time value as an immediate and offline-safe fallback.
+ * Resolve the latest short hash of main in the browser. The build-time value
+ * is only used as a fallback after the scanning state has had time to read.
  */
 export async function refreshBuildCommit() {
 	if (!browser || refreshStarted) return;
 	refreshStarted = true;
 
-	try {
-		const cached = sessionStorage.getItem(CACHE_KEY);
-		if (cached && /^[0-9A-F]{7}$/.test(cached)) {
-			buildCommit.set(cached);
-			return;
+	const startedAt = Date.now();
+	let commit = readCachedCommit();
+
+	if (!commit) {
+		try {
+			const response = await fetch(
+				'https://api.github.com/repos/moreSwift/swift-bundler/commits/main',
+				{
+					headers: { Accept: 'application/vnd.github+json' },
+					cache: 'no-store',
+					signal: AbortSignal.timeout(4000)
+				}
+			);
+
+			if (response.ok) {
+				const data = (await response.json()) as { sha?: string };
+				const hash = String(data.sha ?? '')
+					.slice(0, 7)
+					.toUpperCase();
+
+				if (/^[0-9A-F]{7}$/.test(hash)) {
+					commit = hash;
+					try {
+						sessionStorage.setItem(CACHE_KEY, hash);
+					} catch {
+						// Caching is optional.
+					}
+				}
+			}
+		} catch {
+			// Fall through to the build-time value.
 		}
-	} catch {
-		// sessionStorage can be unavailable in privacy modes.
 	}
 
-	try {
-		const response = await fetch(
-			'https://api.github.com/repos/moreSwift/swift-bundler/commits/main',
-			{
-				headers: { Accept: 'application/vnd.github+json' },
-				cache: 'no-store'
-			}
-		);
-		if (!response.ok) return;
+	const remaining = MIN_SCANNING_TIME - (Date.now() - startedAt);
+	if (remaining > 0) await new Promise((resolve) => setTimeout(resolve, remaining));
 
-		const data = (await response.json()) as { sha?: string };
-		const hash = String(data.sha ?? '')
-			.slice(0, 7)
-			.toUpperCase();
-
-		if (/^[0-9A-F]{7}$/.test(hash)) {
-			buildCommit.set(hash);
-			try {
-				sessionStorage.setItem(CACHE_KEY, hash);
-			} catch {
-				// Cache is optional.
-			}
-		}
-	} catch {
-		// Keep the build-time fallback if the network request fails.
-	}
+	buildCommit.set({
+		status: 'ready',
+		value: commit ?? FALLBACK_COMMIT
+	});
 }

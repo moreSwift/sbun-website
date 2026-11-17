@@ -169,6 +169,15 @@
 	}
 }
 
+@keyframes barcode-scan {
+	0% {
+		left: -34%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
 @keyframes gentle-float {
 	0%,
 	100% {
@@ -198,6 +207,10 @@
 
 .animate-pulse-ring {
 	animation: pulse-ring 1.4s ease-out infinite;
+}
+
+.animate-barcode-scan {
+	animation: barcode-scan 1.25s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
