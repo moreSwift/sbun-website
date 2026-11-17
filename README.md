@@ -97,11 +97,35 @@ or Tailwind utilities.
   `prefers-reduced-motion`, descriptive alt text, meta/OG tags, `.nojekyll` for
   GitHub Pages.
 
+## Build barcode
+
+The shipping label and footer barcodes are functional Code 39 symbols,
+generated entirely in the Svelte component (no server-side barcode image).
+
+The initial value is the short hash of `main` at build time. Once the page
+loads, `src/lib/commit.ts` refreshes it from the GitHub API
+(`moreSwift/swift-bundler`, `main`) and caches the result in `sessionStorage`.
+If the request fails, the build-time value stays in place.
+
+Build-time fallback resolution:
+
+1. `PUBLIC_SBUN_COMMIT` (trimmed to 7 characters)
+2. `git rev-parse --short=7 main` in `SBUN_REPO`
+3. `git rev-parse --short=7 HEAD` in `SBUN_REPO`
+4. `DEV`
+
+`SBUN_REPO` defaults to `../../swift-bundler`. The runtime refresh means the
+deployed barcode still finds the latest main commit even if the build-time
+checkout is stale, provided the visitor can reach the GitHub API.
+
 ## Things that are mocked or need release-day wiring
 
 - Download URLs point at `v3.0.0` assets that must actually be attached to the
   GitHub release. Signing/notarization wording assumes the release pipeline is
   configured with certificates.
+- The barcode starts with the build-time commit and refreshes from the GitHub
+  API in the browser. GitHub API rate limits apply; the build-time value is the
+  fallback.
 - Docs links point at `/documentation/swift-bundler/...` because the DocC site
   is deployed alongside the marketing site by `update-docs.yml`. They 404 in the
   standalone prototype (the prerenderer ignores them).
