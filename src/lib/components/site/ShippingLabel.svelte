@@ -11,6 +11,7 @@
 	import Barcode from './Barcode.svelte';
 	import Logo from './Logo.svelte';
 	import SiteCard from './SiteCard.svelte';
+	import { buildCommit } from '$lib/commit';
 	import { release } from '$lib/content';
 </script>
 
@@ -113,9 +114,9 @@
 				<Separator class="my-3 bg-plum/20" />
 
 				<div class="flex items-end justify-between gap-3">
-					<div>
-						<Barcode height={30} class="opacity-80" />
-						<p class="mt-1 font-mono text-[8px] tracking-[0.3em] text-plum/65">3000 0000 0007</p>
+					<div class="min-w-0 flex-1 pr-2">
+						<Barcode value={$buildCommit} height={32} quietZone={0} class="opacity-90" />
+						<p class="mt-1 font-mono text-[8px] tracking-[0.2em] text-plum/65">{$buildCommit}</p>
 					</div>
 					<div class="text-right">
 						<p class="label-type text-plum/45">Handle</p>

@@ -47,7 +47,7 @@
     <text x="30" y="300" font-family="Menlo, monospace" font-size="10" fill="#70374d">1 TOML file</text>
 
     <rect x="30" y="318" width="180" height="34" fill="url(#bars)" opacity="0.85"/>
-    <text x="30" y="368" font-family="Menlo, monospace" font-size="8" letter-spacing="3" fill="#70374d" opacity="0.55">3000 0000 0007</text>
+    <text x="30" y="368" font-family="Menlo, monospace" font-size="8" letter-spacing="3" fill="#70374d" opacity="0.55">BUILD COMMIT</text>
 
     <g transform="translate(196 300) rotate(-7)">
       <rect width="86" height="52" fill="#fff1e3" stroke="#9c4f5f" stroke-width="2"/>
