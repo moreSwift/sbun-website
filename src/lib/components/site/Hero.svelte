@@ -1,16 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ArrowDown from 'phosphor-svelte/lib/ArrowDown';
 	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import BookOpen from 'phosphor-svelte/lib/BookOpen';
 	import Check from 'phosphor-svelte/lib/Check';
 	import DownloadSimple from 'phosphor-svelte/lib/DownloadSimple';
-	import Terminal from 'phosphor-svelte/lib/Terminal';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
-	import CodeBlock from './CodeBlock.svelte';
-	import CopyButton from './CopyButton.svelte';
 	import DotGrid from './DotGrid.svelte';
+	import InstallCommand from './InstallCommand.svelte';
 	import PlatformStrip from './PlatformStrip.svelte';
 	import ShippingLabel from './ShippingLabel.svelte';
 	import { artifacts, githubUrl, release } from '$lib/content';
@@ -97,34 +94,8 @@
 					</Button>
 				</div>
 
-				<div class="mt-6 min-w-0 max-w-lg">
-					<div
-						class="flex min-w-0 items-center gap-2 border border-plum/20 bg-paper/70 bg-clip-border px-3 py-1.5 backdrop-blur-sm"
-					>
-						<Terminal class="size-3.5 shrink-0 text-rose-deep" aria-hidden="true" />
-						<div class="min-w-0 flex-1">
-							<CodeBlock
-								code="mint install moreSwift/swift-bundler@main"
-								language="shell"
-								tone="light"
-								size="md"
-								inline
-								wrap
-							/>
-						</div>
-						<CopyButton
-							value="mint install moreSwift/swift-bundler@main"
-							label="Copy Mint command"
-							class="ml-auto shrink-0 text-plum hover:bg-peach"
-						/>
-					</div>
-					<a
-						href="#install"
-						class="label-type group mt-2 inline-flex items-center gap-1 text-muted-foreground hover:text-plum"
-					>
-						Or pick a signed installer
-						<ArrowDown class="size-3 transition-transform group-hover:translate-y-0.5" />
-					</a>
+				<div class="max-w-lg">
+					<InstallCommand />
 				</div>
 
 				<ul class="mt-8 flex flex-wrap gap-x-5 gap-y-2">

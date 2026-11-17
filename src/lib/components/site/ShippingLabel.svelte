@@ -9,6 +9,7 @@
 		TableRow
 	} from '$lib/components/ui/table';
 	import Barcode from './Barcode.svelte';
+	import BarcodePlaceholder from './BarcodePlaceholder.svelte';
 	import Logo from './Logo.svelte';
 	import SiteCard from './SiteCard.svelte';
 	import { buildCommit } from '$lib/commit';
@@ -115,8 +116,25 @@
 
 				<div class="flex items-end justify-between gap-3">
 					<div class="min-w-0 flex-1 pr-2">
-						<Barcode value={$buildCommit} height={32} quietZone={0} class="opacity-90" />
-						<p class="mt-1 font-mono text-[8px] tracking-[0.2em] text-plum/65">{$buildCommit}</p>
+						<div class="w-3/4">
+							{#if $buildCommit.status === 'scanning'}
+								<BarcodePlaceholder height={32} />
+							{:else}
+								<Barcode
+									value={$buildCommit.value}
+									height={32}
+									quietZone={0}
+									class="animate-in fade-in opacity-90 duration-300"
+								/>
+							{/if}
+						</div>
+						{#if $buildCommit.status === 'scanning'}
+							<p class="mt-1 font-mono text-[8px] tracking-[0.24em] text-plum/65">SCANNING</p>
+						{:else}
+							<p class="mt-1 font-mono text-[8px] tracking-[0.2em] text-plum/65">
+								{$buildCommit.value}
+							</p>
+						{/if}
 					</div>
 					<div class="text-right">
 						<p class="label-type text-plum/45">Handle</p>

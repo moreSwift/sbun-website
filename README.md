@@ -63,6 +63,7 @@ Repeated UI is composed from local wrappers rather than copied markup:
 - `SiteCard` — the paper/muted/dark/dashed card variants used everywhere.
 - `PageSection` — section shell, background tone and dot-grid placement.
 - `TabSelector` — the shared two-line icon tabs used by platforms and install.
+- `InstallCommand` — platform detection, tabbed install-script picker and script link.
 - `CheckList`, `IconTile` and `DotGrid` — repeated list, icon tile and texture.
 - `SectionHeading`, `CopyButton`, `Logo`, `Barcode` and `ShippingLabel` remain
   single-purpose components.
@@ -78,8 +79,9 @@ or Tailwind utilities.
 
 ## What the prototype demonstrates
 
-- **Hero with a real next action** — OS-aware signed installer download, Mint
-  command, docs, platform support strip.
+- **Hero with a real next action** — OS-aware signed installer download, a
+  detected/overridable macOS/Linux or Windows install-script command, docs and
+  the platform support strip.
 - **Shipping label** — the pixel crate presented as a parcel with destination
   tags, packing slip rows, a barcode and a stamp. Reusable as social/OG artwork.
 - **The packing line** — four steps from `Package.swift` to a sealed artifact,
@@ -102,10 +104,12 @@ or Tailwind utilities.
 The shipping label and footer barcodes are functional Code 39 symbols,
 generated entirely in the Svelte component (no server-side barcode image).
 
-The initial value is the short hash of `main` at build time. Once the page
-loads, `src/lib/commit.ts` refreshes it from the GitHub API
-(`moreSwift/swift-bundler`, `main`) and caches the result in `sessionStorage`.
-If the request fails, the build-time value stays in place.
+The barcode starts in a scanning placeholder state, so the build-time hash is
+never shown first. Once the page loads, `src/lib/commit.ts` resolves the latest
+short hash from the GitHub API (`moreSwift/swift-bundler`, `main`), keeps the
+scanning animation visible for at least 900 ms, then reveals the Code 39
+barcode and hash. The resolved hash is cached in `sessionStorage`; if the
+request fails, the build-time value is revealed as the fallback.
 
 Build-time fallback resolution:
 
@@ -123,9 +127,8 @@ checkout is stale, provided the visitor can reach the GitHub API.
 - Download URLs point at `v3.0.0` assets that must actually be attached to the
   GitHub release. Signing/notarization wording assumes the release pipeline is
   configured with certificates.
-- The barcode starts with the build-time commit and refreshes from the GitHub
-  API in the browser. GitHub API rate limits apply; the build-time value is the
-  fallback.
+- The barcode resolves its commit in the browser behind a scanning animation.
+  GitHub API rate limits apply; the build-time value is the fallback.
 - Docs links point at `/documentation/swift-bundler/...` because the DocC site
   is deployed alongside the marketing site by `update-docs.yml`. They 404 in the
   standalone prototype (the prerenderer ignores them).

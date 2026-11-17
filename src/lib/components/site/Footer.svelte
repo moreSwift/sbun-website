@@ -5,6 +5,7 @@
 	import { Separator } from '$lib/components/ui/separator';
 	import { buildCommit } from '$lib/commit';
 	import Barcode from './Barcode.svelte';
+	import BarcodePlaceholder from './BarcodePlaceholder.svelte';
 	import DotGrid from './DotGrid.svelte';
 	import Logo from './Logo.svelte';
 	import {
@@ -113,7 +114,19 @@
 			class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
 		>
 			<div class="flex items-center gap-4">
-				<div class="w-36"><Barcode value={$buildCommit} height={26} light class="opacity-40" /></div>
+				<div class="w-36">
+					{#if $buildCommit.status === 'scanning'}
+						<BarcodePlaceholder height={26} light />
+					{:else}
+						<Barcode
+							value={$buildCommit.value}
+							height={26}
+							light
+							quietZone={0}
+							class="animate-in fade-in opacity-40 duration-300"
+						/>
+					{/if}
+				</div>
 				<div>
 					<p class="font-mono text-[8px] uppercase tracking-[0.2em] text-cream/35">
 						MIT licensed · © {new Date().getFullYear()} moreSwift
