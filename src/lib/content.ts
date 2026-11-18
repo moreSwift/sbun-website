@@ -37,7 +37,7 @@ export type Platform = {
 };
 
 const baseConfig = (icon: string, extra: SnippetLine[] = []): SnippetLine[] => [
-	{ text: 'format_version = 2' },
+	{ text: 'config_version = "3.1.0"' },
 	{ text: '' },
 	{ text: '[apps.HelloWorld]' },
 	{ text: 'identifier = "dev.example.HelloWorld"' },
@@ -69,7 +69,6 @@ export const platforms: Platform[] = [
 		],
 		formats: ['.app', '.dylib', '.icon'],
 		snippet: baseConfig('AppIcon.icon', [
-			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "platform(macCatalyst)"'),
 			accent('interface_idiom = "mac"'),
@@ -97,7 +96,6 @@ export const platforms: Platform[] = [
 		],
 		formats: ['.AppImage', '.rpm', '.tar.gz'],
 		snippet: baseConfig('icon.png', [
-			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "platform(linux)"'),
 			accent('dbus_activatable = true'),
@@ -126,8 +124,7 @@ export const platforms: Platform[] = [
 		],
 		formats: ['.msi', '.zip', '.exe'],
 		snippet: baseConfig('icon.ico', [
-			plain(''),
-			plain('[apps.HelloWorld.msi]'),
+			accent('[apps.HelloWorld.msi]'),
 			plain('wix_extensions = ['),
 			plain('  "WixToolset.Util.wixext/6.0.0",'),
 			plain(']'),
@@ -155,7 +152,6 @@ export const platforms: Platform[] = [
 		],
 		formats: ['.apk', '.aar'],
 		snippet: baseConfig('icon.png', [
-			plain(''),
 			plain('[apps.HelloWorld.android]'),
 			plain('min_sdk = 28'),
 			plain('target_sdk = 35'),
@@ -182,7 +178,7 @@ export const features: Feature[] = [
 	{
 		title: 'One config, platform overlays',
 		body: 'Set the defaults once, then add platform- or bundler-specific overrides under [[apps.App.overlays]]. Validated, merged recursively, and described by the generated JSON schema.',
-		meta: 'Bundler.toml · format_version = 2',
+		meta: 'Bundler.toml · config_version = "3.1.0"',
 		size: 'wide'
 	},
 	{

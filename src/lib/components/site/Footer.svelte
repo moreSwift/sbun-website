@@ -56,7 +56,7 @@
 					<Logo size={54} />
 					<div>
 						<p class="font-display text-xl font-semibold tracking-tight">Swift Bundler</p>
-						<p class="font-mono text-[9px] uppercase tracking-[0.16em] text-cream/55">
+						<p class="font-mono text-[10px] uppercase tracking-[0.16em] text-cream/55">
 							Ship Swift anywhere.
 						</p>
 					</div>
@@ -68,19 +68,19 @@
 				<div class="mt-5 flex flex-wrap gap-2">
 					<a
 						href={githubUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
+						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
 					>
 						<GithubLogo class="size-3.5" /> GitHub
 					</a>
 					<a
 						href={discordUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
+						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
 					>
 						<DiscordLogo class="size-3.5" /> Discord
 					</a>
 					<a
 						href={openCollectiveUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[9px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
+						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
 					>
 						Sponsor
 					</a>
@@ -128,10 +128,10 @@
 					{/if}
 				</div>
 				<div>
-					<p class="font-mono text-[8px] uppercase tracking-[0.2em] text-cream/35">
+					<p class="font-mono text-[9px] uppercase tracking-[0.2em] text-cream/35">
 						MIT licensed · © {new Date().getFullYear()} moreSwift
 					</p>
-					<p class="mt-1 font-mono text-[8px] uppercase tracking-[0.2em] text-cream/25">
+					<p class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-cream/25">
 						SBUN-{release.version} · MADE IN SWIFT
 					</p>
 				</div>

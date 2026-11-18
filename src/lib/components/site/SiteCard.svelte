@@ -17,7 +17,7 @@
 		paper: 'border border-plum/20 bg-paper',
 		muted: 'border border-plum/20 bg-paper/60',
 		faint: 'border border-plum/20 bg-paper/40',
-		dark: 'border-2 border-plum bg-plum text-cream',
+		dark: 'border-2 border-code-border bg-code text-cream',
 		dashed: 'border border-dashed border-plum/30 bg-cream/60',
 		accent: 'border-0 border-l-2 border-rose bg-paper/50',
 		label: 'border-2 border-plum bg-paper'

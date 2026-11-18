@@ -1,34 +1,13 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import BookOpen from 'phosphor-svelte/lib/BookOpen';
-	import Check from 'phosphor-svelte/lib/Check';
-	import DownloadSimple from 'phosphor-svelte/lib/DownloadSimple';
-	import { Badge } from '$lib/components/ui/badge';
+	import RocketLaunch from 'phosphor-svelte/lib/RocketLaunch';
 	import { Button } from '$lib/components/ui/button';
 	import DotGrid from './DotGrid.svelte';
 	import InstallCommand from './InstallCommand.svelte';
 	import PlatformStrip from './PlatformStrip.svelte';
 	import ShippingLabel from './ShippingLabel.svelte';
-	import { artifacts, githubUrl, release } from '$lib/content';
-
-	let os = $state<'macos' | 'windows' | 'linux'>('macos');
-
-	onMount(() => {
-		const ua = navigator.userAgent.toLowerCase();
-		if (ua.includes('windows')) os = 'windows';
-		else if (ua.includes('linux') && !ua.includes('android')) os = 'linux';
-	});
-
-	const downloadHref = $derived(
-		os === 'windows' ? artifacts.msi : os === 'linux' ? artifacts.deb : artifacts.macos
-	);
-
-	const downloadLabel = $derived(
-		`Download for ${os === 'windows' ? 'Windows' : os === 'linux' ? 'Linux' : 'macOS'}`
-	);
-
-	const trust = ['MIT licensed', 'Swift 6', 'Signed installers', 'No .xcodeproj'];
+	import { githubUrl, release } from '$lib/content';
 
 </script>
 
@@ -46,17 +25,6 @@
 			class="grid gap-14 py-12 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 lg:py-20"
 		>
 			<div class="min-w-0">
-				<div class="flex flex-wrap items-center gap-3">
-					<Badge
-						variant="site"
-						class="gap-2 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.14em]"
-					>
-						<span class="size-1.5 rounded-full bg-rose"></span>
-						v{release.version}
-					</Badge>
-					<span class="label-type text-plum/70">Windows · Linux · Android · Hot reload</span>
-				</div>
-
 				<h1
 					class="mt-6 font-display text-[2.7rem] font-bold leading-[0.94] tracking-[-0.045em] text-plum sm:text-[3.6rem] md:text-[4.35rem]"
 				>
@@ -74,17 +42,21 @@
 					maintain.
 				</p>
 
-				<div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+				<div class="max-w-lg">
+					<InstallCommand />
+				</div>
+
+				<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
 					<Button
-						href={downloadHref}
+						href="/documentation/swift-bundler/creating-an-app"
 						size="lg"
 						class="h-11 gap-2 bg-plum px-5 text-[13px] font-semibold text-cream hover:bg-plum/90"
 					>
-						<DownloadSimple class="size-4" weight="bold" />
-						{downloadLabel}
+						<RocketLaunch class="size-4" weight="bold" />
+						Quick start
 					</Button>
 					<Button
-						href="/documentation/swift-bundler/creating-an-app"
+						href="/documentation/swift-bundler"
 						variant="outline"
 						size="lg"
 						class="h-11 gap-2 border-plum/30 bg-transparent px-5 text-[13px] font-semibold text-plum hover:bg-paper"
@@ -94,25 +66,13 @@
 					</Button>
 				</div>
 
-				<div class="max-w-lg">
-					<InstallCommand />
-				</div>
-
-				<ul class="mt-8 flex flex-wrap gap-x-5 gap-y-2">
-					{#each trust as item}
-						<li class="flex items-center gap-1.5 font-mono text-[10px] text-plum/75">
-							<Check class="size-3 text-rose-deep" weight="bold" />
-							{item}
-						</li>
-					{/each}
-				</ul>
 			</div>
 
 			<div class="relative min-w-0 px-2 sm:px-0 lg:pl-4">
 				<ShippingLabel />
 				<a
 					href="{githubUrl}/releases/tag/{release.tag}"
-					class="label-type group absolute -bottom-7 right-2 hidden items-center gap-1 text-muted-foreground hover:text-plum sm:inline-flex"
+					class="label-type group absolute -bottom-10 right-2 hidden items-center gap-1 text-muted-foreground hover:text-plum sm:inline-flex"
 				>
 					View 3.0.0 release notes
 					<ArrowUpRight class="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

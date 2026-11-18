@@ -12,12 +12,13 @@
 				ghost: "hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50",
 				link: "text-primary underline-offset-4 hover:underline",
 				site: "border-plum/25 bg-paper text-plum [a]:hover:bg-peach/60",
-				accent: "border-rose-deep/30 bg-rose/10 text-rose-deep"
+				accent: "border-rose-deep/30 bg-rose/10 text-rose-deep",
+				warning: "border-warning/40 bg-warning-tint text-warning"
 			},
 			size: {
 				default: "h-5 px-2 py-0.5 text-xs",
-				xs: "h-auto px-1.5 py-0.5 text-[8px] leading-none tracking-[0.1em]",
-				sm: "h-auto px-2 py-0.5 text-[9px] leading-none tracking-[0.06em]"
+				xs: "h-auto px-1.5 py-0.5 text-[9px] leading-none tracking-[0.1em]",
+				sm: "h-auto px-2 py-0.5 text-[10px] leading-none tracking-[0.06em]"
 			}
 		},
 		defaultVariants: {
