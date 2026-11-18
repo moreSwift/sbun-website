@@ -17,7 +17,7 @@
 	import { Tabs, TabsContent } from '$lib/components/ui/tabs';
 	import CheckList from './CheckList.svelte';
 	import CodeBlock from './CodeBlock.svelte';
-	import CopyButton from './CopyButton.svelte';
+	import CommandLine from './CommandLine.svelte';
 	import SectionHeading from './SectionHeading.svelte';
 	import PageSection from './PageSection.svelte';
 	import SiteCard from './SiteCard.svelte';
@@ -50,26 +50,27 @@
 	let active = $state('apple');
 </script>
 
-<PageSection id="platforms" tone="peach" grid gridClass="opacity-30">
-		<div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-			<SectionHeading
-				class="lg:flex-1"
-				index="02"
-				eyebrow="One manifest, every destination"
-				title="The same crate. Seven different labels."
-				intro="Swift Bundler picks the right bundler, output format and platform conventions from the same Bundler.toml. Choose a destination to see what gets packed."
-			/>
-			<a
-				href="/documentation/swift-bundler/bundlers"
-				class="label-type group inline-flex shrink-0 items-center gap-1 pb-1 text-rose-deep hover:text-plum"
-			>
-				Compare bundlers
-				<ArrowRight class="size-3 transition-transform group-hover:translate-x-0.5" />
-			</a>
-		</div>
+{#snippet compareBundlers()}
+	<a
+		href="/documentation/swift-bundler/bundlers"
+		class="label-type group inline-flex shrink-0 items-center gap-1 pb-1 text-rose-deep hover:text-plum"
+	>
+		Compare bundlers
+		<ArrowRight class="size-3 transition-transform group-hover:translate-x-0.5" />
+	</a>
+{/snippet}
+
+<PageSection id="platforms" grid gridClass="opacity-30">
+		<SectionHeading
+			index="01"
+			eyebrow="CONFIGURATION"
+			title="One project. Seven destinations."
+			intro="Swift Bundler picks the right bundler, output format and platform conventions from the same Bundler.toml. Choose a destination to see what gets packed."
+			action={compareBundlers}
+		/>
 
 		<Tabs bind:value={active} class="mt-10 gap-0">
-			<TabSelector items={destinations} label="Choose a destination" />
+			<TabSelector items={destinations} label="Choose a destination" large />
 
 			{#each platforms as platform}
 				<TabsContent value={platform.id} class="mt-4 focus-visible:outline-none">
@@ -79,20 +80,13 @@
 							<CardHeader
 								class="flex flex-row items-center justify-between gap-3 border-b border-cream/15 px-4 py-3"
 							>
-								<div class="flex items-center gap-2">
-									<span class="flex gap-1" aria-hidden="true">
-										<span class="size-2 bg-rose"></span>
-										<span class="size-2 bg-peach"></span>
-										<span class="size-2 bg-blue"></span>
-									</span>
-									<span class="font-mono text-[11px] font-medium text-cream">Bundler.toml</span>
-								</div>
+								<span class="font-mono text-[11px] font-medium text-cream">Bundler.toml</span>
 								<Badge
 									variant="ghost"
 									size="xs"
-									class="border border-cream/20 px-1.5 font-mono text-[8px] uppercase tracking-[0.14em] text-cream/70"
+									class="border border-cream/20 px-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-cream/70"
 								>
-									format v2
+									config 3.1.0
 								</Badge>
 							</CardHeader>
 
@@ -130,7 +124,7 @@
 								</div>
 								<div class="min-w-0 text-right">
 									<p class="label-type text-plum/45">Destination</p>
-									<p class="mt-1 max-w-[14rem] font-mono text-[9px] leading-relaxed text-plum/85">
+									<p class="mt-1 max-w-[14rem] font-mono text-[10px] leading-relaxed text-plum/85">
 										{platform.destination}
 									</p>
 								</div>
@@ -141,31 +135,31 @@
 									<TableBody>
 										<TableRow class="border-none hover:bg-transparent">
 											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-top text-[8px] uppercase leading-none tracking-[0.16em] text-plum/45"
+												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
 											>
 												Bundler
 											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-top font-mono text-[10px] text-plum/85">
+											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
 												{platform.bundlers}
 											</TableCell>
 										</TableRow>
 										<TableRow class="border-none hover:bg-transparent">
 											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-top text-[8px] uppercase leading-none tracking-[0.16em] text-plum/45"
+												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
 											>
 												Output
 											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-top font-mono text-[10px] font-semibold text-plum">
+											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] font-semibold text-plum">
 												{platform.output}
 											</TableCell>
 										</TableRow>
 										<TableRow class="border-none hover:bg-transparent">
 											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-top text-[8px] uppercase leading-none tracking-[0.16em] text-plum/45"
+												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
 											>
 												Signing
 											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-top font-mono text-[10px] text-plum/85">
+											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
 												{platform.signing}
 											</TableCell>
 										</TableRow>
@@ -192,18 +186,7 @@
 											{/each}
 										</div>
 									</div>
-									<div
-										class="mt-2 flex items-center gap-2 border border-plum/20 bg-cream/60 px-2.5 py-2"
-									>
-										<code class="min-w-0 flex-1 truncate font-mono text-[10px] text-plum/85"
-											>{platform.command}</code
-										>
-										<CopyButton
-											value={platform.command}
-											label="Copy command"
-											class="shrink-0 text-plum hover:bg-peach"
-										/>
-									</div>
+									<CommandLine command={platform.command} class="mt-2" />
 								</div>
 							</CardFooter>
 						</SiteCard>

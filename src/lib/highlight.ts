@@ -23,10 +23,10 @@ export type TokenKind =
 export type Token = { text: string; kind: TokenKind };
 
 const darkClasses: Record<TokenKind, string> = {
-	comment: 'text-cream/45',
+	comment: 'text-cream/55',
 	section: 'font-medium text-rose',
-	key: 'text-peach',
-	string: 'text-peach',
+	key: 'font-medium text-peach',
+	string: 'text-string-green',
 	number: 'text-terminal-blue',
 	keyword: 'text-rose',
 	type: 'text-terminal-blue',
@@ -46,7 +46,7 @@ const lightClasses: Record<TokenKind, string> = {
 	comment: 'text-plum/45',
 	section: 'font-semibold text-rose-deep',
 	key: 'font-semibold text-plum',
-	string: 'text-rose-deep',
+	string: 'text-string-green-light',
 	number: 'text-blue',
 	keyword: 'text-rose-deep',
 	type: 'text-blue',

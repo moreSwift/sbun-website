@@ -40,14 +40,14 @@
 	<div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
 		<a href="/" class="group flex items-center gap-3" aria-label="Swift Bundler home">
 			<Logo size={38} class="transition-transform group-hover:-rotate-6" />
-			<span class="flex items-baseline gap-2">
+			<span class="flex items-center gap-2">
 				<span class="font-display text-[17px] font-semibold tracking-[-0.02em] text-plum sm:text-lg">
 					Swift Bundler
 				</span>
 				<Badge
 					variant="site"
 					size="sm"
-					class="hidden font-mono text-[9px] tracking-[0.1em] sm:inline-flex"
+					class="hidden font-mono text-[10px] tracking-[0.1em] sm:inline-flex"
 				>
 					v{release.version}
 				</Badge>
@@ -58,7 +58,7 @@
 			{#each nav as item}
 				<a
 					href={item.href}
-					class="label-type text-[11px] text-plum/85 transition-colors hover:text-plum"
+					class="font-mono text-[12.5px] tracking-[0.02em] text-plum/85 transition-colors hover:text-plum"
 				>
 					{item.label}
 				</a>
@@ -68,7 +68,7 @@
 		<div class="flex items-center gap-2">
 			<a
 				href="/documentation/swift-bundler"
-				class="label-type inline-flex h-9 items-center px-1 text-[10px] text-plum/85 hover:text-plum md:hidden"
+				class="inline-flex h-9 items-center px-1 font-mono text-[12px] tracking-[0.02em] text-plum/85 hover:text-plum md:hidden"
 			>
 				Docs
 			</a>
@@ -77,7 +77,7 @@
 				class="hidden size-9 items-center justify-center border border-transparent text-plum/85 transition-colors hover:border-plum/20 hover:bg-paper hover:text-plum sm:inline-flex"
 				aria-label="Swift Bundler on GitHub"
 			>
-				<GithubLogo class="size-4" />
+				<GithubLogo class="size-5" />
 			</a>
 			<Button
 				href="#install"

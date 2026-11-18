@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AdoptionSection from '$lib/components/site/AdoptionSection.svelte';
 	import AppsSection from '$lib/components/site/AppsSection.svelte';
 	import FaqSection from '$lib/components/site/FaqSection.svelte';
 	import FeatureGrid from '$lib/components/site/FeatureGrid.svelte';
@@ -7,7 +8,6 @@
 	import Hero from '$lib/components/site/Hero.svelte';
 	import InstallSection from '$lib/components/site/InstallSection.svelte';
 	import ManifestSection from '$lib/components/site/ManifestSection.svelte';
-	import PackingLine from '$lib/components/site/PackingLine.svelte';
 </script>
 
 <div id="top">
@@ -20,8 +20,8 @@
 	<Header />
 	<main id="main">
 		<Hero />
-		<PackingLine />
 		<ManifestSection />
+		<AdoptionSection />
 		<FeatureGrid />
 		<AppsSection />
 		<InstallSection />

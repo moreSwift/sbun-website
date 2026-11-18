@@ -26,7 +26,7 @@
 		{#each platforms as platform}
 			<span class="flex items-center gap-2 text-plum/85">
 				<platform.icon class="size-4" weight="fill" />
-				<span class="font-mono text-[11px] font-medium">{platform.name}</span>
+				<span class="font-mono text-[12px] font-medium">{platform.name}</span>
 			</span>
 		{/each}
 		<span class="label-type ml-auto hidden text-plum/40 md:inline">+ Mac Catalyst</span>

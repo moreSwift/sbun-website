@@ -11,7 +11,7 @@
 	let open = $state<string | undefined>('item-0');
 </script>
 
-<section id="faq" class="border-b border-plum/15 bg-peach/25 py-16 sm:py-20">
+<section id="faq" class="border-b border-plum/15 py-16 sm:py-20">
 	<div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
 		<div>
 			<SectionHeading

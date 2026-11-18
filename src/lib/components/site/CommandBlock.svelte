@@ -15,19 +15,12 @@
 
 <SiteCard
 	variant="dark"
-	class="relative w-full min-w-0 shadow-[3px_3px_0_rgba(112,55,77,0.14)] {className}"
+	class="relative w-full min-w-0 shadow-[3px_3px_0_rgba(43,34,38,0.18)] {className}"
 >
 	<CardHeader
 		class="flex flex-row items-center justify-between border-b border-cream/20 px-3 py-2"
 	>
-		<span class="flex items-center gap-2">
-			<span class="flex gap-1" aria-hidden="true">
-				<span class="size-2 bg-rose"></span>
-				<span class="size-2 bg-peach"></span>
-				<span class="size-2 bg-blue"></span>
-			</span>
-			<span class="label-type text-cream/70">{label}</span>
-		</span>
+		<span class="label-type text-cream/70">{label}</span>
 		<span class="flex items-center gap-2">
 			<span class="hidden items-center gap-1.5 sm:flex">
 				<Logo size={14} />

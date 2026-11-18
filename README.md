@@ -79,21 +79,20 @@ or Tailwind utilities.
 
 ## What the prototype demonstrates
 
-- **Hero with a real next action** — OS-aware signed installer download, a
-  detected/overridable macOS/Linux or Windows install-script command, docs and
-  the platform support strip.
+- **Hero with a real next action** — a detected/overridable macOS/Linux or
+  Windows install-script command, Quick start CTA, docs and the platform
+  support strip.
 - **Shipping label** — the pixel crate presented as a parcel with destination
   tags, packing slip rows, a barcode and a stamp. Reusable as social/OG artwork.
-- **The packing line** — four steps from `Package.swift` to a sealed artifact,
-  with a subtle animated crate on the conveyor (disabled for reduced motion).
-- **One manifest, every destination** — shadcn tabs switch between Apple,
-  Linux, Windows and Android. The config snippet and packing slip both update.
-- **Interactive hot reload demo** — change the label, save, and watch it swap
-  while the counter keeps its state. This is the one "try it" moment.
-- **3.0 release bento** — new platforms, overlays, signing, devices, builders,
-  error handling, with a release-at-a-glance strip.
-- **Install selector** — exact artifact URLs and commands for `.pkg`, `.deb`,
-  `.rpm`, `.msi`, `.zip`, source and Mint.
+- **Adoption paths** — three routes: start from a template, add a Bundler.toml
+  to an existing SwiftPM package, or experimentally convert an xcodeproj.
+- **One project, seven destinations** — shadcn tabs switch between Apple,
+  Linux, Windows and Android. The `config_version = "3.1.0"` snippet and
+  packing slip both update.
+- **3.0 feature section** — config overlays alongside signing, devices, builders
+  and error handling.
+- **Installation** — the shared install-script component, direct download list
+  under “Manual installation”, and source-build instructions.
 - **Apps as shipping receipts**, FAQ, and a footer with community/funding links.
 - Responsive down to 390 px, keyboard-accessible tabs/accordion, visible focus,
   `prefers-reduced-motion`, descriptive alt text, meta/OG tags, `.nojekyll` for

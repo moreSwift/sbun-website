@@ -10,7 +10,7 @@
 	import { apps, githubUrl } from '$lib/content';
 </script>
 
-<PageSection id="apps" tone="paper">
+<PageSection id="apps">
 		<SectionHeading
 			index="04"
 			eyebrow="In the wild"
@@ -62,7 +62,7 @@
 						>
 							<span class="label-type text-plum/45">Delivered</span>
 							<span
-								class="flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-rose-deep"
+								class="flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-rose-deep"
 							>
 								Visit app
 								<ArrowUpRight

@@ -61,7 +61,7 @@
 					<Badge
 						variant="site"
 						size="sm"
-						class="animate-float absolute -left-2 top-8 px-2 py-1 font-mono text-[9px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
+						class="animate-float absolute -left-2 top-8 px-2 py-1 font-mono text-[10px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
 						style="--tilt: -7deg; animation-delay: -1s;"
 					>
 						.AppImage
@@ -69,7 +69,7 @@
 					<Badge
 						variant="site"
 						size="sm"
-						class="animate-float absolute -right-2 top-16 px-2 py-1 font-mono text-[9px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
+						class="animate-float absolute -right-2 top-16 px-2 py-1 font-mono text-[10px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
 						style="--tilt: 5deg; animation-delay: -3s;"
 					>
 						.msi
@@ -77,7 +77,7 @@
 					<Badge
 						variant="site"
 						size="sm"
-						class="animate-float absolute -bottom-1 left-4 px-2 py-1 font-mono text-[9px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
+						class="animate-float absolute -bottom-1 left-4 px-2 py-1 font-mono text-[10px] shadow-[2px_2px_0_rgba(112,55,77,0.15)]"
 						style="--tilt: 3deg; animation-delay: -5s;"
 					>
 						.apk
@@ -85,11 +85,11 @@
 
 					<div class="absolute -right-1 bottom-0 -rotate-[7deg] border-2 border-rose-deep bg-paper px-2.5 py-1.5 text-center text-rose-deep sm:right-2"
 						style="box-shadow: inset 0 0 0 2px var(--paper)">
-						<p class="font-mono text-[8px] font-semibold uppercase tracking-[0.14em]">
+						<p class="font-mono text-[10px] font-semibold uppercase tracking-[0.12em]">
 							Cleared for
 						</p>
 						<p class="font-display text-[13px] font-bold uppercase leading-tight">Shipping</p>
-						<p class="font-mono text-[7px] tracking-[0.12em] text-rose-deep/80">
+						<p class="font-mono text-[9px] tracking-[0.1em] text-rose-deep/80">
 							07 DESTINATIONS
 						</p>
 					</div>
@@ -101,7 +101,7 @@
 					<TableBody>
 						<TableRow class="border-none hover:bg-transparent">
 							<TableCell
-								class="w-[4.5rem] whitespace-normal py-1.5 pl-0 pr-3 align-top font-mono text-[8px] uppercase leading-none tracking-[0.16em] text-plum/45"
+								class="w-[4.5rem] whitespace-normal py-1.5 pl-0 pr-3 align-baseline font-mono text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
 							>
 								To
 							</TableCell>
@@ -129,16 +129,16 @@
 							{/if}
 						</div>
 						{#if $buildCommit.status === 'scanning'}
-							<p class="mt-1 font-mono text-[8px] tracking-[0.24em] text-plum/65">SCANNING</p>
+							<p class="mt-1 font-mono text-[10px] tracking-[0.18em] text-plum/65">SCANNING</p>
 						{:else}
-							<p class="mt-1 font-mono text-[8px] tracking-[0.2em] text-plum/65">
+							<p class="mt-1 font-mono text-[10px] tracking-[0.18em] text-plum/65">
 								{$buildCommit.value}
 							</p>
 						{/if}
 					</div>
 					<div class="text-right">
 						<p class="label-type text-plum/45">Handle</p>
-						<p class="font-mono text-[9px] font-medium uppercase tracking-wider text-rose-deep">
+						<p class="font-mono text-[10px] font-medium uppercase tracking-wider text-rose-deep">
 							With care
 						</p>
 					</div>
