@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AndroidLogo from 'phosphor-svelte/lib/AndroidLogo';
 	import AppleLogo from 'phosphor-svelte/lib/AppleLogo';
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import ArrowUpRight from 'phosphor-svelte/lib/ArrowRight';
 	import Info from 'phosphor-svelte/lib/Info';
 	import LinuxLogo from 'phosphor-svelte/lib/LinuxLogo';
 	import WindowsLogo from 'phosphor-svelte/lib/WindowsLogo';
@@ -49,11 +49,11 @@
 
 {#snippet compareBundlers()}
 	<a
-		href="/documentation/swift-bundler/bundlers"
+		href="https://docs.swiftbundler.dev/documentation/swift-bundler/bundlers"
 		class="label-type group inline-flex shrink-0 items-center gap-1 pb-1 text-rose-deep hover:text-plum"
 	>
 		Compare bundlers
-		<ArrowRight class="size-3 transition-transform group-hover:translate-x-0.5" />
+		<ArrowUpRight class="size-3" />
 	</a>
 {/snippet}
 
@@ -62,7 +62,7 @@
 			index="01"
 			eyebrow="CONFIGURATION"
 			title="One config. Seven bundlers."
-			intro="Swift Bundler picks the right output format and platform conventions from the same Bundler.toml. Choose a bundler to see what gets packed."
+			intro="Configure your project for every platform in one place."
 			action={compareBundlers}
 		/>
 
@@ -99,13 +99,6 @@
 									)}
 								/>
 							</CardContent>
-
-							<CardFooter class="mt-auto border-t border-cream/15 px-4 py-3">
-								<div class="flex items-start gap-2">
-									<Info class="mt-0.5 size-3.5 shrink-0 text-peach/80" />
-									<p class="text-[11px] leading-relaxed text-cream/70">{bundler.note}</p>
-								</div>
-							</CardFooter>
 						</SiteCard>
 
 						<!-- Packing slip -->
@@ -128,50 +121,33 @@
 							</CardHeader>
 
 							<CardContent class="p-0">
-								<p class="border-b border-plum/15 px-5 py-3 text-[13px] leading-relaxed text-plum/85">
-									{bundler.blurb}
-								</p>
-								<Table class="table-fixed text-[10px]">
+								<Table class="table-fixed text-[11px] my-2">
 									<TableBody>
 										<TableRow class="border-none hover:bg-transparent">
 											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
+												class="w-[5.5rem] whitespace-normal py-0.5 pl-5 pr-0 align-baseline leading-none tracking-[0.14em] text-plum/65 uppercase"
 											>
 												Bundler
 											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
+											<TableCell class="whitespace-normal break-words py-0.5 pl-3 pr-5 align-baseline font-mono text-plum/85">
 												{bundler.name}
 											</TableCell>
 										</TableRow>
 										<TableRow class="border-none hover:bg-transparent">
 											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
-											>
-												Output
-											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] font-semibold text-plum">
-												{bundler.output}
-											</TableCell>
-										</TableRow>
-										<TableRow class="border-none hover:bg-transparent">
-											<TableCell
-												class="w-[5.2rem] whitespace-normal py-1.5 pl-5 pr-0 align-baseline text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
+												class="whitespace-normal py-0.5 pl-5 pr-0 align-baseline uppercase leading-none tracking-[0.14em] text-plum/65"
 											>
 												Signing
 											</TableCell>
-											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
+											<TableCell class="whitespace-normal break-words py-0.5 pl-3 pr-5 align-baseline font-mono text-plum/85">
 												{bundler.signing}
 											</TableCell>
 										</TableRow>
 									</TableBody>
 								</Table>
-							</CardContent>
-
-							<Separator class="bg-plum/15" />
-
-							<CardContent class="px-5 py-4">
-								<p class="label-type text-plum/45">Packed by the bundler</p>
-								<CheckList items={bundler.handles} class="mt-2.5" />
+								<p class="border-t border-plum/15 px-5 py-3 text-[13px] leading-relaxed text-plum/85">
+									{bundler.blurb}
+								</p>
 							</CardContent>
 
 							<Separator class="bg-plum/15" />
@@ -195,7 +171,7 @@
 			{/each}
 		</Tabs>
 
-		<p class="mt-4 font-mono text-[10px] leading-relaxed text-plum/45">
+		<p class="mt-4 font-mono text-[11px] leading-relaxed text-plum/45">
 			Bundlers: darwinApp · linuxGeneric · linuxAppImage · linuxRPM · windowsGeneric ·
 			windowsMSI · androidAPK
 		</p>

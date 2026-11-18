@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import Heart from 'phosphor-svelte/lib/Heart';
 	import { Button } from '$lib/components/ui/button';
 	import SiteCard from './SiteCard.svelte';
@@ -34,7 +34,7 @@
 		>
 			<Heart class="size-4" weight="fill" aria-hidden="true" />
 			Sponsor on Open Collective
-			<ArrowRight class="size-4" aria-hidden="true" />
+			<ArrowUpRight class="size-4" aria-hidden="true" />
 		</Button>
 	</div>
 </SiteCard>

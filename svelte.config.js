@@ -6,13 +6,6 @@ const config = {
 	preprocess: vitePreprocess(),
 	kit: {
 		adapter: adapter(),
-		prerender: {
-			// The DocC site is deployed alongside this one by the update-docs workflow.
-			handleHttpError: ({ path, message }) => {
-				if (path.startsWith('/documentation')) return;
-				throw new Error(message);
-			}
-		}
 	}
 };
 

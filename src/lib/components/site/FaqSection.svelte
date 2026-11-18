@@ -17,11 +17,11 @@
 			<SectionHeading
 				index="06"
 				eyebrow="Before you ship"
-				title="Questions from the loading dock."
-				intro="The short answers. The documentation has the long ones, including runtime dependencies and platform-by-platform setup."
+				title="Frequently asked questions."
+				intro="If your questions isn't here, check the docs!"
 			/>
 			<a
-				href="/documentation/swift-bundler/troubleshooting"
+				href="https://docs.swiftbundler.dev/documentation/swift-bundler/troubleshooting"
 				class="label-type mt-6 inline-flex items-center gap-1 text-rose-deep hover:text-plum"
 			>
 				Troubleshooting guide →

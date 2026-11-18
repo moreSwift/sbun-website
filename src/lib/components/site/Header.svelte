@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
 	import Heart from 'phosphor-svelte/lib/Heart';
 	import { Badge } from '$lib/components/ui/badge';
@@ -11,7 +11,7 @@
 		{ label: 'What’s new', href: '#whats-new' },
 		{ label: 'Bundlers', href: '#bundlers' },
 		{ label: 'Install', href: '#install' },
-		{ label: 'Docs', href: '/documentation/swift-bundler' }
+		{ label: 'Docs', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler' }
 	];
 </script>
 
@@ -21,16 +21,17 @@
 	>
 		<span class="size-1.5 shrink-0 animate-pulse rounded-full bg-rose" aria-hidden="true"
 		></span>
-		<p class="label-type text-[10px] text-cream/90 sm:text-[11px]">
+		<p class="label-type normal-case text-[10px] text-cream/90 sm:text-[11px]">
 			<span class="font-semibold text-cream">{release.version} is out</span>
 			<span class="hidden sm:inline"> — Windows, Linux, Android and hot reload</span>
 		</p>
 		<a
 			href="{githubUrl}/releases/tag/{release.tag}"
-			class="label-type group ml-1 inline-flex items-center gap-1 text-[10px] text-peach underline decoration-peach/40 underline-offset-4 hover:text-cream sm:text-[11px]"
+			class="label-type normal-case group ml-1 inline-flex items-center gap-1 text-[10px] text-peach underline decoration-peach/40 underline-offset-4 hover:text-cream sm:text-[11px]"
+			target="_blank"
 		>
 			Release notes
-			<ArrowRight class="size-3 transition-transform group-hover:translate-x-0.5" />
+			<ArrowUpRight class="size-3" />
 		</a>
 	</div>
 </div>
@@ -66,9 +67,9 @@
 			{/each}
 		</nav>
 
-		<div class="flex items-center gap-2">
+		<div class="flex items-center gap-1">
 			<a
-				href="/documentation/swift-bundler"
+				href="https://docs.swiftbundler.dev/documentation/swift-bundler"
 				class="inline-flex h-9 items-center px-1 font-mono text-[12px] tracking-[0.02em] text-plum/85 hover:text-plum md:hidden"
 			>
 				Docs
@@ -79,11 +80,11 @@
 				aria-label="Sponsor Swift Bundler"
 				title="Sponsor Swift Bundler"
 			>
-				<Heart class="size-5" weight="fill" />
+				<Heart class="size-5" />
 			</a>
 			<a
 				href={githubUrl}
-				class="hidden size-9 items-center justify-center border border-transparent text-plum/85 transition-colors hover:border-plum/20 hover:bg-paper hover:text-plum sm:inline-flex"
+				class="hidden size-9 items-center justify-center border border-transparent text-plum/85 transition-colors hover:border-plum/20 hover:bg-rose/10 hover:text-plum sm:inline-flex"
 				aria-label="Swift Bundler on GitHub"
 			>
 				<GithubLogo class="size-5" />

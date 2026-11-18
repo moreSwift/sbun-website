@@ -14,8 +14,8 @@
 		<SectionHeading
 			index="04"
 			eyebrow="In the wild"
-			title="Apps that left the workshop."
-			intro="Games, filmmaking tools, visualisers and utilities. These are real apps, built with Swift Package Manager and packed with Swift Bundler."
+			title="Apps built with Swift Bundler."
+			intro="Games, plugin managers, visualisers and utilities; all built with Swift Bundler."
 		/>
 
 		<div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -66,7 +66,7 @@
 							>
 								Visit app
 								<ArrowUpRight
-									class="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+									class="size-3"
 								/>
 							</span>
 						</CardFooter>
@@ -79,7 +79,7 @@
 			<CardContent class="flex flex-col items-start gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
 				<p class="text-[13px] leading-relaxed text-plum/85">
 					<span class="font-semibold text-plum">Built something with Swift Bundler?</span>
-					Add it to the manifest — we like seeing what people ship.
+					Let us know!
 				</p>
 				<Button
 					href="{githubUrl}/issues/new"

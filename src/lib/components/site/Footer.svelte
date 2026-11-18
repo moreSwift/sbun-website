@@ -17,21 +17,20 @@
 
 	const columns = [
 		{
-			title: 'Product',
+			title: 'Documentation',
 			links: [
-				{ label: 'Documentation', href: '/documentation/swift-bundler' },
-				{ label: 'Configuration', href: '/documentation/swift-bundler/configuration' },
-				{ label: 'Bundlers', href: '/documentation/swift-bundler/bundlers' },
-				{ label: 'Templates', href: '/documentation/swift-bundler/package-templates' }
+				{ label: 'Documentation', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler' },
+				{ label: 'Configuration', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/configuration' },
+				{ label: 'Bundlers', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/bundlers' },
+				{ label: 'Templates', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/package-templates' }
 			]
 		},
 		{
 			title: 'Release',
 			links: [
 				{ label: `What’s new in ${release.version}`, href: `${githubUrl}/releases/tag/${release.tag}` },
-				{ label: 'Migrating from v2', href: '/documentation/swift-bundler/migrating-to-swift-bundler' },
 				{ label: 'All releases', href: `${githubUrl}/releases` },
-				{ label: 'Installation', href: '/documentation/swift-bundler/installation' }
+				{ label: 'Installation', href: '#install' }
 			]
 		},
 		{
