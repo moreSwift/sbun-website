@@ -58,13 +58,13 @@
 					>Recommended</Badge
 				>
 				<h3 class="font-display text-xl font-semibold tracking-tight text-plum">
-					Install with the script
+					Install with one command
 				</h3>
 			</CardHeader>
 			<CardContent class="px-5 pb-5 pt-3">
 				<p class="text-[13px] leading-relaxed text-plum/85">
-					One command detects your platform, downloads the right release and installs the
-					<code class="font-mono text-[11px] text-rose-deep">sbun</code> alias.
+					The command detects your platform, downloads the right installer and installs it for you. Our installers all install an
+					<code class="font-mono text-[12px] text-rose-deep">sbun</code> alias alongside <code class="font-mono text-[12px] text-rose-deep">swift-bundler</code>.
 				</p>
 				<InstallCommand />
 			</CardContent>
@@ -91,14 +91,14 @@
 									<Icon class="size-4 text-plum/70" weight="fill" />
 									<span class="font-display text-sm font-semibold text-plum">{group.name}</span>
 								</div>
-								<p class="mt-0.5 font-mono text-[9px] text-plum/45">{group.meta}</p>
+								<p class="mt-0.5 font-mono text-[11px] text-plum/45">{group.meta}</p>
 							</div>
 							<div class="flex flex-wrap justify-end gap-1.5">
 								{#each group.files as file}
 									<Badge
 										href={file.href}
 										variant="site"
-										size="sm"
+										size="default"
 										class="gap-1 font-mono"
 									>
 										<DownloadSimple class="size-3" />
@@ -108,6 +108,19 @@
 							</div>
 						</div>
 					{/each}
+				</div>
+
+				<div class="mt-1">
+					<a
+						href="https://github.com/moreSwift/swift-bundler/releases/latest"
+						class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum uppercase"
+						target="_blank"
+					>
+						View latest release
+						<ArrowUpRight
+							class="size-3 mt-0.5"
+						/>
+					</a>
 				</div>
 			</CardContent>
 		</SiteCard>
@@ -123,9 +136,8 @@
 			</div>
 			<a
 				href={githubUrl}
+				class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum uppercase"
 				target="_blank"
-				rel="noreferrer"
-				class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-rose-deep hover:text-plum"
 			>
 				<GithubLogo class="size-3.5" />
 				GitHub
@@ -134,8 +146,8 @@
 		</CardHeader>
 		<CardContent class="px-5 pb-5 pt-3">
 			<p class="max-w-3xl text-[13px] leading-relaxed text-plum/85">
-				Requires Swift 6 and the platform’s runtime dependencies. Clone the repository, build
-				the release binary, and copy it into your PATH.
+				Building from source requires Swift 6. Clone the repository, build
+				the CLI, and copy it into your PATH. To use the <code class="font-mono text-[12px] text-rose-deep">sbun</code> shorthand, install a symlink or create a copy of the CLI.
 			</p>
 			<div class="mt-4">
 				<CommandLine
@@ -144,11 +156,12 @@
 				/>
 			</div>
 			<a
-				href="/documentation/swift-bundler/installation"
-				class="label-type mt-3 inline-flex items-center gap-1 text-rose-deep hover:text-plum"
+				href="https://docs.swiftbundler.dev/documentation/swift-bundler/installation"
+				class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum mt-4 uppercase"
+				target="_blank"
 			>
-				Runtime dependencies
-				<ArrowUpRight class="size-3" />
+				See runtime dependencies
+				<ArrowUpRight class="size-3 mt-0.5" />
 			</a>
 		</CardContent>
 	</SiteCard>

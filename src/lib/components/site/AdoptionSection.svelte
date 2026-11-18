@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
+	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import ArrowsClockwise from 'phosphor-svelte/lib/ArrowsClockwise';
 	import FileCode from 'phosphor-svelte/lib/FileCode';
 	import Package from 'phosphor-svelte/lib/Package';
@@ -32,22 +32,22 @@
 			number: '01',
 			title: 'Start with a template',
 			body: 'Create a new package from a built-in SwiftUI or SwiftCrossUI template, or a custom template of your own.',
-			code: 'sbun create HelloWorld --template SwiftUI',
+			code: 'sbun create HelloWorld --template SwiftCrossUI',
 			language: 'shell',
 			icon: Package,
 			label: 'Create',
-			href: '/documentation/swift-bundler/package-templates',
+			href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/package-templates',
 			link: 'Explore templates'
 		},
 		{
 			number: '02',
 			title: 'Add Bundler.toml',
 			body: 'Already have a SwiftPM package? Drop in one config file, describe the app, and keep every existing target where it is.',
-			code: 'config_version = "3.1.0"\n\n[apps.HelloWorld]\nidentifier = "dev.example.HelloWorld"\nproduct = "HelloWorld"\nversion = "1.0.0"',
+			code: 'config_version = "3.1.0"\n\n[apps.HelloWorld]\nidentifier = "com.example.HelloWorld"\nproduct = "HelloWorld"\nversion = "1.0.0"',
 			language: 'toml',
 			icon: FileCode,
 			label: 'Configure',
-			href: '/documentation/swift-bundler/configuration',
+			href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/configuration',
 			link: 'Configuration guide'
 		},
 		{
@@ -58,7 +58,7 @@
 			language: 'shell',
 			icon: ArrowsClockwise,
 			label: 'Convert',
-			href: '/documentation/swift-bundler/migrating-to-swift-bundler',
+			href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/migrating-to-swift-bundler',
 			link: 'Migration guide',
 			experimental: true
 		}
@@ -69,57 +69,43 @@
 	<SectionHeading
 		index="02"
 		eyebrow="ADOPTION"
-		title="Adopt Swift Bundler at any stage."
+		title="Adopt Swift Bundler anywhere."
 		intro="Starting from scratch? Use a template to get a head start. Already have an app? Add a Bundler.toml config and start shipping to more platforms."
 	/>
 
 	<div class="mt-8 flex items-center gap-3">
 		<span class="label-type text-rose-deep">Three adoption methods</span>
 		<Separator class="h-px flex-1 bg-plum/20" />
-		<span class="label-type hidden text-plum/40 sm:block">Choose what fits your project</span>
 	</div>
 
 	<div class="mt-4 grid gap-3 lg:grid-cols-3">
 		{#each approaches as approach}
 			{@const Icon = approach.icon}
 			<SiteCard
-				class="flex h-full flex-col {approach.experimental
-					? 'border-warning/40'
-					: ''}"
+				class="flex h-full flex-col"
 			>
-				<CardHeader class="flex flex-row items-start justify-between gap-3 px-5 pb-0 pt-5">
+				<CardHeader class="flex flex-row items-center justify-between gap-3 px-5 pb-0 pt-5">
 					<div class="flex items-center gap-2">
-						<Badge variant="site" size="sm" class="font-mono">Method {approach.number}</Badge>
-						<Badge variant="ghost" size="sm" class="px-0 font-mono text-plum/45">
+						<Badge variant="site" size="default" class="font-mono">Method {approach.number}</Badge>
+						<Badge variant="ghost" size="default" class="px-0 font-mono">
 							<Icon class="size-4" />
 							{approach.label}
 						</Badge>
 					</div>
 					{#if approach.experimental}
-						<Badge variant="warning" size="sm" class="gap-1 font-mono">
+						<Badge variant="warning" size="default" class="gap-1 font-mono">
 							<WarningCircle class="size-3" weight="fill" />
 							Experimental
 						</Badge>
 					{/if}
 				</CardHeader>
 
-				<CardContent class="flex flex-col px-5 pb-5 pt-5">
+				<CardContent class="flex flex-col px-5 pb-5 pt-3">
 					<h3 class="font-display text-xl font-semibold tracking-tight text-plum">
 						{approach.title}
 					</h3>
-					<p class="mt-2 text-[13px] leading-relaxed text-plum/85">{approach.body}</p>
-					{#if approach.experimental}
-						<div
-							class="mt-3 flex items-start gap-2 border border-warning/30 bg-warning-tint px-3 py-2 text-[11px] leading-relaxed text-warning"
-						>
-							<WarningCircle class="mt-0.5 size-3.5 shrink-0" weight="fill" />
-							<p>
-								Experimental. Converted projects often require manual changes before they
-								fully build.
-							</p>
-						</div>
-					{/if}
-					<div class="mt-5 overflow-hidden border border-plum/15 bg-cream/50">
+					<p class="mt-1 text-[13px] leading-relaxed text-plum/85">{approach.body}</p>
+					<div class="mt-4 overflow-hidden border border-plum/15 bg-cream/50">
 						<div class="flex items-center justify-between border-b border-plum/15 px-3 py-2">
 							<span class="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.06em] text-plum/55">
 								{#if approach.language === 'toml'}
@@ -138,6 +124,17 @@
 						</div>
 						<CodeBlock code={approach.code} language={approach.language} tone="light" size="sm" wrap />
 					</div>
+					{#if approach.experimental}
+						<div
+							class="mt-5 flex items-start gap-2 border border-warning/30 bg-warning-tint px-3 py-2 text-[11px] leading-relaxed text-warning"
+						>
+							<WarningCircle class="mt-0.5 size-3.5 shrink-0" weight="fill" />
+							<p>
+								<b>Experimental.</b> Converted projects may require manual intervention before they
+								properly build.
+							</p>
+						</div>
+					{/if}
 				</CardContent>
 
 				<CardFooter class="mt-auto border-0 p-0">
@@ -147,8 +144,8 @@
 							class="label-type group inline-flex items-center gap-1 text-rose-deep hover:text-plum"
 						>
 							{approach.link}
-							<ArrowRight
-								class="size-3 transition-transform group-hover:translate-x-0.5"
+							<ArrowUpRight
+								class="size-3"
 							/>
 						</a>
 						<span class="label-type {approach.experimental ? 'text-warning' : 'text-plum/35'}"

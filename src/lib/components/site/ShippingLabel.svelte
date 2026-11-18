@@ -90,7 +90,7 @@
 						</p>
 						<p class="font-display text-[13px] font-bold uppercase leading-tight">Shipping</p>
 						<p class="font-mono text-[9px] tracking-[0.1em] text-rose-deep/80">
-							07 DESTINATIONS
+							7 DESTINATIONS
 						</p>
 					</div>
 				</div>

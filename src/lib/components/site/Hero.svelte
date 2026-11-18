@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
+	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import BookOpen from 'phosphor-svelte/lib/BookOpen';
 	import RocketLaunch from 'phosphor-svelte/lib/RocketLaunch';
 	import { Button } from '$lib/components/ui/button';
@@ -14,13 +14,6 @@
 
 <section class="relative overflow-hidden border-b border-plum/15">
 	<DotGrid class="opacity-50" />
-	<div
-		class="pointer-events-none absolute -right-32 -top-32 size-[34rem] rounded-full bg-rose/10 blur-3xl"
-	></div>
-	<div
-		class="pointer-events-none absolute -bottom-40 -left-32 size-[26rem] rounded-full bg-peach-deep/30 blur-3xl"
-	></div>
-
 	<div class="relative mx-auto max-w-6xl px-4 sm:px-6">
 		<div
 			class="grid gap-14 py-12 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 lg:py-20"
@@ -47,9 +40,9 @@
 					<InstallCommand />
 				</div>
 
-				<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+				<div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
 					<Button
-						href="/documentation/swift-bundler/creating-an-app"
+						href="https://docs.swiftbundler.dev/documentation/swift-bundler/creating-an-app"
 						size="lg"
 						class="h-11 gap-2 bg-plum px-5 text-[13px] font-semibold text-cream hover:bg-plum/90"
 					>
@@ -57,7 +50,7 @@
 						Quick start
 					</Button>
 					<Button
-						href="/documentation/swift-bundler"
+						href="https://docs.swiftbundler.dev/documentation/swift-bundler"
 						variant="outline"
 						size="lg"
 						class="h-11 gap-2 border-plum/30 bg-transparent px-5 text-[13px] font-semibold text-plum hover:bg-paper"
@@ -67,16 +60,16 @@
 					</Button>
 				</div>
 
-				<div class="mt-6 border-l-2 border-rose/60 pl-3">
-					<p class="text-[13px] font-medium text-plum">Enjoying SwiftCrossUI?</p>
+				<div class="mt-4 text-[12px] text-plum">
+					Enjoying SwiftCrossUI?
 					<a
 						href={openCollectiveUrl}
 						target="_blank"
 						rel="noreferrer"
-						class="group mt-1 inline-flex items-center gap-1 text-[13px] font-semibold text-rose-deep hover:text-plum"
+						class="group inline-flex items-center gap-0.5 font-semibold text-rose-deep hover:text-plum"
 					>
 						Sponsor its development
-						<ArrowRight class="size-3.5 transition-transform group-hover:translate-x-1" />
+						<ArrowRight class="size-3.5 transition-transform group-hover:translate-x-0.5" />
 					</a>
 				</div>
 			</div>
@@ -85,7 +78,8 @@
 				<ShippingLabel />
 				<a
 					href="{githubUrl}/releases/tag/{release.tag}"
-					class="label-type group absolute -bottom-10 right-2 hidden items-center gap-1 text-muted-foreground hover:text-plum sm:inline-flex"
+					class="label-type group absolute -bottom-10 right-2 hidden items-center gap-0.5 text-muted-foreground hover:text-plum sm:inline-flex"
+					target="_blank"
 				>
 					View 3.0.0 release notes
 					<ArrowUpRight class="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

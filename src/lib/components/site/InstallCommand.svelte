@@ -60,11 +60,11 @@
 			href={selected.script}
 			target="_blank"
 			rel="noreferrer"
-			class="group inline-flex items-center gap-1 font-mono text-[11px] tracking-[0.02em] text-rose-deep hover:text-plum"
+			class="group inline-flex items-center gap-1 font-mono text-[12px] tracking-[0.02em] text-rose-deep hover:text-plum"
 		>
 			View install script
 			<ArrowUpRight
-				class="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+				class="size-3 mt-0.5"
 			/>
 		</a>
 	</div>
