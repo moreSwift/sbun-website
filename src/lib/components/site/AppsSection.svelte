@@ -14,7 +14,7 @@
 		<SectionHeading
 			index="04"
 			eyebrow="In the wild"
-			title="Crates that left the warehouse."
+			title="Apps that left the workshop."
 			intro="Games, filmmaking tools, visualisers and utilities. These are real apps, built with Swift Package Manager and packed with Swift Bundler."
 		/>
 
@@ -79,7 +79,7 @@
 			<CardContent class="flex flex-col items-start gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
 				<p class="text-[13px] leading-relaxed text-plum/85">
 					<span class="font-semibold text-plum">Built something with Swift Bundler?</span>
-					Add it to the manifest — we like seeing the crates arrive.
+					Add it to the manifest — we like seeing what people ship.
 				</p>
 				<Button
 					href="{githubUrl}/issues/new"

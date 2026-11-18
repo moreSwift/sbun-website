@@ -46,7 +46,7 @@
 
 				<Separator class="my-3 bg-plum/20" />
 
-				<!-- crate -->
+				<!-- logo -->
 				<div class="relative flex h-48 items-center justify-center sm:h-56">
 					<div
 						class="absolute inset-4 rounded-full border border-dashed border-plum/20 bg-cream/60"

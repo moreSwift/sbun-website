@@ -1,14 +1,15 @@
 <script lang="ts">
 	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
+	import Heart from 'phosphor-svelte/lib/Heart';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import Logo from './Logo.svelte';
-	import { githubUrl, release } from '$lib/content';
+	import { githubUrl, openCollectiveUrl, release } from '$lib/content';
 
 	const nav = [
 		{ label: 'What’s new', href: '#whats-new' },
-		{ label: 'Platforms', href: '#platforms' },
+		{ label: 'Bundlers', href: '#bundlers' },
 		{ label: 'Install', href: '#install' },
 		{ label: 'Docs', href: '/documentation/swift-bundler' }
 	];
@@ -71,6 +72,14 @@
 				class="inline-flex h-9 items-center px-1 font-mono text-[12px] tracking-[0.02em] text-plum/85 hover:text-plum md:hidden"
 			>
 				Docs
+			</a>
+			<a
+				href={openCollectiveUrl}
+				class="hidden size-9 items-center justify-center border border-transparent text-rose-deep transition-colors hover:border-rose/30 hover:bg-rose/10 hover:text-plum sm:inline-flex"
+				aria-label="Sponsor Swift Bundler"
+				title="Sponsor Swift Bundler"
+			>
+				<Heart class="size-5" weight="fill" />
 			</a>
 			<a
 				href={githubUrl}

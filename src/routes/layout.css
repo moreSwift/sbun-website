@@ -175,23 +175,6 @@
 	}
 }
 
-@keyframes crate-travel {
-	0% {
-		left: 2%;
-		opacity: 0;
-	}
-	8% {
-		opacity: 1;
-	}
-	92% {
-		opacity: 1;
-	}
-	100% {
-		left: calc(100% - 2rem);
-		opacity: 0;
-	}
-}
-
 @keyframes barcode-scan {
 	0% {
 		left: -34%;
@@ -218,10 +201,6 @@
 	100% {
 		box-shadow: 0 0 0 14px color-mix(in srgb, var(--rose) 0%, transparent);
 	}
-}
-
-.animate-crate {
-	animation: crate-travel 22s linear infinite;
 }
 
 .animate-float {

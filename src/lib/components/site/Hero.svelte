@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ArrowRight from 'phosphor-svelte/lib/ArrowRight';
 	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import BookOpen from 'phosphor-svelte/lib/BookOpen';
 	import RocketLaunch from 'phosphor-svelte/lib/RocketLaunch';
@@ -7,7 +8,7 @@
 	import InstallCommand from './InstallCommand.svelte';
 	import PlatformStrip from './PlatformStrip.svelte';
 	import ShippingLabel from './ShippingLabel.svelte';
-	import { githubUrl, release } from '$lib/content';
+	import { githubUrl, openCollectiveUrl, release } from '$lib/content';
 
 </script>
 
@@ -66,6 +67,18 @@
 					</Button>
 				</div>
 
+				<div class="mt-6 border-l-2 border-rose/60 pl-3">
+					<p class="text-[13px] font-medium text-plum">Enjoying SwiftCrossUI?</p>
+					<a
+						href={openCollectiveUrl}
+						target="_blank"
+						rel="noreferrer"
+						class="group mt-1 inline-flex items-center gap-1 text-[13px] font-semibold text-rose-deep hover:text-plum"
+					>
+						Sponsor its development
+						<ArrowRight class="size-3.5 transition-transform group-hover:translate-x-1" />
+					</a>
+				</div>
 			</div>
 
 			<div class="relative min-w-0 px-2 sm:px-0 lg:pl-4">

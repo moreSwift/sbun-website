@@ -7,6 +7,8 @@
 	import Header from '$lib/components/site/Header.svelte';
 	import Hero from '$lib/components/site/Hero.svelte';
 	import InstallSection from '$lib/components/site/InstallSection.svelte';
+	import PageSection from '$lib/components/site/PageSection.svelte';
+	import SponsorCallout from '$lib/components/site/SponsorCallout.svelte';
 	import ManifestSection from '$lib/components/site/ManifestSection.svelte';
 </script>
 
@@ -26,6 +28,9 @@
 		<AppsSection />
 		<InstallSection />
 		<FaqSection />
+		<PageSection id="sponsor">
+			<SponsorCallout />
+		</PageSection>
 	</main>
 	<Footer />
 </div>
