@@ -5,6 +5,7 @@
 	import Info from 'phosphor-svelte/lib/Info';
 	import LinuxLogo from 'phosphor-svelte/lib/LinuxLogo';
 	import WindowsLogo from 'phosphor-svelte/lib/WindowsLogo';
+	import type { Component } from 'svelte';
 	import { Badge } from '$lib/components/ui/badge';
 	import { CardContent, CardFooter, CardHeader } from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
@@ -22,32 +23,28 @@
 	import PageSection from './PageSection.svelte';
 	import SiteCard from './SiteCard.svelte';
 	import TabSelector from './TabSelector.svelte';
-	import { platforms } from '$lib/content';
+	import { bundlers } from '$lib/content';
 
-	const icons = {
-		apple: AppleLogo,
-		linux: LinuxLogo,
-		windows: WindowsLogo,
-		android: AndroidLogo
+	const icons: Record<string, Component> = {
+		darwinApp: AppleLogo,
+		linuxGeneric: LinuxLogo,
+		linuxAppImage: LinuxLogo,
+		linuxRPM: LinuxLogo,
+		windowsGeneric: WindowsLogo,
+		windowsMSI: WindowsLogo,
+		androidAPK: AndroidLogo
 	};
 
-	const subtitles = {
-		apple: 'macOS · iOS · tvOS',
-		linux: 'AppImage · RPM',
-		windows: 'MSI · portable',
-		android: 'APK · emulator'
-	};
-
-	const destinations = platforms.map((platform) => ({
-		id: platform.id,
-		name: platform.name,
-		meta: subtitles[platform.id],
-		icon: icons[platform.id]
+	const bundlerTabs = bundlers.map((bundler) => ({
+		id: bundler.id,
+		name: bundler.label,
+		meta: bundler.pickerPlatforms,
+		icon: icons[bundler.id]
 	}));
 
-	const maxSnippetLines = Math.max(...platforms.map((platform) => platform.snippet.length));
+	const maxSnippetLines = Math.max(...bundlers.map((bundler) => bundler.snippet.length));
 
-	let active = $state('apple');
+	let active = $state('darwinApp');
 </script>
 
 {#snippet compareBundlers()}
@@ -60,20 +57,20 @@
 	</a>
 {/snippet}
 
-<PageSection id="platforms" grid gridClass="opacity-30">
+<PageSection id="bundlers" grid gridClass="opacity-30">
 		<SectionHeading
 			index="01"
 			eyebrow="CONFIGURATION"
-			title="One project. Seven destinations."
-			intro="Swift Bundler picks the right bundler, output format and platform conventions from the same Bundler.toml. Choose a destination to see what gets packed."
+			title="One config. Seven bundlers."
+			intro="Swift Bundler picks the right output format and platform conventions from the same Bundler.toml. Choose a bundler to see what gets packed."
 			action={compareBundlers}
 		/>
 
 		<Tabs bind:value={active} class="mt-10 gap-0">
-			<TabSelector items={destinations} label="Choose a destination" large />
+			<TabSelector items={bundlerTabs} label="Choose a bundler" large />
 
-			{#each platforms as platform}
-				<TabsContent value={platform.id} class="mt-4 focus-visible:outline-none">
+			{#each bundlers as bundler}
+				<TabsContent value={bundler.id} class="mt-4 focus-visible:outline-none">
 					<div class="grid gap-4 lg:min-h-[33.4rem] lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
 						<!-- Config file -->
 						<SiteCard variant="dark">
@@ -92,12 +89,12 @@
 
 							<CardContent class="p-0">
 								<CodeBlock
-									code={platform.snippet.map((line) => line.text).join('\n')}
+									code={bundler.snippet.map((line) => line.text).join('\n')}
 									language="toml"
 									lineNumbers
 									padded={false}
 									minLines={maxSnippetLines}
-									accentLines={platform.snippet.flatMap((line, index) =>
+									accentLines={bundler.snippet.flatMap((line, index) =>
 										line.accent ? [index + 1] : []
 									)}
 								/>
@@ -106,7 +103,7 @@
 							<CardFooter class="mt-auto border-t border-cream/15 px-4 py-3">
 								<div class="flex items-start gap-2">
 									<Info class="mt-0.5 size-3.5 shrink-0 text-peach/80" />
-									<p class="text-[11px] leading-relaxed text-cream/70">{platform.note}</p>
+									<p class="text-[11px] leading-relaxed text-cream/70">{bundler.note}</p>
 								</div>
 							</CardFooter>
 						</SiteCard>
@@ -119,18 +116,21 @@
 								<div class="shrink-0">
 									<p class="label-type text-rose-deep">Packing slip</p>
 									<h3 class="mt-1.5 font-display text-xl font-semibold tracking-tight text-plum">
-										{platform.name}
+										{bundler.label}
 									</h3>
 								</div>
 								<div class="min-w-0 text-right">
 									<p class="label-type text-plum/45">Destination</p>
 									<p class="mt-1 max-w-[14rem] font-mono text-[10px] leading-relaxed text-plum/85">
-										{platform.destination}
+										{bundler.platforms}
 									</p>
 								</div>
 							</CardHeader>
 
 							<CardContent class="p-0">
+								<p class="border-b border-plum/15 px-5 py-3 text-[13px] leading-relaxed text-plum/85">
+									{bundler.blurb}
+								</p>
 								<Table class="table-fixed text-[10px]">
 									<TableBody>
 										<TableRow class="border-none hover:bg-transparent">
@@ -140,7 +140,7 @@
 												Bundler
 											</TableCell>
 											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
-												{platform.bundlers}
+												{bundler.name}
 											</TableCell>
 										</TableRow>
 										<TableRow class="border-none hover:bg-transparent">
@@ -150,7 +150,7 @@
 												Output
 											</TableCell>
 											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] font-semibold text-plum">
-												{platform.output}
+												{bundler.output}
 											</TableCell>
 										</TableRow>
 										<TableRow class="border-none hover:bg-transparent">
@@ -160,7 +160,7 @@
 												Signing
 											</TableCell>
 											<TableCell class="whitespace-normal break-words py-1.5 pl-3 pr-5 align-baseline font-mono text-[10px] text-plum/85">
-												{platform.signing}
+												{bundler.signing}
 											</TableCell>
 										</TableRow>
 									</TableBody>
@@ -171,7 +171,7 @@
 
 							<CardContent class="px-5 py-4">
 								<p class="label-type text-plum/45">Packed by the bundler</p>
-								<CheckList items={platform.handles} class="mt-2.5" />
+								<CheckList items={bundler.handles} class="mt-2.5" />
 							</CardContent>
 
 							<Separator class="bg-plum/15" />
@@ -181,12 +181,12 @@
 									<div class="flex items-center justify-between gap-2">
 										<p class="label-type text-plum/45">Command</p>
 										<div class="flex flex-wrap justify-end gap-1">
-											{#each platform.formats as format}
+											{#each bundler.formats as format}
 												<Badge variant="site" size="xs" class="font-mono">{format}</Badge>
 											{/each}
 										</div>
 									</div>
-									<CommandLine command={platform.command} class="mt-2" />
+									<CommandLine command={bundler.command} class="mt-2" />
 								</div>
 							</CardFooter>
 						</SiteCard>

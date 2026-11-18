@@ -128,11 +128,8 @@
 					{/if}
 				</div>
 				<div>
-					<p class="font-mono text-[9px] uppercase tracking-[0.2em] text-cream/35">
-						MIT licensed · © {new Date().getFullYear()} moreSwift
-					</p>
-					<p class="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-cream/25">
-						SBUN-{release.version} · MADE IN SWIFT
+					<p class="font-mono text-[11px] uppercase tracking-[0.18em] text-cream/45">
+						Apache 2.0 licensed · © {new Date().getFullYear()} moreSwift
 					</p>
 				</div>
 			</div>
@@ -148,5 +145,9 @@
 				</span>
 			</a>
 		</div>
+
+		<p class="mt-5 text-[12px] leading-relaxed text-cream/45">
+			Swift and SwiftUI are trademarks of Apple Inc. moreSwift is not affiliated with Apple.
+		</p>
 	</div>
 </footer>

@@ -4,7 +4,7 @@ A static SvelteKit prototype of a more product-led Swift Bundler website for the
 3.0.0 release. The concept is **the packing line**: Swift Bundler is the last
 mile between a SwiftPM package and something you can actually ship.
 
-The palette and crate logo are unchanged. The language, layout and interactions
+The palette and pixel-box logo are unchanged. The language, layout and interactions
 are built around a physical shipping metaphor: manifests, packing slips,
 destination tags, barcodes and cleared-for-shipping stamps.
 
@@ -82,13 +82,13 @@ or Tailwind utilities.
 - **Hero with a real next action** — a detected/overridable macOS/Linux or
   Windows install-script command, Quick start CTA, docs and the platform
   support strip.
-- **Shipping label** — the pixel crate presented as a parcel with destination
+- **Shipping label** — the pixel box presented as a parcel with destination
   tags, packing slip rows, a barcode and a stamp. Reusable as social/OG artwork.
 - **Adoption paths** — three routes: start from a template, add a Bundler.toml
   to an existing SwiftPM package, or experimentally convert an xcodeproj.
-- **One project, seven destinations** — shadcn tabs switch between Apple,
-  Linux, Windows and Android. The `config_version = "3.1.0"` snippet and
-  packing slip both update.
+- **One config, seven bundlers** — shadcn tabs switch between `darwinApp`,
+  `linuxGeneric`, `linuxAppImage`, `linuxRPM`, `windowsGeneric`, `windowsMSI`
+  and `androidAPK`. The config sample, platforms and packing slip blurb update.
 - **3.0 feature section** — config overlays alongside signing, devices, builders
   and error handling.
 - **Installation** — the shared install-script component, direct download list

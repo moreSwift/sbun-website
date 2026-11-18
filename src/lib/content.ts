@@ -21,12 +21,13 @@ export const artifacts = {
 
 export type SnippetLine = { text: string; accent?: boolean };
 
-export type Platform = {
-	id: 'apple' | 'linux' | 'windows' | 'android';
+export type Bundler = {
+	id: string;
 	name: string;
-	shortName: string;
-	destination: string;
-	bundlers: string;
+	label: string;
+	pickerPlatforms: string;
+	platforms: string;
+	blurb: string;
 	command: string;
 	output: string;
 	signing: string;
@@ -51,13 +52,15 @@ const baseConfig = (icon: string, extra: SnippetLine[] = []): SnippetLine[] => [
 const accent = (text: string): SnippetLine => ({ text, accent: true });
 const plain = (text: string): SnippetLine => ({ text });
 
-export const platforms: Platform[] = [
+export const bundlers: Bundler[] = [
 	{
-		id: 'apple',
-		name: 'Apple',
-		shortName: 'Apple',
-		destination: 'macOS · iOS · tvOS · visionOS · Mac Catalyst',
-		bundlers: 'darwinApp',
+		id: 'darwinApp',
+		name: 'darwinApp',
+		label: '.app',
+		pickerPlatforms: 'Apple platforms',
+		platforms: 'macOS · iOS · tvOS · visionOS · Mac Catalyst',
+		blurb:
+			'Builds .app bundles for every Apple platform, with universal macOS binaries and automatic provisioning.',
 		command: 'sbun bundle -p macOS --universal',
 		output: 'HelloWorld.app',
 		signing: 'Developer ID, provisioning profiles, ad-hoc fallback',
@@ -68,96 +71,200 @@ export const platforms: Platform[] = [
 			'Xcode builds without an .xcodeproj'
 		],
 		formats: ['.app', '.dylib', '.icon'],
-		snippet: baseConfig('AppIcon.icon', [
+		snippet: baseConfig('icon.png', [
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "platform(macOS)"'),
+			accent('icon = "AppIcon.icon"'),
+			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "platform(macCatalyst)"'),
 			accent('interface_idiom = "mac"'),
 			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
-			accent('condition = "platform(iOS)"'),
-			accent('plist.UIDeviceFamily = [1, 2]')
+			accent('condition = "bundler(darwinApp)"'),
+			accent('plist.NSHighResolutionCapable = true')
 		]),
-		note: 'One manifest covers Mac, iPhone, iPad, Apple TV and Vision Pro. The Darwin bundler handles the platform differences.'
+		note: 'One manifest covers every Apple platform. The Darwin bundler handles the platform differences.'
 	},
 	{
-		id: 'linux',
-		name: 'Linux',
-		shortName: 'Linux',
-		destination: 'AppImage · RPM · portable directory',
-		bundlers: 'linuxAppImage · linuxRPM · linuxGeneric',
-		command: 'sbun bundle --bundler linuxAppImage --strip',
-		output: 'HelloWorld.AppImage',
-		signing: 'Debug info extracted; runpath patched for portability',
+		id: 'linuxGeneric',
+		name: 'linuxGeneric',
+		label: 'Portable',
+		pickerPlatforms: 'Linux',
+		platforms: 'Linux',
+		blurb:
+			'Creates a portable Linux directory containing the executable, its shared libraries and resources.',
+		command: 'sbun bundle --bundler linuxGeneric',
+		output: 'HelloWorld/',
+		signing: 'Not supported (yet)',
 		handles: [
-			'Dynamic libraries with patched runpaths',
-			'.desktop files, icons and relative symlinks',
-			'D-Bus activation and custom URL schemes',
-			'RPM requirements, licence and description'
+			'Dynamic libraries copied beside the executable',
+			'Resources and custom URL schemes',
+			'Debug info extracted with --strip',
+			'Portable output for custom packaging'
 		],
-		formats: ['.AppImage', '.rpm', '.tar.gz'],
+		formats: ['directory'],
 		snippet: baseConfig('icon.png', [
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "platform(linux)"'),
 			accent('dbus_activatable = true'),
-			accent('url_schemes = ["hello"]'),
+			plain(''),
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "bundler(linuxGeneric)"'),
+			accent('url_schemes = ["hello"]')
+		]),
+		note: 'The generic Linux bundler is aimed at development and custom packaging workflows.'
+	},
+	{
+		id: 'linuxAppImage',
+		name: 'linuxAppImage',
+		label: '.AppImage',
+		pickerPlatforms: 'Linux',
+		platforms: 'Linux',
+		blurb:
+			'Packs the app into one self-contained AppImage, patching runpaths and bundling dynamic libraries.',
+		command: 'sbun bundle --bundler linuxAppImage --strip',
+		output: 'HelloWorld.AppImage',
+		signing: 'Not supported (yet)',
+		handles: [
+			'Dynamic libraries with patched runpaths',
+			'.desktop files, icons and relative symlinks',
+			'AppImage metadata and D-Bus activation',
+			'A double-clickable single-file distribution'
+		],
+		formats: ['.AppImage'],
+		snippet: baseConfig('icon.png', [
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "platform(linux)"'),
+			accent('dbus_activatable = true'),
+			plain(''),
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "bundler(linuxAppImage)"'),
+			accent('icon = "AppIcon.png"')
+		]),
+		note: 'The AppImage bundler patches runpaths and travels with the libraries it needs.'
+	},
+	{
+		id: 'linuxRPM',
+		name: 'linuxRPM',
+		label: '.rpm',
+		pickerPlatforms: 'Linux',
+		platforms: 'Linux',
+		blurb:
+			'Produces an RPM with dependency, licence and description metadata ready for package repositories.',
+		command: 'sbun bundle --bundler linuxRPM',
+		output: 'HelloWorld-1.0.0-1.x86_64.rpm',
+		signing: 'Not supported (yet)',
+		handles: [
+			'External RPM dependencies and requirements',
+			'Licence and description metadata',
+			'.desktop files, icons and URL schemes',
+			'Paths-with-spaces workaround'
+		],
+		formats: ['.rpm'],
+		snippet: baseConfig('icon.png', [
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "platform(linux)"'),
+			accent('dbus_activatable = true'),
 			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "bundler(linuxRPM)"'),
 			accent('requirements = ["gtk3"]')
 		]),
-		note: 'Ship a double-clickable AppImage or a proper RPM. Shared libraries travel with the crate.'
+		note: 'RPM packaging gives you native dependency metadata for Fedora and RHEL-family systems.'
 	},
 	{
-		id: 'windows',
-		name: 'Windows',
-		shortName: 'Windows',
-		destination: 'Windows 10 and 11 · x86_64',
-		bundlers: 'windowsMSI · windowsGeneric',
+		id: 'windowsGeneric',
+		name: 'windowsGeneric',
+		label: '.zip',
+		pickerPlatforms: 'Windows',
+		platforms: 'Windows',
+		blurb:
+			'Creates a portable Windows directory with the executable, runtime DLLs and resources.',
+		command: 'sbun bundle --bundler windowsGeneric',
+		output: 'HelloWorld/',
+		signing: 'Executable and DLL signing supported',
+		handles: [
+			'DLL discovery and resource bundling',
+			'GUI-subsystem linking',
+			'App icon and application manifest',
+			'Portable layout for zip distribution'
+		],
+		formats: ['directory', '.zip'],
+		snippet: baseConfig('icon.ico', [
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "platform(windows)"'),
+			accent('icon = "icon.ico"'),
+			plain(''),
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "bundler(windowsGeneric)"'),
+			accent('url_schemes = ["hello"]')
+		]),
+		note: 'The generic Windows bundler produces a portable folder with the runtime DLLs beside the app.'
+	},
+	{
+		id: 'windowsMSI',
+		name: 'windowsMSI',
+		label: '.msi',
+		pickerPlatforms: 'Windows',
+		platforms: 'Windows',
+		blurb:
+			'Creates a WiX-based MSI installer for Program Files, with a stable upgrade code and custom action support.',
 		command: 'sbun bundle --bundler windowsMSI -c release',
 		output: 'HelloWorld-1.0.0-x86_64.msi',
 		signing: 'Certificate or Azure Artifact Signing',
 		handles: [
-			'DLL discovery and resource bundling',
 			'WiX install, including extensions',
 			'64-bit Program Files installs',
-			'Custom WXS actions and app manifests'
+			'Custom WXS actions and app manifests',
+			'PDBs excluded from release installers'
 		],
-		formats: ['.msi', '.zip', '.exe'],
+		formats: ['.msi'],
 		snippet: baseConfig('icon.ico', [
 			accent('[apps.HelloWorld.msi]'),
-			plain('wix_extensions = ['),
-			plain('  "WixToolset.Util.wixext/6.0.0",'),
-			plain(']'),
+			accent('wix_extensions = ['),
+			accent('  "WixToolset.Util.wixext/6.0.0",'),
+			accent(']'),
+			plain(''),
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "platform(windows)"'),
+			accent('icon = "icon.ico"'),
 			plain(''),
 			accent('[[apps.HelloWorld.overlays]]'),
 			accent('condition = "bundler(windowsMSI)"'),
 			accent('upgrade_code = "YOUR-UPGRADE-CODE"')
 		]),
-		note: 'The MSI bundler installs WiX when needed, signs the executable and DLLs, and leaves PDBs out of release installers.'
+		note: 'The MSI bundler installs WiX when needed and signs the executable and bundled DLLs.'
 	},
 	{
-		id: 'android',
-		name: 'Android',
-		shortName: 'Android',
-		destination: 'Phones, tablets and emulators',
-		bundlers: 'androidAPK',
+		id: 'androidAPK',
+		name: 'androidAPK',
+		label: '.apk',
+		pickerPlatforms: 'Android',
+		platforms: 'Android',
+		blurb:
+			'Builds and signs an APK, then installs and launches it on a connected device or emulator.',
 		command: 'sbun run -p android --device "Pixel 8a"',
 		output: 'HelloWorld.apk',
-		signing: 'Gradle-managed APK signing',
+		signing: 'Not supported (yet)',
 		handles: [
 			'APK install and launch over adb',
 			'Swift SDK, NDK and AAPT discovery',
 			'Permissions and Android resources',
 			'Java and Kotlin sources from libraries'
 		],
-		formats: ['.apk', '.aar'],
+		formats: ['.apk'],
 		snippet: baseConfig('icon.png', [
-			plain('[apps.HelloWorld.android]'),
-			plain('min_sdk = 28'),
-			plain('target_sdk = 35'),
-			accent('permissions = ["INTERNET", "CAMERA"]')
+			accent('[apps.HelloWorld.android]'),
+			accent('min_sdk = 28'),
+			accent('target_sdk = 35'),
+			accent('permissions = ["INTERNET", "CAMERA"]'),
+			plain(''),
+			accent('[[apps.HelloWorld.overlays]]'),
+			accent('condition = "bundler(androidAPK)"'),
+			accent('description = "HelloWorld for Android"')
 		]),
-		note: 'Build, install and launch from one command. Emulator management is built in, no Android Studio required.'
+		note: 'Build, install and launch from one command. Emulator management is built in.'
 	}
 ];
 
@@ -282,7 +389,7 @@ export const faqs: Faq[] = [
 	{
 		question: 'Is it really free?',
 		answer:
-			'Swift Bundler is MIT licensed and maintained by moreSwift. Sponsorships through Open Collective fund maintenance and new platform support. The source, issue tracker and roadmap are all public on GitHub.'
+			'Swift Bundler is Apache 2.0 licensed and maintained by moreSwift. Sponsorships through Open Collective fund maintenance and new platform support. The source, issue tracker and roadmap are all public on GitHub.'
 	}
 ];
 

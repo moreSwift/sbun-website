@@ -58,5 +58,5 @@
   </g>
 
   <rect x="0" y="600" width="1200" height="30" fill="#70374d"/>
-  <text x="72" y="620" font-family="Menlo, monospace" font-size="10" letter-spacing="3" fill="#ffe2ca" opacity="0.65">SWIFTBUNDLER.DEV · MIT LICENSED · MADE IN SWIFT</text>
+  <text x="72" y="620" font-family="Menlo, monospace" font-size="10" letter-spacing="3" fill="#ffe2ca" opacity="0.65">SWIFTBUNDLER.DEV · APACHE 2.0 · MADE IN SWIFT</text>
 </svg>
