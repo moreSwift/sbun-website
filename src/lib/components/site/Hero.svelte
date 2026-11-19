@@ -31,9 +31,8 @@
 				</h1>
 
 				<p class="mt-6 max-w-xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
-					Swift Bundler turns Swift Package Manager executables into signed, distributable
-					apps for seven platforms. One TOML file. Real installers. No Xcode project to
-					maintain.
+					Swift Bundler turns Swift Package Manager executables into distributable
+					apps and installers for seven platforms, with a single config file.
 				</p>
 
 				<div class="max-w-lg">
