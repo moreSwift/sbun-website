@@ -9,6 +9,11 @@ export const docsUrl = "https://swiftbundler.dev/documentation/swift-bundler";
 export const discordUrl = "https://moreswift.dev/discord";
 export const openCollectiveUrl = "https://opencollective.com/moreswift";
 
+const crossUiCampaign = "utm_source=swiftbundler.dev&utm_medium=website&utm_campaign=better-together";
+export const swiftCrossUiUrl = `https://swiftcrossui.dev/?${crossUiCampaign}`;
+export const swiftCrossUiDocsUrl = `https://docs.swiftcrossui.dev/documentation/swiftcrossui/?${crossUiCampaign}`;
+export const swiftCrossUiQuickStartUrl = `https://docs.swiftcrossui.dev/tutorials/swiftcrossui/quick-start?${crossUiCampaign}`;
+
 export const release = {
   version: "3.0.0",
   tag: "v3.0.0",
@@ -347,6 +352,11 @@ export const faqs: Faq[] = [
     question: "Does it work with my existing package?",
     answer:
       "Yes. Swift Bundler projects are just SwiftPM packages with a Bundler.toml config file. Add a Bundler.toml beside Package.swift, point it at an executable product, and run.",
+  },
+  {
+    question: "Does Swift Bundler work with SwiftCrossUI?",
+    answer:
+      "Yes. Swift Bundler and SwiftCrossUI are designed to work together. The SwiftCrossUI template gives you a native SwiftUI-style UI and hot reload, while Swift Bundler handles platform-specific configuration such as URL schemes, permissions, signing and installers. Swift Bundler also works with any other SwiftPM executable.",
   },
   {
     question: "How do I migrate a v2 config?",

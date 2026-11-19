@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AdoptionSection from '$lib/components/site/AdoptionSection.svelte';
 	import AppsSection from '$lib/components/site/AppsSection.svelte';
+	import BetterTogetherSection from '$lib/components/site/BetterTogetherSection.svelte';
 	import FaqSection from '$lib/components/site/FaqSection.svelte';
 	import FeatureGrid from '$lib/components/site/FeatureGrid.svelte';
 	import Footer from '$lib/components/site/Footer.svelte';
@@ -24,6 +25,7 @@
 		<Hero />
 		<ManifestSection />
 		<AdoptionSection />
+		<BetterTogetherSection />
 		<FeatureGrid />
 		<AppsSection />
 		<InstallSection />
