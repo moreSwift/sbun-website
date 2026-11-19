@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "vite dev --port 5174 --host 127.0.0.1",
 		"build": "vite build",
+		"og": "./scripts/render-og.sh",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
