@@ -12,7 +12,9 @@
 		discordUrl,
 		githubUrl,
 		openCollectiveUrl,
-		release
+		release,
+		swiftCrossUiDocsUrl,
+		swiftCrossUiUrl
 	} from '$lib/content';
 
 	const columns = [
@@ -40,6 +42,13 @@
 				{ label: 'Discord', href: discordUrl },
 				{ label: 'Open Collective', href: openCollectiveUrl },
 				{ label: 'Contributing', href: `${githubUrl}/blob/main/CONTRIBUTING.md` }
+			]
+		},
+		{
+			title: 'Ecosystem',
+			links: [
+				{ label: 'SwiftCrossUI', href: swiftCrossUiUrl },
+				{ label: 'SwiftCrossUI docs', href: swiftCrossUiDocsUrl }
 			]
 		}
 	];
@@ -86,15 +95,11 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-8">
-				{#each columns as column, index}
-					<div class={index === 2 ? 'col-span-2 sm:col-span-1' : ''}>
+			<div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-6 lg:gap-8">
+				{#each columns as column}
+					<div>
 						<p class="label-type text-cream/35">{column.title}</p>
-						<ul
-							class="mt-3 {index === 2
-								? 'grid grid-cols-2 gap-x-6 gap-y-2 sm:flex sm:flex-col sm:gap-2'
-								: 'space-y-2'}"
-						>
+						<ul class="mt-3 space-y-2">
 							{#each column.links as link}
 								<li>
 									<a
