@@ -121,6 +121,17 @@ Build-time fallback resolution:
 deployed barcode still finds the latest main commit even if the build-time
 checkout is stale, provided the visitor can reach the GitHub API.
 
+## Open Graph image
+
+`static/og.svg` is the source of truth and `static/og.png` is the 1200×630 image
+served by `og:image`. After editing the SVG, regenerate the PNG with:
+
+```sh
+bun run og
+```
+
+This uses `rsvg-convert` (`brew install librsvg`).
+
 ## Things that are mocked or need release-day wiring
 
 - Download URLs point at `v3.0.0` assets that must actually be attached to the

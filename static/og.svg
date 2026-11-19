@@ -19,41 +19,39 @@
   <g transform="translate(72 78)">
     <rect width="188" height="30" fill="#fff1e3" stroke="#70374d" stroke-opacity="0.3"/>
     <circle cx="17" cy="15" r="4" fill="#c06e7b"/>
-    <text x="30" y="20" font-family="Menlo, monospace" font-size="12" letter-spacing="3" fill="#70374d">v3.0.0 RELEASE</text>
+    <text x="30" y="20" font-family="Menlo, monospace" font-size="12" letter-spacing="3" fill="#70374d">SWIFT BUNDLER</text>
   </g>
 
   <text x="72" y="252" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="96" font-weight="700" letter-spacing="-5" fill="#70374d">Ship Swift</text>
 
   <g transform="translate(62 288) rotate(-1.2)">
-    <rect x="9" y="9" width="520" height="124" fill="#c06e7b" opacity="0.38"/>
-    <rect width="520" height="124" fill="#fff1e3" stroke="#9c4f5f" stroke-width="4"/>
+    <rect x="9" y="9" width="485" height="124" fill="#c06e7b" opacity="0.38"/>
+    <rect width="485" height="124" fill="#fff1e3" stroke="#9c4f5f" stroke-width="4"/>
     <text x="26" y="90" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="92" font-weight="700" letter-spacing="-5" fill="#70374d">anywhere.</text>
   </g>
 
-  <text x="72" y="478" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="22" fill="#70374d" opacity="0.78">The Xcodeproj-less way to build and ship Swift apps.</text>
-  <text x="72" y="510" font-family="Menlo, monospace" font-size="13" letter-spacing="2" fill="#9c4f5f">macOS · iOS · tvOS · visionOS · LINUX · WINDOWS · ANDROID</text>
+  <text x="72" y="478" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="21" fill="#70374d" opacity="0.78">The only way to build and ship Swift apps for every major platform.</text>
+  <text x="72" y="510" font-family="Menlo, monospace" font-size="13" letter-spacing="2" fill="#9c4f5f">macOS · iOS · tvOS · visionOS · Linux · Windows · Android</text>
 
   <g transform="translate(830 96) rotate(-4)">
     <rect x="8" y="8" width="300" height="380" fill="#c06e7b" opacity="0.45"/>
     <rect width="300" height="380" fill="#fff1e3" stroke="#70374d" stroke-width="3"/>
     <rect x="14" y="14" width="272" height="352" fill="none" stroke="#70374d" stroke-opacity="0.4" stroke-dasharray="5 6"/>
-    <text x="30" y="44" font-family="Menlo, monospace" font-size="10" letter-spacing="2" fill="#9c4f5f">SWIFT BUNDLER / LOGISTICS</text>
-    <text x="30" y="66" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="17" font-weight="600" fill="#70374d">Shipping label</text>
+    <text x="30" y="44" font-family="Menlo, monospace" font-size="10" letter-spacing="2" fill="#9c4f5f">moreSwift / logistics</text>
+    <text x="30" y="66" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="17" font-weight="600" fill="#70374d">Swift Bundler</text>
 
     <image href="logo.png" x="75" y="82" width="150" height="150"/>
 
     <text x="30" y="266" font-family="Menlo, monospace" font-size="9" letter-spacing="2" fill="#70374d" opacity="0.5">DESTINATION</text>
-    <text x="30" y="284" font-family="Menlo, monospace" font-size="10" fill="#70374d">7 platforms · 7 bundlers</text>
-    <text x="30" y="300" font-family="Menlo, monospace" font-size="10" fill="#70374d">1 TOML file</text>
+    <text x="30" y="284" font-family="Menlo, monospace" font-size="10" fill="#70374d">macOS · iOS · tvOS</text>
+    <text x="30" y="302" font-family="Menlo, monospace" font-size="10" fill="#70374d">visionOS · Linux</text>
+    <text x="30" y="320" font-family="Menlo, monospace" font-size="10" fill="#70374d">Windows · Android</text>
 
-    <rect x="30" y="318" width="180" height="34" fill="url(#bars)" opacity="0.85"/>
-    <text x="30" y="368" font-family="Menlo, monospace" font-size="8" letter-spacing="3" fill="#70374d" opacity="0.55">BUILD COMMIT</text>
-
-    <g transform="translate(196 300) rotate(-7)">
+    <g transform="translate(166 290) rotate(-7)">
       <rect width="86" height="52" fill="#fff1e3" stroke="#9c4f5f" stroke-width="2"/>
-      <text x="43" y="20" text-anchor="middle" font-family="Menlo, monospace" font-size="7" letter-spacing="1" fill="#9c4f5f">CLEARED FOR</text>
-      <text x="43" y="34" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="13" font-weight="700" fill="#9c4f5f">SHIPPING</text>
-      <text x="43" y="45" text-anchor="middle" font-family="Menlo, monospace" font-size="6" letter-spacing="1" fill="#9c4f5f">SBUN-3.0.0</text>
+      <text x="43" y="15" text-anchor="middle" font-family="Menlo, monospace" font-size="7" letter-spacing="1" fill="#9c4f5f">CLEARED FOR</text>
+      <text x="43" y="31" text-anchor="middle" font-family="Avenir Next, Helvetica Neue, sans-serif" font-size="13" font-weight="700" fill="#9c4f5f">SHIPPING</text>
+      <text x="43" y="42" text-anchor="middle" font-family="Menlo, monospace" font-size="7" letter-spacing="1" fill="#9c4f5f">SBUN-3.0.0</text>
     </g>
   </g>
 
