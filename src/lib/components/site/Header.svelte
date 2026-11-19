@@ -23,7 +23,7 @@
 		></span>
 		<p class="label-type normal-case text-[10px] text-cream/90 sm:text-[11px]">
 			<span class="font-semibold text-cream">{release.version} is out</span>
-			<span class="hidden sm:inline"> — Windows, Linux, Android and hot reload</span>
+			<span class="hidden sm:inline"> — Windows, Linux, Android and hot reloading</span>
 		</p>
 		<a
 			href="{githubUrl}/releases/tag/{release.tag}"

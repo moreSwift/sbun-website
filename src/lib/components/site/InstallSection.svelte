@@ -47,7 +47,7 @@
 	<SectionHeading
 		index="05"
 		eyebrow="Installation"
-		title="Install Swift Bundler 3.0.0."
+		title="Install Swift Bundler."
 		intro="Pre-built packages for macOS, Linux and Windows."
 	/>
 

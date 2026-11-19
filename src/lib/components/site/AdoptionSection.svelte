@@ -69,7 +69,7 @@
 	<SectionHeading
 		index="02"
 		eyebrow="ADOPTION"
-		title="Adopt Swift Bundler anywhere."
+		title="Adopt Swift Bundler at any stage."
 		intro="Starting from scratch? Use a template to get a head start. Already have an app? Add a Bundler.toml config and start shipping to more platforms."
 	/>
 
