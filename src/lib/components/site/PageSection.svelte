@@ -19,7 +19,7 @@
 
 <section
 	id={id}
-	class="relative border-b border-plum/15 py-16 sm:py-20 {className}"
+	class="relative border-b border-plum/15 py-12 sm:py-20 {className}"
 >
 	{#if grid}
 		<DotGrid class={gridClass} />
