@@ -8,7 +8,7 @@
 
 <SiteCard class="border-rose/40 bg-rose/10">
 	<div class="flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:justify-between">
-		<div class="flex items-center gap-3.5">
+		<div class="flex items-start gap-3.5 sm:items-center">
 			<span
 				class="grid size-10 shrink-0 place-items-center border border-rose/40 bg-rose/10 text-rose-deep"
 			>
@@ -30,7 +30,7 @@
 			href={openCollectiveUrl}
 			target="_blank"
 			rel="noreferrer"
-			class="h-11 shrink-0 gap-2 rounded-none bg-rose-deep px-5 text-[13px] font-semibold text-cream hover:bg-plum"
+			class="h-11 w-full shrink-0 justify-center gap-2 rounded-none bg-rose-deep px-5 text-[13px] font-semibold text-cream hover:bg-plum sm:w-auto"
 		>
 			<Heart class="size-4" weight="fill" aria-hidden="true" />
 			Sponsor on Open Collective

@@ -86,11 +86,15 @@
 				</div>
 			</div>
 
-			<div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
-				{#each columns as column}
-					<div>
+			<div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-8">
+				{#each columns as column, index}
+					<div class={index === 2 ? 'col-span-2 sm:col-span-1' : ''}>
 						<p class="label-type text-cream/35">{column.title}</p>
-						<ul class="mt-3 space-y-2">
+						<ul
+							class="mt-3 {index === 2
+								? 'grid grid-cols-2 gap-x-6 gap-y-2 sm:flex sm:flex-col sm:gap-2'
+								: 'space-y-2'}"
+						>
 							{#each column.links as link}
 								<li>
 									<a

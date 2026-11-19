@@ -16,11 +16,11 @@
 	<DotGrid class="opacity-50" />
 	<div class="relative mx-auto max-w-6xl px-4 sm:px-6">
 		<div
-			class="grid gap-14 py-12 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 lg:py-20"
+			class="grid gap-14 pt-10 pb-12 sm:pt-12 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 lg:py-20"
 		>
 			<div class="min-w-0">
 				<h1
-					class="mt-6 font-display text-[2.7rem] font-bold leading-[0.94] tracking-[-0.045em] text-plum sm:text-[3.6rem] md:text-[4.35rem]"
+					class="mt-0 font-display text-[2.7rem] font-bold leading-[0.94] tracking-[-0.045em] text-plum sm:text-[3.6rem] md:text-[4.35rem] lg:mt-6"
 				>
 					Ship Swift<br />
 					<span
