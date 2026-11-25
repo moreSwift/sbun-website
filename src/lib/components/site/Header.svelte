@@ -8,10 +8,10 @@
 	import { githubUrl, openCollectiveUrl, release } from '$lib/content';
 
 	const nav = [
+		{ label: 'Adoption', href: '#adoption' },
 		{ label: 'What’s new', href: '#whats-new' },
-		{ label: 'Bundlers', href: '#bundlers' },
-		{ label: 'Install', href: '#install' },
-		{ label: 'Docs', href: 'https://docs.swiftbundler.dev/documentation/swift-bundler' }
+		{ label: 'In the wild', href: '#apps' },
+		{ label: 'FAQs', href: '#faq' },
 	];
 </script>
 
@@ -70,7 +70,7 @@
 		<div class="flex items-center gap-1">
 			<a
 				href="https://docs.swiftbundler.dev/documentation/swift-bundler"
-				class="inline-flex h-9 items-center px-1 font-mono text-[12px] tracking-[0.02em] text-plum/85 hover:text-plum md:hidden"
+				class="inline-flex h-9 items-center px-1 font-mono text-[12.5px] tracking-[0.02em] text-plum/85 hover:text-plum"
 			>
 				Docs
 			</a>
