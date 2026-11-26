@@ -12,6 +12,9 @@
 	import PageSection from '$lib/components/site/PageSection.svelte';
 	import SponsorCallout from '$lib/components/site/SponsorCallout.svelte';
 	import ManifestSection from '$lib/components/site/ManifestSection.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <div id="top">
@@ -30,7 +33,7 @@
 		<AdoptionSection />
 		<FeatureGrid />
 		<AppsSection />
-		<InstallSection />
+		<InstallSection latest={data.latestRelease} />
 		<FaqSection />
 		<PageSection id="sponsor">
 			<SponsorCallout />

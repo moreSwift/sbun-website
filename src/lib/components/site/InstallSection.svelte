@@ -1,34 +1,53 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import AppleLogo from 'phosphor-svelte/lib/AppleLogo';
-	import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 	import DownloadSimple from 'phosphor-svelte/lib/DownloadSimple';
-	import GithubLogo from 'phosphor-svelte/lib/GithubLogo';
 	import LinuxLogo from 'phosphor-svelte/lib/LinuxLogo';
 	import WindowsLogo from 'phosphor-svelte/lib/WindowsLogo';
 	import { Badge } from '$lib/components/ui/badge';
 	import { CardContent, CardHeader } from '$lib/components/ui/card';
-	import CommandLine from './CommandLine.svelte';
 	import InstallCommand from './InstallCommand.svelte';
 	import PageSection from './PageSection.svelte';
 	import SectionHeading from './SectionHeading.svelte';
 	import SiteCard from './SiteCard.svelte';
-	import { artifacts, githubUrl, installCommands, release } from '$lib/content';
+	import { githubUrl } from '$lib/content';
+	import { refreshLatestRelease } from '$lib/latest-release';
+	import type { LatestRelease } from '$lib/release';
 
-	const downloadGroups = [
+	let { latest: prerendered }: { latest: LatestRelease } = $props();
+
+	// Start with the build-time links (so they work without JavaScript) and
+	// upgrade to the live release in the browser.
+	let refreshed = $state<LatestRelease | null>(null);
+	const latest = $derived(refreshed ?? prerendered);
+
+	onMount(() => {
+		let cancelled = false;
+
+		refreshLatestRelease().then((fresh) => {
+			if (fresh && !cancelled) refreshed = fresh;
+		});
+
+		return () => {
+			cancelled = true;
+		};
+	});
+
+	const downloadGroups = $derived([
 		{
 			name: 'macOS',
 			meta: 'Universal installer · macOS 13+',
 			icon: AppleLogo,
-			files: [{ label: '.pkg', href: artifacts.macos }]
+			files: [{ label: '.pkg', href: latest.artifacts.macos }]
 		},
 		{
 			name: 'Linux',
 			meta: 'x86_64 · statically linked',
 			icon: LinuxLogo,
 			files: [
-				{ label: '.deb', href: artifacts.deb },
-				{ label: '.rpm', href: artifacts.rpm },
-				{ label: '.tar.gz', href: artifacts.tarball }
+				{ label: '.deb', href: latest.artifacts.deb },
+				{ label: '.rpm', href: latest.artifacts.rpm },
+				{ label: '.tar.gz', href: latest.artifacts.tarball }
 			]
 		},
 		{
@@ -36,20 +55,29 @@
 			meta: 'x86_64 · Windows 10+',
 			icon: WindowsLogo,
 			files: [
-				{ label: '.msi', href: artifacts.msi },
-				{ label: '.zip', href: artifacts.zip }
+				{ label: '.msi', href: latest.artifacts.msi },
+				{ label: '.zip', href: latest.artifacts.zip }
 			]
 		}
-	];
+	]);
 </script>
 
 <PageSection id="install" grid gridClass="opacity-40" class="overflow-hidden">
 	<SectionHeading
 		title="Install Swift Bundler."
 		intro="Pre-built packages for macOS, Linux and Windows."
-	/>
+	>
+		{#snippet action()}
+			<p class="font-mono text-[11px] text-plum/50">
+				Latest: v{latest.version} · {latest.date} · <a
+					href="{githubUrl}/releases"
+					class="underline decoration-plum/25 underline-offset-4 hover:text-plum">all releases</a
+				>
+			</p>
+		{/snippet}
+	</SectionHeading>
 
-	<div class="mt-10 grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
+	<div class="mt-8 grid gap-4 lg:grid-cols-[1.02fr_0.98fr]">
 		<SiteCard variant="muted" class="flex flex-col">
 			<CardHeader class="px-5 pb-0 pt-5">
 				<Badge variant="accent" size="xs" class="mb-2 w-fit font-mono uppercase"
@@ -107,67 +135,7 @@
 						</div>
 					{/each}
 				</div>
-
-				<div class="mt-1">
-					<a
-						href="https://github.com/moreSwift/swift-bundler/releases/latest"
-						class="inline-flex shrink-0 items-center gap-1.5 text-[14px] text-rose-deep hover:text-plum"
-						target="_blank"
-					>
-						View latest release
-						<ArrowUpRight
-							class="size-3 mt-0.5"
-						/>
-					</a>
-				</div>
 			</CardContent>
 		</SiteCard>
 	</div>
-
-	<SiteCard variant="muted" class="mt-4">
-		<CardHeader class="flex flex-row items-start justify-between gap-4 px-5 pb-0 pt-5">
-			<div>
-				<Badge variant="site" size="xs" class="mb-2 w-fit font-mono uppercase">Source</Badge>
-				<h3 class="font-display text-xl font-semibold tracking-tight text-plum">
-					Build from source
-				</h3>
-			</div>
-			<a
-				href={githubUrl}
-				class="inline-flex shrink-0 items-center gap-1.5 text-[13px] text-rose-deep hover:text-plum"
-				target="_blank"
-			>
-				<GithubLogo class="size-3.5" />
-				GitHub
-				<ArrowUpRight class="size-3" />
-			</a>
-		</CardHeader>
-		<CardContent class="px-5 pb-5 pt-3">
-			<p class="max-w-3xl text-[13px] leading-relaxed text-plum/85">
-				Building from source requires Swift 6. Clone the repository, build
-				the CLI, and copy it into your PATH. To use the <code class="font-mono text-[12px] text-rose-deep">sbun</code> shorthand, install a symlink or create a copy of the CLI.
-			</p>
-			<div class="mt-4">
-				<CommandLine
-					command={installCommands.source}
-					copyLabel="Copy source install command"
-				/>
-			</div>
-			<a
-				href="https://docs.swiftbundler.dev/documentation/swift-bundler/installation"
-				class="inline-flex shrink-0 items-center gap-1.5 text-[14px] text-rose-deep hover:text-plum pt-1"
-				target="_blank"
-			>
-				See runtime dependencies
-				<ArrowUpRight class="size-3 mt-0.5" />
-			</a>
-		</CardContent>
-	</SiteCard>
-
-	<p class="mt-4 font-mono text-[10px] text-plum/45">
-		Latest: v{release.version} · {release.date} · <a
-			href="{githubUrl}/releases"
-			class="underline decoration-plum/25 underline-offset-4 hover:text-plum">all releases</a
-		>
-	</p>
 </PageSection>
