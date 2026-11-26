@@ -86,9 +86,13 @@ or Tailwind utilities.
   tags, packing slip rows, a barcode and a stamp. Reusable as social/OG artwork.
 - **Adoption paths** — three routes: start from a template, add a Bundler.toml
   to an existing SwiftPM package, or experimentally convert an xcodeproj.
-- **One config, seven bundlers** — shadcn tabs switch between `darwinApp`,
-  `linuxGeneric`, `linuxAppImage`, `linuxRPM`, `windowsGeneric`, `windowsMSI`
-  and `androidAPK`. The config sample, platforms and packing slip blurb update.
+- **Powerful configuration** — tabs switch between configure once, conditional
+  overlays and native integrations. Each has its own TOML sample and a
+  packing-slip summary.
+- **Bundler reference** — a tab-free list of all seven supported bundlers with
+  destinations, outputs and signing support.
+- **Better together** — the SwiftCrossUI + Swift Bundler section with a
+  MusicPlayerExample preview and desktop/mobile platform pickers.
 - **3.0 feature section** — config overlays alongside signing, devices, builders
   and error handling.
 - **Installation** — the shared install-script component, direct download list

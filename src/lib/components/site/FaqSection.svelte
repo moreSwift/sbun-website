@@ -15,8 +15,6 @@
 	<div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
 		<div>
 			<SectionHeading
-				index="06"
-				eyebrow="Before you ship"
 				title="Frequently asked questions."
 				intro="If your questions isn't here, check the docs!"
 			/>
