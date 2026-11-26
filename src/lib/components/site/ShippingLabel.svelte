@@ -33,13 +33,13 @@
 
 				<div class="flex items-start justify-between gap-3">
 					<div>
-						<p class="label-type text-rose-deep">moreSwift / logistics</p>
+						<p class="label-type text-rose-deep">moreSwift</p>
 						<p class="mt-1 font-display text-sm font-semibold tracking-tight text-plum">
 							Swift Bundler
 						</p>
 					</div>
 					<div class="text-right">
-						<p class="label-type text-plum/45">Shipment</p>
+						<p class="label-type text-plum/85">SKU</p>
 						<p class="mt-1 font-mono text-xs font-medium text-plum">SBUN-{release.version}</p>
 					</div>
 				</div>
@@ -89,30 +89,20 @@
 							Cleared for
 						</p>
 						<p class="font-display text-[13px] font-bold uppercase leading-tight">Shipping</p>
-						<p class="font-mono text-[9px] tracking-[0.1em] text-rose-deep/80">
+						<p class="font-mono text-[10px] tracking-[0.12em] text-rose-deep font-semibold">
 							7 DESTINATIONS
 						</p>
 					</div>
 				</div>
 
-				<Separator class="mt-4 bg-plum/20" />
+				<Separator class="mb-2 mt-5 bg-plum/20" />
 
-				<Table class="text-[10px]">
-					<TableBody>
-						<TableRow class="border-none hover:bg-transparent">
-							<TableCell
-								class="w-[4.5rem] whitespace-normal py-1.5 pl-0 pr-3 align-baseline font-mono text-[10px] uppercase leading-none tracking-[0.14em] text-plum/45"
-							>
-								To
-							</TableCell>
-							<TableCell class="whitespace-normal p-0 py-1.5 align-top font-mono text-[10px] leading-relaxed text-plum/85">
-								macOS · iOS · tvOS · visionOS<br />Linux · Windows · Android
-							</TableCell>
-						</TableRow>
-					</TableBody>
-				</Table>
+				<div class="flex items-start whitespace-normal p-0 py-1.5 align-top font-mono text-[12px] leading-relaxed text-plum/85">
+					<div class="mr-2">To:</div>
+					<div>macOS, iOS, tvOS, visionOS, Linux, Windows, and Android</div>
+				</div>
 
-				<Separator class="my-3 bg-plum/20" />
+				<Separator class="mt-2 mb-4 bg-plum/20" />
 
 				<div class="flex items-end justify-between gap-3">
 					<div class="min-w-0 flex-1 pr-2">
@@ -137,9 +127,8 @@
 						{/if}
 					</div>
 					<div class="text-right">
-						<p class="label-type text-plum/45">Handle</p>
 						<p class="font-mono text-[10px] font-medium uppercase tracking-wider text-rose-deep">
-							With care
+							Handle with care
 						</p>
 					</div>
 				</div>

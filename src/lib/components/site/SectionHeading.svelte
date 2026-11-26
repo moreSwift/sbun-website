@@ -4,15 +4,11 @@
 	import type { Snippet } from 'svelte';
 
 	let {
-		index,
-		eyebrow,
 		title,
 		intro = '',
 		class: className = '',
 		action
 	}: {
-		index: string;
-		eyebrow: string;
 		title: string;
 		intro?: string;
 		class?: string;
@@ -21,17 +17,6 @@
 </script>
 
 <header class="max-w-6xl {className}">
-	<div class="flex items-center gap-3">
-		<Badge
-			variant="site"
-			size="sm"
-			class="min-w-8 justify-center px-1.5 font-mono text-[10px] tracking-[0.12em]"
-		>
-			{index}
-		</Badge>
-		<span class="label-type text-rose-deep">{eyebrow}</span>
-		<Separator class="hidden h-px flex-1 bg-plum/20 sm:block" />
-	</div>
 	<div class="mt-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 		<div>
 			<h2

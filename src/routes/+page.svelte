@@ -23,10 +23,10 @@
 	<Header />
 	<main id="main">
 		<Hero />
-		<ManifestSection />
-		<AdoptionSection />
 		<BetterTogetherSection />
+		<ManifestSection />
 		<FeatureGrid />
+		<AdoptionSection />
 		<AppsSection />
 		<InstallSection />
 		<FaqSection />

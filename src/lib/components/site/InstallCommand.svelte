@@ -48,7 +48,7 @@
 				{#each platforms as item}
 					<TabsTrigger
 						value={item.id}
-						class="h-auto px-2.5 py-1 font-mono text-[10px] tracking-[0.02em] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
+						class="h-auto px-2.5 py-1 text-[13px] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
 					>
 						{item.name}
 					</TabsTrigger>
@@ -60,11 +60,11 @@
 			href={selected.script}
 			target="_blank"
 			rel="noreferrer"
-			class="group inline-flex items-center gap-1 font-mono text-[12px] tracking-[0.02em] text-rose-deep hover:text-plum"
+			class="group inline-flex items-center gap-1 text-[14px] text-rose-deep hover:text-plum"
 		>
 			View install script
 			<ArrowUpRight
-				class="size-3 mt-0.5"
+				class="size-4"
 			/>
 		</a>
 	</div>

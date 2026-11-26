@@ -35,72 +35,44 @@
 		androidAPK: AndroidLogo
 	};
 
-	const bundlerTabs = bundlers.map((bundler) => ({
-		id: bundler.id,
-		name: bundler.label,
-		meta: bundler.pickerPlatforms,
-		icon: icons[bundler.id]
-	}));
+	const tabs = [
+		{
+			id: "configure-once",
+			name: "Configure once",
+			meta: "Swift Bundler handles the rest",
+			icon: icons["darwinApp"]
+		},
+		{
+			id: "conditional-overlays",
+			name: "Conditional overlays",
+			meta: "Platform-specific config",
+			icon: icons["darwinApp"]
+		},
+		{
+			id: "asdf",
+			name: "Conditional overlays",
+			meta: "Platform-specific config",
+			icon: icons["darwinApp"]
+		},
+	];
 
 	const maxSnippetLines = Math.max(...bundlers.map((bundler) => bundler.snippet.length));
 
 	let active = $state('darwinApp');
 </script>
 
-{#snippet compareBundlers()}
-	<a
-		href="https://docs.swiftbundler.dev/documentation/swift-bundler/bundlers"
-		class="label-type group inline-flex shrink-0 items-center gap-1 pb-1 text-rose-deep hover:text-plum"
-	>
-		Compare bundlers
-		<ArrowUpRight class="size-3" />
-	</a>
-{/snippet}
-
 <PageSection id="bundlers" grid gridClass="opacity-30">
 		<SectionHeading
-			index="01"
-			eyebrow="CONFIGURATION"
-			title="One config. Seven bundlers."
-			intro="Configure your project for every platform in one place."
-			action={compareBundlers}
+			title="Powerful configuration."
+			intro="Swift Bundler's powerful configuration format allows you to tailor your app to every platform without touching any platform-specific tools."
 		/>
 
-		<Tabs bind:value={active} class="mt-10 gap-0">
-			<TabSelector items={bundlerTabs} label="Choose a bundler" large />
+		<Tabs bind:value={active} class="mt-7 gap-0">
+			<TabSelector items={tabs} label="Choose a benefit" large />
 
 			{#each bundlers as bundler}
 				<TabsContent value={bundler.id} class="mt-4 focus-visible:outline-none">
-					<div class="grid gap-4 lg:min-h-[33.4rem] lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
-						<!-- Config file -->
-						<SiteCard variant="dark">
-							<CardHeader
-								class="flex flex-row items-center justify-between gap-3 border-b border-cream/15 px-4 py-3"
-							>
-								<span class="font-mono text-[11px] font-medium text-cream">Bundler.toml</span>
-								<Badge
-									variant="ghost"
-									size="xs"
-									class="border border-cream/20 px-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-cream/70"
-								>
-									config 3.1.0
-								</Badge>
-							</CardHeader>
-
-							<CardContent class="p-0">
-								<CodeBlock
-									code={bundler.snippet.map((line) => line.text).join('\n')}
-									language="toml"
-									lineNumbers
-									padded={false}
-									minLines={maxSnippetLines}
-									accentLines={bundler.snippet.flatMap((line, index) =>
-										line.accent ? [index + 1] : []
-									)}
-								/>
-							</CardContent>
-						</SiteCard>
-
+					<div class="grid gap-4 lg:min-h-[33.4rem] lg:grid-cols-[1fr_1fr] lg:items-stretch">
 						<!-- Packing slip -->
 						<SiteCard>
 							<CardHeader
@@ -166,13 +138,37 @@
 								</div>
 							</CardFooter>
 						</SiteCard>
+
+						<!-- Config file -->
+						<SiteCard variant="dark">
+							<CardHeader
+								class="flex flex-row items-center [--card-spacing:0.5rem] justify-between gap-3 border-b border-cream/15"
+							>
+								<span class="font-mono text-[13px] font-medium text-cream">Bundler.toml</span>
+								<Badge
+									variant="ghost"
+									size="xs"
+									class="border border-cream/20 px-1.5 font-mono text-[9px] uppercase tracking-[0.14em] text-cream/70"
+								>
+									config 3.1.0
+								</Badge>
+							</CardHeader>
+
+							<CardContent class="p-0">
+								<CodeBlock
+									code={bundler.snippet.map((line) => line.text).join('\n')}
+									language="toml"
+									lineNumbers
+									padded={false}
+									minLines={maxSnippetLines}
+									accentLines={bundler.snippet.flatMap((line, index) =>
+										line.accent ? [index + 1] : []
+									)}
+								/>
+							</CardContent>
+						</SiteCard>
 					</div>
 				</TabsContent>
 			{/each}
 		</Tabs>
-
-		<p class="mt-4 font-mono text-[11px] leading-relaxed text-plum/45">
-			Bundlers: darwinApp · linuxGeneric · linuxAppImage · linuxRPM · windowsGeneric ·
-			windowsMSI · androidAPK
-		</p>
 </PageSection>

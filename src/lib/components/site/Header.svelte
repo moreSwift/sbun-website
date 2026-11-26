@@ -19,18 +19,16 @@
 	<div
 		class="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2 text-center"
 	>
-		<span class="size-1.5 shrink-0 animate-pulse rounded-full bg-rose" aria-hidden="true"
-		></span>
-		<p class="label-type normal-case text-[10px] text-cream/90 sm:text-[11px]">
-			<span class="font-semibold text-cream">{release.version} is out</span>
-			<span class="hidden sm:inline"> — Windows, Linux, Android and hot reloading</span>
+		<p class="normal-case text-[10px] text-cream/90 sm:text-[13px]">
+			<span class="font-semibold text-cream">{release.version} out now<span class="hidden sm:inline">:</span></span>
+			<span class="hidden sm:inline">bringing Windows, Linux & Android support, and much much more...</span>
 		</p>
 		<a
 			href="{githubUrl}/releases/tag/{release.tag}"
-			class="label-type normal-case group ml-1 inline-flex items-center gap-1 text-[10px] text-peach underline decoration-peach/40 underline-offset-4 hover:text-cream sm:text-[11px]"
+			class="normal-case group inline-flex items-center gap-1 text-[10px] text-peach underline decoration-peach/40 underline-offset-4 hover:text-cream sm:text-[13px] font-semibold"
 			target="_blank"
 		>
-			Release notes
+			View release notes
 			<ArrowUpRight class="size-3" />
 		</a>
 	</div>
@@ -48,19 +46,19 @@
 				</span>
 				<Badge
 					variant="site"
-					size="sm"
-					class="hidden font-mono text-[10px] tracking-[0.1em] sm:inline-flex"
+					size="default"
+					class="hidden text-[14px] sm:inline-flex"
 				>
 					v{release.version}
 				</Badge>
 			</span>
 		</a>
 
-		<nav class="hidden items-center gap-7 md:flex" aria-label="Main">
+		<nav class="hidden items-center font-medium gap-5 md:flex" aria-label="Main">
 			{#each nav as item}
 				<a
 					href={item.href}
-					class="font-mono text-[12.5px] tracking-[0.02em] text-plum/85 transition-colors hover:text-plum"
+					class="text-[14px] text-plum/85 transition-colors hover:text-plum"
 				>
 					{item.label}
 				</a>
@@ -70,7 +68,7 @@
 		<div class="flex items-center gap-1">
 			<a
 				href="https://docs.swiftbundler.dev/documentation/swift-bundler"
-				class="inline-flex h-9 items-center px-1 font-mono text-[12.5px] tracking-[0.02em] text-plum/85 hover:text-plum"
+				class="inline-flex h-9 font-medium items-center px-1 text-[14px] text-plum/85 hover:text-plum"
 			>
 				Docs
 			</a>
@@ -92,7 +90,7 @@
 			<Button
 				href="#install"
 				size="lg"
-				class="h-9 bg-plum px-4 font-mono text-[11px] uppercase tracking-[0.12em] text-cream hover:bg-plum/90"
+				class="h-9 bg-plum px-4 text-[14px] text-cream hover:bg-plum/90"
 			>
 				Install
 			</Button>
