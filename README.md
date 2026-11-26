@@ -21,6 +21,20 @@ bun run build
 bun run preview
 ```
 
+## Install scripts
+
+`static/install.sh` and `static/install.ps1` are copies of the installers from
+[swift-bundler](https://github.com/moreSwift/swift-bundler)'s `Distribution/`
+directory, served at `/install.sh` and `/install.ps1`. They're vendored so this
+site builds on its own, without a swift-bundler checkout.
+
+When the installers change upstream, refresh the copies:
+
+```sh
+cp ../swift-bundler/Distribution/install.sh static/install.sh
+cp ../swift-bundler/Distribution/install.ps1 static/install.ps1
+```
+
 ## Stack
 
 - SvelteKit 2 + Svelte 5
