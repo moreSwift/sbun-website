@@ -1,0 +1,35 @@
+{
+	"name": "packing-line",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@fontsource-variable/jetbrains-mono": "^5.3.0",
+		"@internationalized/date": "^3.12.0",
+		"@sveltejs/adapter-static": "^3.0.10",
+		"@sveltejs/kit": "^2.49.0",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.3.0",
+		"@types/node": "^26.6.6",
+		"bits-ui": "^2.20.0",
+		"cn": "^0.5.2",
+		"csstype": "^3.2.3",
+		"phosphor-svelte": "^3.1.1",
+		"shadcn-svelte": "^1.8.1",
+		"svelte": "^5.57.2",
+		"svelte-check": "^4.6.0",
+		"tailwind-variants": "^3.3.0",
+		"tailwindcss": "^4.3.0",
+		"tw-animate-css": "^1.4.0",
+		"typescript": "^6.0.3",
+		"vite": "^7.2.2"
+	}
+}
