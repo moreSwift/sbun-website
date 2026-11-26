@@ -74,9 +74,9 @@
 								<CardFooter
 									class="mt-auto justify-between border-t border-dashed border-plum/25 px-5 py-3"
 								>
-									<span class="label-type text-plum/45">Delivered</span>
+									<span class="text-plum/45 text-[12px]">Delivered</span>
 									<span
-										class="flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-rose-deep"
+										class="flex items-center gap-1 text-[12px] tracking-wider text-rose-deep"
 									>
 										Visit app
 										<ArrowUpRight
@@ -101,7 +101,7 @@
 					href="{githubUrl}/issues/new"
 					variant="outline"
 					size="sm"
-					class="h-auto shrink-0 gap-1.5 rounded-none border-plum/25 bg-paper px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-plum hover:bg-peach"
+					class="h-auto shrink-0 gap-1.5 rounded-none border-plum/25 bg-paper px-3 py-1.5 font-mono text-[12px] text-plum hover:bg-peach"
 				>
 					<GithubLogo class="size-3.5" />
 					Submit your app

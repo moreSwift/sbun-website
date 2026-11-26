@@ -69,53 +69,9 @@
 </script>
 
 <PageSection id="better-together">
-	<div class="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-center lg:gap-12 pb-4">
-		<div class="min-w-0">
-			<h2
-				class="max-w-2xl text-balance font-display text-3xl font-semibold leading-[1.05] tracking-[-0.03em] text-plum sm:text-4xl md:text-[2.9rem]"
-			>
-				Better together
-			</h2>
-			<h3 class="text-2xl sm:text-3xl mt-2">
-SwiftCrossUI + Swift Bundler
-			</h3>
-
-			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
-				If you’re targeting seven platforms with Swift, there’s really only one option, and that’s SwiftCrossUI + Swift Bundler.
-			</p>
-
-			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
-				SwiftCrossUI gives you a unified, SwiftUI-style API for building native apps.
-				Swift Bundler handles the platform-specific details that make those apps real:
-				custom URL schemes, mobile permissions, signing and installers.
-			</p>
-
-			<div
-				class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start xl:flex-row xl:items-center text-[13px]"
-			>
-				<Button
-					href={swiftCrossUiQuickStartUrl}
-					size="lg"
-					class="h-11 gap-2 rounded-none bg-plum px-5 text-[13px] font-semibold text-cream hover:bg-plum/90"
-				>
-					Try together
-					<ArrowUpRight class="size-4" aria-hidden="true" />
-				</Button>
-				<Button
-					href={swiftCrossUiUrl}
-					variant="outline"
-					target="_blank"
-					rel="noreferrer"
-					class="h-11 gap-2 border-plum/30 bg-transparent px-5 text-[13px] font-semibold text-plum hover:bg-paper"
-				>
-					Explore SwiftCrossUI
-					<ArrowUpRight class="size-4" aria-hidden="true" />
-				</Button>
-			</div>
-		</div>
-
+	<div class="grid gap-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 pb-4">
 		<figure class="min-w-0">
-			<div class="relative pl-3 sm:pl-4 sm:top-4">
+			<div class="relative pl-3 sm:pl-4 sm:top-1">
 				<div
 					class="bg-paper/60 p-2 shadow-[6px_6px_0_rgba(112,55,77,0.10)]"
 				>
@@ -202,5 +158,50 @@ SwiftCrossUI + Swift Bundler
 				</div>
 			</div>
 		</figure>
+
+		<div class="min-w-0">
+			<h2
+				class="max-w-2xl text-balance font-display text-3xl font-semibold leading-[1.05] tracking-[-0.03em] text-plum sm:text-4xl md:text-[2.9rem]"
+			>
+				Better together
+			</h2>
+			<h3 class="text-2xl sm:text-3xl mt-2">
+				SwiftCrossUI + Swift Bundler
+			</h3>
+
+			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
+				If you’re targeting seven platforms with Swift, there’s really only one option, and that’s SwiftCrossUI + Swift Bundler.
+			</p>
+
+			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
+				SwiftCrossUI gives you a unified, SwiftUI-style API for building native apps.
+				Swift Bundler handles the platform-specific details that make those apps real:
+				custom URL schemes, mobile permissions, signing and installers.
+			</p>
+
+			<div
+				class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start xl:flex-row xl:items-center text-[13px]"
+			>
+				<Button
+					href={swiftCrossUiQuickStartUrl}
+					size="lg"
+					class="h-11 gap-2 rounded-none bg-plum px-5 text-[13px] font-semibold text-cream hover:bg-plum/90"
+				>
+					Try together
+					<ArrowUpRight class="size-4" aria-hidden="true" />
+				</Button>
+				<Button
+					href={swiftCrossUiUrl}
+					variant="outline"
+					target="_blank"
+					rel="noreferrer"
+					class="h-11 gap-2 border-plum/30 bg-transparent px-5 text-[13px] font-semibold text-plum hover:bg-paper"
+				>
+					Explore SwiftCrossUI
+					<ArrowUpRight class="size-4" aria-hidden="true" />
+				</Button>
+			</div>
+		</div>
+
 	</div>
 </PageSection>

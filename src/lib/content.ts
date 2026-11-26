@@ -60,8 +60,8 @@ const baseConfig = (icon: string, extra: SnippetLine[] = []): SnippetLine[] => [
   ...extra,
 ];
 
-const accent = (text: string): SnippetLine => ({ text, accent: true });
-const plain = (text: string): SnippetLine => ({ text });
+export const accent = (text: string): SnippetLine => ({ text, accent: true });
+export const plain = (text: string): SnippetLine => ({ text });
 
 export const bundlers: Bundler[] = [
   {
@@ -69,7 +69,7 @@ export const bundlers: Bundler[] = [
     name: "darwinApp",
     label: ".app",
     pickerPlatforms: "Apple platforms",
-    platforms: "macOS · iOS · tvOS · visionOS",
+    platforms: "macOS, iOS, tvOS & visionOS",
     blurb:
       "Swift Bundler can build .app bundles for every Apple platform, with universal macOS binaries and automatic signing/provisioning for platforms that need it.",
     command: "sbun bundle",
@@ -249,14 +249,11 @@ export const bundlers: Bundler[] = [
 ];
 
 export type ConfigurationFeature = {
-  id: "configure-once" | "conditional-overlays" | "native-integrations";
+  id: "simple-by-default" | "conditional-overlays" | "deep-customization";
   name: string;
   meta: string;
   slipTitle: string;
-  slipNote: string;
-  details: { label: string; value: string }[];
-  capabilities: string[];
-  blurb: string;
+  blurb: string[];
   linkLabel: string;
   href: string;
   snippet: SnippetLine[];
@@ -264,66 +261,82 @@ export type ConfigurationFeature = {
 
 export const configurationFeatures: ConfigurationFeature[] = [
   {
-    id: "configure-once",
-    name: "Configure once",
-    meta: "Swift Bundler handles the rest",
-    slipTitle: "One app manifest",
-    slipNote: "Shared by every bundler",
-    details: [
-      { label: "Required", value: "product · version · identifier" },
-      { label: "Applies to", value: "Every platform and bundler" },
-      { label: "Validation", value: "Generated JSON schema" },
+    id: "simple-by-default",
+    name: "Simple by default",
+    meta: "",
+    slipTitle: "Simple by default",
+    blurb: [
+      "Swift Bundler's abstractions mean that most apps don't need any platform-specific configuration.",
+      "Only three properties are required to start shipping to every major platform: product, identifier, and version. Everything else is optional.",
     ],
-    capabilities: [
-      "Product, identifier and version in one place",
-      "Icons, categories, licenses and descriptions",
-      "Plist keys and entitlements",
-      "Asset and string catalogs",
-      "Generated JSON schema for editor completion",
-    ],
-    blurb:
-      "Describe your app once. Product, identifier, version, icon and metadata are reused by every bundler, so platform builds can't drift apart.",
     linkLabel: "Configuration reference",
     href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
     snippet: [
-      accent('config_version = "3.1.0"'),
+      plain('config_version = "3.1.0"'),
       plain(""),
-      accent("[apps.HelloWorld]"),
-      accent('identifier = "dev.example.HelloWorld"'),
+      plain("[apps.HelloWorld]"),
       accent('product = "HelloWorld"'),
+      accent('identifier = "dev.example.HelloWorld"'),
       accent('version = "1.0.0"'),
-      accent('icon = "icon.png"'),
+      plain(""),
+      plain("# Some common optional propertioes"),
       plain('description = "A basic app."'),
+      plain('icon = "icon.png"'),
       plain('license = "Apache-2.0"'),
-      plain('category = "public.app-category.developer-tools"'),
+      plain('url_schemes = ["myscheme"]'),
+    ],
+  },
+  {
+    id: "deep-customization",
+    name: "Deep customization",
+    meta: "",
+    slipTitle: "Deep customization",
+    blurb: [
+      "There's no need to touch Gradle just because you want to pull in some Java code, and there's no need to touch an Xcode project just because you want to customize your Info.plist file",
+      "Configure anything from Android permissions to your Windows application manifest, all in one configuration file.",
+    ],
+    linkLabel: "Configuration reference",
+    href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
+    snippet: [
+      plain('config_version = "3.1.0"'),
+      plain(""),
+      plain("[apps.HelloWorld]"),
+      plain('identifier = "dev.example.HelloWorld"'),
+      plain('product = "HelloWorld"'),
+      plain('version = "1.0.0"'),
+      plain(""),
+      accent('android.permissions = ["INTERNET", "CAMERA"]'),
+      plain(""),
+      accent("windows.manifest.trustInfo.security.requestedPrivileges = ["),
+      accent("  {"),
+      accent("    requestedExecutionLevel = {"),
+      accent('      level = "requireAdministrator",'),
+      accent("      uiAccess = false"),
+      accent("    }"),
+      accent("  }"),
+      accent("]"),
     ],
   },
   {
     id: "conditional-overlays",
     name: "Conditional overlays",
-    meta: "Platform-specific config",
-    slipTitle: "Overlay merge",
-    slipNote: "Merged recursively",
-    details: [
-      { label: "Conditions", value: "platform(...) · bundler(...)" },
-      { label: "Merge", value: "Recursive" },
-      { label: "Base config", value: "Unchanged" },
+    meta: "",
+    slipTitle: "Conditional overlays",
+    blurb: [
+      "Swift Bundler's powerful overlay system lets you share defaults between platforms and extend them with platform- or bundler-specific overlays.",
     ],
-    capabilities: [
-      "Platform conditions such as platform(macOS)",
-      "Bundler conditions such as bundler(linuxRPM)",
-      "Recursive merges against the base config",
-      "Shared values stay defined once",
-      "Platform-specific values stay local",
-    ],
-    blurb:
-      "Set shared defaults, then add only the differences. Overlays merge recursively against the base app config, so platform-specific settings stay close to the thing they change.",
-    linkLabel: "Overlay guide",
+    linkLabel: "Configuration reference",
     href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
     snippet: [
+      plain('config_version = "3.1.0"'),
+      plain(""),
+      plain("[apps.HelloWorld]"),
+      plain('product = "HelloWorld"'),
+      plain('identifier = "dev.example.HelloWorld"'),
+      plain('version = "1.0.0"'),
+      plain(""),
       accent("[[apps.HelloWorld.overlays]]"),
       accent('condition = "platform(macOS)"'),
-      accent('icon = "AppIcon.icon"'),
       accent("plist.NSHighResolutionCapable = true"),
       plain(""),
       accent("[[apps.HelloWorld.overlays]]"),
@@ -331,50 +344,6 @@ export const configurationFeatures: ConfigurationFeature[] = [
       accent("plist.UISupportedInterfaceOrientations = ["),
       accent('  "UIInterfaceOrientationPortrait"'),
       accent("]"),
-      plain(""),
-      accent("[[apps.HelloWorld.overlays]]"),
-      accent('condition = "bundler(linuxRPM)"'),
-      accent('requirements = ["gtk3"]'),
-    ],
-  },
-  {
-    id: "native-integrations",
-    name: "Native integrations",
-    meta: "System-level details",
-    slipTitle: "Platform hooks",
-    slipNote: "Emitted automatically",
-    details: [
-      { label: "Deep links", value: "url_schemes" },
-      { label: "Mobile", value: "Android permissions" },
-      { label: "Linux", value: "D-Bus activation" },
-    ],
-    capabilities: [
-      "Custom URL schemes for deep links",
-      "Apple plist usage descriptions",
-      "Android permissions and manifest entries",
-      "D-Bus activation on Linux",
-      "Desktop files, icons and metadata",
-    ],
-    blurb:
-      "Expose deep links, request mobile permissions and register with desktop services from the same config. Swift Bundler emits the plist entries, Android manifest, D-Bus service file and desktop metadata for you.",
-    linkLabel: "Platform integration guide",
-    href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
-    snippet: [
-      plain("[apps.HelloWorld]"),
-      plain('identifier = "dev.example.HelloWorld"'),
-      plain('product = "HelloWorld"'),
-      plain('version = "1.0.0"'),
-      accent('url_schemes = ["helloworld"]'),
-      plain(""),
-      accent("[apps.HelloWorld.plist]"),
-      accent('NSCameraUsageDescription = "Scan QR codes"'),
-      plain(""),
-      accent("[apps.HelloWorld.android]"),
-      accent('permissions = ["INTERNET", "CAMERA"]'),
-      plain(""),
-      accent("[[apps.HelloWorld.overlays]]"),
-      accent('condition = "platform(linux)"'),
-      accent("dbus_activatable = true"),
     ],
   },
 ];
@@ -382,46 +351,40 @@ export const configurationFeatures: ConfigurationFeature[] = [
 export type Feature = {
   title: string;
   body: string;
-  meta: string;
   size: "wide" | "normal";
   icon: any;
 };
 
 export const features: Feature[] = [
   {
-    title: "One config, platform overlays",
-    body: "Set the defaults once, then add platform- or bundler-specific overrides under [[apps.App.overlays]]. Validated, merged recursively, and described by the generated JSON schema.",
-    meta: 'Bundler.toml · config_version = "3.1.0"',
+    title: "Conditional overlays",
+    body: "Share defaults between platforms and use platform- or bundler-specific overlays to fine-tune your app for each destination.",
     size: "wide",
     icon: Stack,
   },
   {
     title: "Signing",
-    body: "Automatic provisioning profiles, certificate discovery, device registration, and Azure Artifact Signing on Windows.",
-    meta: "Apple & Windows",
+    body: "3.0 generates provisioning profiles for iOS devices, automatically discovers certificates on macOS and Windows, and supports Azure Artifact Signing on Windows.",
     size: "normal",
     icon: ShieldCheck,
   },
   {
+    title: "Hot reloading",
+    body: "Running apps with --hot and Swift Bundler swaps your app’s code over a local TCP connection. Avoid relaunching or losing state just to preview a UI tweak. Requires a compatible UI framework.",
+    size: "wide",
+    icon: Lightning,
+  },
+  {
     title: "Manage devices",
-    body: "Manage Apple and Android simulators and devices with a unified set of commands.",
-    meta: "sbun devices list",
+    body: "Managing Apple and Android simulators and devices is done with a unified set of commands. There's no learning curve when switching from one platform to another.",
     size: "normal",
     icon: Devices,
   },
   {
     title: "Custom builders",
-    body: "Pull CMake or prebuilt projects into a SwiftPM build. Add helper executables, like an updater, beside your app.",
-    meta: "Projects API",
+    body: "Pull CMake projects or prebuilt artifacts into your app's build with custom builders. Custom builders can also build helper executables, like an updater, to bundle alongside your main excecutable.",
     size: "normal",
     icon: Wrench,
-  },
-  {
-    title: "Hot reloading",
-    body: "Run with --hot and Swift Bundler swaps your app’s code over a local TCP connection. No relaunch, no navigating back to the screen you were testing.",
-    meta: "macOS and Linux",
-    size: "wide",
-    icon: Lightning,
   },
 ];
 
@@ -488,7 +451,7 @@ export const faqs: Faq[] = [
   {
     question: "Does Swift Bundler work with SwiftCrossUI?",
     answer:
-      "Yes. Swift Bundler and SwiftCrossUI are designed to work together. The SwiftCrossUI template gives you a native SwiftUI-style UI and hot reload, while Swift Bundler handles platform-specific configuration such as URL schemes, permissions, signing and installers. Swift Bundler also works with any other SwiftPM executable.",
+      "Yes. Swift Bundler and SwiftCrossUI are designed to work together. The SwiftCrossUI template gives you a native SwiftUI-style UI (with hot reloading), while Swift Bundler handles platform-specific configuration such as URL schemes, permissions, signing and installers. Swift Bundler also works with any other UI library.",
   },
   {
     question: "How do I migrate a v2 config?",
