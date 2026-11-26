@@ -4,7 +4,8 @@ import Wrench from "phosphor-svelte/lib/Wrench";
 import Lightning from "phosphor-svelte/lib/Lightning";
 import Stack from "phosphor-svelte/lib/Stack";
 
-export const githubUrl = "https://github.com/moreSwift/swift-bundler";
+export const repository = "moreSwift/swift-bundler";
+export const githubUrl = `https://github.com/${repository}`;
 export const docsUrl = "https://swiftbundler.dev/documentation/swift-bundler";
 export const discordUrl = "https://moreswift.dev/discord";
 export const openCollectiveUrl = "https://opencollective.com/moreswift";
@@ -475,22 +476,6 @@ export const faqs: Faq[] = [
       "Swift Bundler is Apache 2.0 licensed and maintained by moreSwift. Sponsorship through Open Collective funds maintenance and improved platform support.",
   },
 ];
-
-export const installCommands = {
-  macos: `curl -LO ${artifacts.macos}
-sudo installer -pkg swift-bundler-3.0.0-macos-universal.pkg -target /`,
-  linuxDeb: `curl -LO ${artifacts.deb}
-sudo apt install ./swift-bundler_3.0.0-1_amd64.deb`,
-  linuxRpm: `curl -LO ${artifacts.rpm}
-sudo dnf install ./swift-bundler-3.0.0-1.x86_64.rpm`,
-  windows: `Invoke-WebRequest -Uri "${artifacts.msi}" \`
-  -OutFile swift-bundler.msi
-Start-Process msiexec.exe -ArgumentList '/i swift-bundler.msi'`,
-  source: `git clone ${githubUrl}
-cd swift-bundler
-SBUN_NO_SCHEMA_GEN=1 swift build
-sudo cp .build/release/swift-bundler /usr/local/bin/`,
-};
 
 export const platformNames = [
   "macOS",
