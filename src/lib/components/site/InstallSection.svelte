@@ -45,8 +45,6 @@
 
 <PageSection id="install" grid gridClass="opacity-40" class="overflow-hidden">
 	<SectionHeading
-		index="05"
-		eyebrow="Installation"
 		title="Install Swift Bundler."
 		intro="Pre-built packages for macOS, Linux and Windows."
 	/>

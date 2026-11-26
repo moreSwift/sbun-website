@@ -119,7 +119,7 @@ SwiftCrossUI + Swift Bundler
 				<div
 					class="bg-paper/60 p-2 shadow-[6px_6px_0_rgba(112,55,77,0.10)]"
 				>
-					<div class="flex items-center justify-between gap-2">
+					<div class="flex flex-wrap items-center justify-between gap-2">
 						<Tabs bind:value={selectedDesktop} class="gap-0">
 							<TabsList
 								aria-label="Desktop platform"
@@ -128,7 +128,7 @@ SwiftCrossUI + Swift Bundler
 								{#each desktopPreviews as preview}
 									<TabsTrigger
 										value={preview.id}
-										class="h-auto px-2.5 py-1 text-[13px] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
+										class="h-auto px-2.5 py-1 text-[13px] text-plum max-sm:px-1.5 max-sm:text-[10px] hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
 									>
 										{preview.label}
 									</TabsTrigger>
@@ -136,7 +136,7 @@ SwiftCrossUI + Swift Bundler
 							</TabsList>
 						</Tabs>
 
-						<div class="text-[13px]">
+						<div class="order-first w-full min-w-0 text-[13px] sm:order-none sm:w-auto">
 							<span class="font-medium">MusicPlayerExample</span> (<a class="underline" href="https://github.com/moreSwift/swift-cross-ui/tree/main/Examples/Sources/MusicPlayerExample">src</a>)
 						</div>
 
@@ -148,7 +148,7 @@ SwiftCrossUI + Swift Bundler
 								{#each mobilePreviews as preview}
 									<TabsTrigger
 										value={preview.id}
-										class="h-auto px-2.5 py-1 text-[13px] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
+										class="h-auto px-2.5 py-1 text-[13px] text-plum max-sm:px-1.5 max-sm:text-[10px] hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
 									>
 										{preview.label}
 									</TabsTrigger>

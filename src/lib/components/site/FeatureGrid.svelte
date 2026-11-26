@@ -27,8 +27,6 @@ plist.UISupportedInterfaceOrientations = [
 
 <PageSection id="whats-new">
 	<SectionHeading
-		index="03"
-		eyebrow="What’s new in 3.0"
 		title="3.0 brings your apps everywhere."
 		intro="Windows, Linux, iOS and Android are now first-class destinations. This release also brings hot reloading, a rich overlay-based config system, and much much more."
 	/>

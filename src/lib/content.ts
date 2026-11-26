@@ -248,6 +248,137 @@ export const bundlers: Bundler[] = [
   },
 ];
 
+export type ConfigurationFeature = {
+  id: "configure-once" | "conditional-overlays" | "native-integrations";
+  name: string;
+  meta: string;
+  slipTitle: string;
+  slipNote: string;
+  details: { label: string; value: string }[];
+  capabilities: string[];
+  blurb: string;
+  linkLabel: string;
+  href: string;
+  snippet: SnippetLine[];
+};
+
+export const configurationFeatures: ConfigurationFeature[] = [
+  {
+    id: "configure-once",
+    name: "Configure once",
+    meta: "Swift Bundler handles the rest",
+    slipTitle: "One app manifest",
+    slipNote: "Shared by every bundler",
+    details: [
+      { label: "Required", value: "product · version · identifier" },
+      { label: "Applies to", value: "Every platform and bundler" },
+      { label: "Validation", value: "Generated JSON schema" },
+    ],
+    capabilities: [
+      "Product, identifier and version in one place",
+      "Icons, categories, licenses and descriptions",
+      "Plist keys and entitlements",
+      "Asset and string catalogs",
+      "Generated JSON schema for editor completion",
+    ],
+    blurb:
+      "Describe your app once. Product, identifier, version, icon and metadata are reused by every bundler, so platform builds can't drift apart.",
+    linkLabel: "Configuration reference",
+    href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
+    snippet: [
+      accent('config_version = "3.1.0"'),
+      plain(""),
+      accent("[apps.HelloWorld]"),
+      accent('identifier = "dev.example.HelloWorld"'),
+      accent('product = "HelloWorld"'),
+      accent('version = "1.0.0"'),
+      accent('icon = "icon.png"'),
+      plain('description = "A basic app."'),
+      plain('license = "Apache-2.0"'),
+      plain('category = "public.app-category.developer-tools"'),
+    ],
+  },
+  {
+    id: "conditional-overlays",
+    name: "Conditional overlays",
+    meta: "Platform-specific config",
+    slipTitle: "Overlay merge",
+    slipNote: "Merged recursively",
+    details: [
+      { label: "Conditions", value: "platform(...) · bundler(...)" },
+      { label: "Merge", value: "Recursive" },
+      { label: "Base config", value: "Unchanged" },
+    ],
+    capabilities: [
+      "Platform conditions such as platform(macOS)",
+      "Bundler conditions such as bundler(linuxRPM)",
+      "Recursive merges against the base config",
+      "Shared values stay defined once",
+      "Platform-specific values stay local",
+    ],
+    blurb:
+      "Set shared defaults, then add only the differences. Overlays merge recursively against the base app config, so platform-specific settings stay close to the thing they change.",
+    linkLabel: "Overlay guide",
+    href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
+    snippet: [
+      accent("[[apps.HelloWorld.overlays]]"),
+      accent('condition = "platform(macOS)"'),
+      accent('icon = "AppIcon.icon"'),
+      accent("plist.NSHighResolutionCapable = true"),
+      plain(""),
+      accent("[[apps.HelloWorld.overlays]]"),
+      accent('condition = "platform(iOS)"'),
+      accent("plist.UISupportedInterfaceOrientations = ["),
+      accent('  "UIInterfaceOrientationPortrait"'),
+      accent("]"),
+      plain(""),
+      accent("[[apps.HelloWorld.overlays]]"),
+      accent('condition = "bundler(linuxRPM)"'),
+      accent('requirements = ["gtk3"]'),
+    ],
+  },
+  {
+    id: "native-integrations",
+    name: "Native integrations",
+    meta: "System-level details",
+    slipTitle: "Platform hooks",
+    slipNote: "Emitted automatically",
+    details: [
+      { label: "Deep links", value: "url_schemes" },
+      { label: "Mobile", value: "Android permissions" },
+      { label: "Linux", value: "D-Bus activation" },
+    ],
+    capabilities: [
+      "Custom URL schemes for deep links",
+      "Apple plist usage descriptions",
+      "Android permissions and manifest entries",
+      "D-Bus activation on Linux",
+      "Desktop files, icons and metadata",
+    ],
+    blurb:
+      "Expose deep links, request mobile permissions and register with desktop services from the same config. Swift Bundler emits the plist entries, Android manifest, D-Bus service file and desktop metadata for you.",
+    linkLabel: "Platform integration guide",
+    href: "https://docs.swiftbundler.dev/documentation/swift-bundler/configuration",
+    snippet: [
+      plain("[apps.HelloWorld]"),
+      plain('identifier = "dev.example.HelloWorld"'),
+      plain('product = "HelloWorld"'),
+      plain('version = "1.0.0"'),
+      accent('url_schemes = ["helloworld"]'),
+      plain(""),
+      accent("[apps.HelloWorld.plist]"),
+      accent('NSCameraUsageDescription = "Scan QR codes"'),
+      plain(""),
+      accent("[apps.HelloWorld.android]"),
+      accent('permissions = ["INTERNET", "CAMERA"]'),
+      plain(""),
+      accent("[[apps.HelloWorld.overlays]]"),
+      accent('condition = "platform(linux)"'),
+      accent("dbus_activatable = true"),
+    ],
+  },
+];
+
 export type Feature = {
   title: string;
   body: string;

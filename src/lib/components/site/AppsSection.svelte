@@ -13,8 +13,6 @@
 
 <PageSection id="apps">
 		<SectionHeading
-			index="04"
-			eyebrow="In the wild"
 			title="Apps built with Swift Bundler."
 			intro="Games, plugin managers, visualisers and utilities; all built with Swift Bundler."
 		/>

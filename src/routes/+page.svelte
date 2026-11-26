@@ -2,6 +2,7 @@
 	import AdoptionSection from '$lib/components/site/AdoptionSection.svelte';
 	import AppsSection from '$lib/components/site/AppsSection.svelte';
 	import BetterTogetherSection from '$lib/components/site/BetterTogetherSection.svelte';
+	import BundlerListSection from '$lib/components/site/BundlerListSection.svelte';
 	import FaqSection from '$lib/components/site/FaqSection.svelte';
 	import FeatureGrid from '$lib/components/site/FeatureGrid.svelte';
 	import Footer from '$lib/components/site/Footer.svelte';
@@ -25,6 +26,7 @@
 		<Hero />
 		<BetterTogetherSection />
 		<ManifestSection />
+		<BundlerListSection />
 		<FeatureGrid />
 		<AdoptionSection />
 		<AppsSection />
