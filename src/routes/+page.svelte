@@ -27,8 +27,8 @@
 		<BetterTogetherSection />
 		<ManifestSection />
 		<BundlerListSection />
-		<FeatureGrid />
 		<AdoptionSection />
+		<FeatureGrid />
 		<AppsSection />
 		<InstallSection />
 		<FaqSection />

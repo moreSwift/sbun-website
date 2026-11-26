@@ -31,7 +31,7 @@
 		{
 			number: '01',
 			title: 'Start with a template',
-			body: 'Create a new package from a built-in SwiftUI or SwiftCrossUI template, or a custom template of your own.',
+			body: 'Create a new project from a built-in template.',
 			code: 'sbun create HelloWorld --template SwiftCrossUI',
 			language: 'shell',
 			icon: Package,
@@ -42,13 +42,13 @@
 		{
 			number: '02',
 			title: 'Add Bundler.toml',
-			body: 'Already have a SwiftPM package? Drop in one config file, describe the app, and keep every existing target where it is.',
+			body: "Already have a SwiftPM package? Drop in one config file and you’re good to go.",
 			code: 'config_version = "3.1.0"\n\n[apps.HelloWorld]\nidentifier = "com.example.HelloWorld"\nproduct = "HelloWorld"\nversion = "1.0.0"',
 			language: 'toml',
 			icon: FileCode,
 			label: 'Configure',
 			href: 'https://docs.swiftbundler.dev/documentation/swift-bundler/configuration',
-			link: 'Configuration guide'
+			link: 'Configuration reference'
 		},
 		{
 			number: '03',
@@ -72,7 +72,7 @@
 	/>
 
 	<div class="mt-8 flex items-center gap-3">
-		<span class="label-type text-rose-deep">Three adoption methods</span>
+		<span class="text-rose-deep text-[13px] text-plum">Three adoption methods</span>
 		<Separator class="h-px flex-1 bg-plum/20" />
 	</div>
 
@@ -135,18 +135,18 @@
 					{/if}
 				</CardContent>
 
-				<CardFooter class="mt-auto border-0 p-0">
+				<CardFooter class="mt-auto border-0 p-0 text-[13px]">
 					<div class="flex w-full items-center justify-between px-5 py-3">
 						<a
 							href={approach.href}
-							class="label-type group inline-flex items-center gap-1 text-rose-deep hover:text-plum"
+							class="group inline-flex items-center gap-1 text-rose-deep hover:text-plum"
 						>
 							{approach.link}
 							<ArrowUpRight
 								class="size-3"
 							/>
 						</a>
-						<span class="label-type {approach.experimental ? 'text-warning' : 'text-plum/35'}"
+						<span class="{approach.experimental ? 'text-warning' : 'text-plum/35'}"
 							>{approach.experimental ? 'Manual follow-up' : 'Recommended'}</span
 						>
 					</div>

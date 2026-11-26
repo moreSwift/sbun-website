@@ -54,7 +54,7 @@
 					? 'border-rose bg-cream/[0.07]'
 					: 'border-rose-deep bg-rose/10'
 				: 'border-transparent'} {linePadding}">{#if lineNumbers}<span
-					class="w-8 shrink-0 select-none pr-3 text-right text-[11px] {tone === 'dark'
+					class="w-6 shrink-0 select-none pr-3 text-right text-[11px] {tone === 'dark'
 						? 'text-cream/65'
 						: 'text-plum/35'}"
 					aria-hidden="true">{index + 1}</span

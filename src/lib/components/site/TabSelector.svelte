@@ -21,7 +21,7 @@
 		{@const Icon = item.icon}
 		<TabsTrigger
 			value={item.id}
-			class="h-auto min-w-0 justify-start whitespace-normal! px-2.5 py-1 text-[13px] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
+			class="h-auto min-w-0 justify-start whitespace-normal! px-2.5 py-2 text-[13px] text-plum hover:bg-plum/5 data-active:border-plum/25 data-active:bg-plum/10 data-active:text-plum data-active:hover:border-plum/30 data-active:hover:bg-plum/15 data-active:hover:text-plum"
 		>
 			<Icon class="{large ? 'size-6' : 'size-4'} mr-1 shrink-0" weight="fill" />
 			<span class="flex min-w-0 flex-col items-start">

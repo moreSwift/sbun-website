@@ -99,7 +99,7 @@
 
 				<div class="flex items-start whitespace-normal p-0 py-1.5 align-top font-mono text-[12px] leading-relaxed text-plum/85">
 					<div class="mr-2">To:</div>
-					<div>macOS, iOS, tvOS, visionOS, Linux, Windows, and Android</div>
+					<div>macOS, iOS, tvOS, visionOS, Linux,<br>Windows, and Android</div>
 				</div>
 
 				<Separator class="mt-2 mb-4 bg-plum/20" />

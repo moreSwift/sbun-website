@@ -7,6 +7,7 @@
 	} from '$lib/components/ui/accordion';
 	import SectionHeading from './SectionHeading.svelte';
 	import { faqs } from '$lib/content';
+    import ArrowUpRight from 'phosphor-svelte/lib/ArrowUpRight';
 
 	let open = $state<string | undefined>('item-0');
 </script>
@@ -20,9 +21,10 @@
 			/>
 			<a
 				href="https://docs.swiftbundler.dev/documentation/swift-bundler/troubleshooting"
-				class="label-type mt-6 inline-flex items-center gap-1 text-rose-deep hover:text-plum"
+				class="mt-6 inline-flex items-center gap-1 text-rose-deep hover:text-plum text-[15px]"
 			>
-				Troubleshooting guide →
+				Troubleshooting guide
+				<ArrowUpRight />
 			</a>
 		</div>
 

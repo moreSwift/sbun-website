@@ -30,7 +30,7 @@
 		{
 			title: 'Release',
 			links: [
-				{ label: `What’s new in ${release.version}`, href: `${githubUrl}/releases/tag/${release.tag}` },
+				{ label: `What’s new in ${release.version}`, href: `#whats-new` },
 				{ label: 'All releases', href: `${githubUrl}/releases` },
 				{ label: 'Installation', href: '#install' }
 			]
@@ -58,7 +58,7 @@
 	<DotGrid class="opacity-[0.06]" />
 
 	<div class="relative mx-auto max-w-6xl px-4 py-14 sm:px-6">
-		<div class="grid gap-10 lg:grid-cols-[1.2fr_1.8fr]">
+		<div class="grid gap-10 lg:grid-cols-[1.2fr_1.8fr] items-center">
 			<div>
 				<div class="flex items-center gap-3">
 					<Logo size={54} />
@@ -70,29 +70,9 @@
 					</div>
 				</div>
 				<p class="mt-5 max-w-sm text-[13px] leading-relaxed text-cream/75">
-					An Xcodeproj-less tool for creating cross-platform Swift apps. Made by
+					Swift Bundler provides everything you need to build and ship Swift apps for every major platform.
 					<a href="https://moreswift.dev" class="text-peach underline decoration-peach/30 underline-offset-4 hover:text-cream">moreSwift</a>.
 				</p>
-				<div class="mt-5 flex flex-wrap gap-2">
-					<a
-						href={githubUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
-					>
-						<GithubLogo class="size-3.5" /> GitHub
-					</a>
-					<a
-						href={discordUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
-					>
-						<DiscordLogo class="size-3.5" /> Discord
-					</a>
-					<a
-						href={openCollectiveUrl}
-						class="inline-flex items-center gap-1.5 border border-cream/20 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-wider text-cream/80 transition-colors hover:border-cream/50 hover:text-cream"
-					>
-						Sponsor
-					</a>
-				</div>
 			</div>
 
 			<div class="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-6 lg:gap-8">

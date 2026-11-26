@@ -17,7 +17,7 @@
 </script>
 
 <header class="max-w-6xl {className}">
-	<div class="mt-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+	<div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
 		<div>
 			<h2
 				class="max-w-3xl text-balance font-display text-3xl font-semibold leading-[1.05] tracking-[-0.03em] text-plum sm:text-4xl md:text-[2.9rem]"

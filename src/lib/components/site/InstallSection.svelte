@@ -111,7 +111,7 @@
 				<div class="mt-1">
 					<a
 						href="https://github.com/moreSwift/swift-bundler/releases/latest"
-						class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum uppercase"
+						class="inline-flex shrink-0 items-center gap-1.5 text-[14px] text-rose-deep hover:text-plum"
 						target="_blank"
 					>
 						View latest release
@@ -134,7 +134,7 @@
 			</div>
 			<a
 				href={githubUrl}
-				class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum uppercase"
+				class="inline-flex shrink-0 items-center gap-1.5 text-[13px] text-rose-deep hover:text-plum"
 				target="_blank"
 			>
 				<GithubLogo class="size-3.5" />
@@ -155,7 +155,7 @@
 			</div>
 			<a
 				href="https://docs.swiftbundler.dev/documentation/swift-bundler/installation"
-				class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] tracking-wider text-rose-deep hover:text-plum mt-4 uppercase"
+				class="inline-flex shrink-0 items-center gap-1.5 text-[14px] text-rose-deep hover:text-plum pt-1"
 				target="_blank"
 			>
 				See runtime dependencies
