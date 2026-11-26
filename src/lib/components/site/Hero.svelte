@@ -74,7 +74,7 @@
 				</div>
 			</div>
 
-			<div class="relative min-w-0 px-2 sm:px-0 lg:pl-4">
+			<div class="relative hidden min-w-0 px-2 sm:px-0 lg:block lg:pl-4">
 				<ShippingLabel />
 			</div>
 		</div>

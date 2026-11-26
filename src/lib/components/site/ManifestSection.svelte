@@ -98,6 +98,7 @@
 								language="toml"
 								lineNumbers
 								padded={false}
+								class="max-lg:min-h-0!"
 								minLines={maxSnippetLines}
 								accentLines={feature.snippet.flatMap((line, index) =>
 									line.accent ? [index + 1] : []

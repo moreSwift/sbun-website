@@ -69,8 +69,10 @@
 </script>
 
 <PageSection id="better-together">
-	<div class="grid gap-10 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12 pb-4">
-		<figure class="min-w-0">
+	<div
+		class="grid gap-10 pb-4 max-lg:gap-0 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:gap-12"
+	>
+		<figure class="min-w-0 max-lg:order-1 max-lg:mt-8">
 			<div class="relative pl-3 sm:pl-4 sm:top-1">
 				<div
 					class="bg-paper/60 p-2 shadow-[6px_6px_0_rgba(112,55,77,0.10)]"
@@ -159,7 +161,7 @@
 			</div>
 		</figure>
 
-		<div class="min-w-0">
+		<div class="min-w-0 max-lg:contents">
 			<h2
 				class="max-w-2xl text-balance font-display text-3xl font-semibold leading-[1.05] tracking-[-0.03em] text-plum sm:text-4xl md:text-[2.9rem]"
 			>
@@ -169,18 +171,22 @@
 				SwiftCrossUI + Swift Bundler
 			</h3>
 
-			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
+			<p
+				class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 max-lg:order-2 max-lg:mt-10 sm:text-base"
+			>
 				If you’re targeting seven platforms with Swift, there’s really only one option, and that’s SwiftCrossUI + Swift Bundler.
 			</p>
 
-			<p class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
+			<p
+				class="mt-4 max-w-2xl text-[15px] leading-relaxed text-plum/85 max-lg:order-3 sm:text-base"
+			>
 				SwiftCrossUI gives you a unified, SwiftUI-style API for building native apps.
 				Swift Bundler handles the platform-specific details that make those apps real:
 				custom URL schemes, mobile permissions, signing and installers.
 			</p>
 
 			<div
-				class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-start xl:flex-row xl:items-center text-[13px]"
+				class="mt-7 flex flex-col gap-3 text-[13px] max-lg:order-4 sm:flex-row sm:items-center lg:flex-col lg:items-start xl:flex-row xl:items-center"
 			>
 				<Button
 					href={swiftCrossUiQuickStartUrl}

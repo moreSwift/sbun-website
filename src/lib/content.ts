@@ -279,7 +279,7 @@ export const configurationFeatures: ConfigurationFeature[] = [
       accent('identifier = "dev.example.HelloWorld"'),
       accent('version = "1.0.0"'),
       plain(""),
-      plain("# Some common optional propertioes"),
+      plain("# Some common optional properties"),
       plain('description = "A basic app."'),
       plain('icon = "icon.png"'),
       plain('license = "Apache-2.0"'),

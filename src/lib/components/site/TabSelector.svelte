@@ -15,7 +15,7 @@
 
 <TabsList
 	aria-label={label}
-	class="grid h-auto w-full grid-cols-2 gap-1 border border-plum/20 bg-paper/55 p-1 sm:grid-cols-3"
+	class="grid h-auto w-full grid-cols-1 gap-1 border border-plum/20 bg-paper/55 p-1 sm:grid-cols-3"
 >
 	{#each items as item}
 		{@const Icon = item.icon}
@@ -33,7 +33,7 @@
 				<span
 					class="min-w-0 whitespace-normal! {large
 						? 'text-[13px]'
-						: 'text-[10px]'}">{item.meta}</span
+						: 'text-[10px]'} {item.meta ? '' : 'max-sm:hidden'}">{item.meta}</span
 				>
 			</span>
 		</TabsTrigger>
