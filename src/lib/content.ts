@@ -9,10 +9,11 @@ export const docsUrl = "https://swiftbundler.dev/documentation/swift-bundler";
 export const discordUrl = "https://moreswift.dev/discord";
 export const openCollectiveUrl = "https://opencollective.com/moreswift";
 
-const crossUiCampaign = "utm_source=swiftbundler.dev&utm_medium=website&utm_campaign=better-together";
+const crossUiCampaign =
+  "utm_source=swiftbundler.dev&utm_medium=website&utm_campaign=better-together";
 export const swiftCrossUiUrl = `https://swiftcrossui.dev/?${crossUiCampaign}`;
 export const swiftCrossUiDocsUrl = `https://docs.swiftcrossui.dev/documentation/swiftcrossui/?${crossUiCampaign}`;
-export const swiftCrossUiQuickStartUrl = `https://docs.swiftcrossui.dev/tutorials/swiftcrossui/quick-start?${crossUiCampaign}`;
+export const swiftCrossUiQuickStartUrl = `https://swiftcrossui.dev/#quickstart?${crossUiCampaign}`;
 
 export const release = {
   version: "3.0.0",
@@ -92,29 +93,6 @@ export const bundlers: Bundler[] = [
     ]),
   },
   {
-    id: "linuxGeneric",
-    name: "linuxGeneric",
-    label: "Portable",
-    pickerPlatforms: "Linux",
-    platforms: "Linux",
-    blurb:
-      "Creates a portable Linux directory containing the executable, its shared libraries, and resources. This is the default during development. Also great for custom distribution workflows.",
-    command: "sbun bundle",
-    output: "HelloWorld/",
-    signing: "Not supported (yet)",
-    handles: [
-      "Dynamic libraries copied beside the executable",
-      "Resources and custom URL schemes",
-      "Portable output for custom packaging",
-    ],
-    formats: ["directory"],
-    snippet: baseConfig("icon.png", [
-      accent("[[apps.HelloWorld.overlays]]"),
-      accent('condition = "platform(linux)"'),
-      accent("dbus_activatable = true"),
-    ]),
-  },
-  {
     id: "linuxRPM",
     name: "linuxRPM",
     label: ".rpm",
@@ -164,27 +142,26 @@ export const bundlers: Bundler[] = [
     ]),
   },
   {
-    id: "windowsGeneric",
-    name: "windowsGeneric",
-    label: ".zip",
-    pickerPlatforms: "Windows",
-    platforms: "Windows",
+    id: "linuxGeneric",
+    name: "linuxGeneric",
+    label: "Portable",
+    pickerPlatforms: "Linux",
+    platforms: "Linux",
     blurb:
-      "Creates a portable Windows directory with the executable, runtime DLLs, and resources.",
+      "Creates a portable Linux directory containing the executable, its shared libraries, and resources. This is the default during development. Also great for custom distribution workflows.",
     command: "sbun bundle",
     output: "HelloWorld/",
-    signing: "Executable and DLL signing supported",
+    signing: "Not supported (yet)",
     handles: [
-      "DLL discovery and resource bundling",
-      "GUI-subsystem linking",
-      "App icon and application manifest",
-      "Portable layout for zip distribution",
+      "Dynamic libraries copied beside the executable",
+      "Resources and custom URL schemes",
+      "Portable output for custom packaging",
     ],
-    formats: ["directory", ".zip"],
-    snippet: baseConfig("icon.ico", [
+    formats: ["directory"],
+    snippet: baseConfig("icon.png", [
       accent("[[apps.HelloWorld.overlays]]"),
-      accent('condition = "platform(windows)"'),
-      accent('icon = "icon.ico"'),
+      accent('condition = "platform(linux)"'),
+      accent("dbus_activatable = true"),
     ]),
   },
   {
@@ -214,6 +191,30 @@ export const bundlers: Bundler[] = [
       accent("[[apps.HelloWorld.overlays]]"),
       accent('condition = "bundler(windowsMSI)"'),
       accent('upgrade_code = "YOUR-UPGRADE-CODE"'),
+    ]),
+  },
+  {
+    id: "windowsGeneric",
+    name: "windowsGeneric",
+    label: ".zip",
+    pickerPlatforms: "Windows",
+    platforms: "Windows",
+    blurb:
+      "Creates a portable Windows directory with the executable, runtime DLLs, and resources.",
+    command: "sbun bundle",
+    output: "HelloWorld/",
+    signing: "Executable and DLL signing supported",
+    handles: [
+      "DLL discovery and resource bundling",
+      "GUI-subsystem linking",
+      "App icon and application manifest",
+      "Portable layout for zip distribution",
+    ],
+    formats: ["directory", ".zip"],
+    snippet: baseConfig("icon.ico", [
+      accent("[[apps.HelloWorld.overlays]]"),
+      accent('condition = "platform(windows)"'),
+      accent('icon = "icon.ico"'),
     ]),
   },
   {

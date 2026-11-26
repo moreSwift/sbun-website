@@ -29,6 +29,5 @@
 				<span class="font-mono text-[12px] font-medium">{platform.name}</span>
 			</span>
 		{/each}
-		<span class="label-type ml-auto hidden text-plum/40 md:inline">+ Mac Catalyst</span>
 	</div>
 </div>

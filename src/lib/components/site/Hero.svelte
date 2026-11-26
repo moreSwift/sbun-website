@@ -22,17 +22,18 @@
 				<h1
 					class="mt-0 font-display text-[2.7rem] font-bold leading-[0.94] tracking-[-0.045em] text-plum sm:text-[3.6rem] md:text-[4.35rem] lg:mt-6"
 				>
-					Ship Swift<br />
+					<span class="leading-[1.12]">
+					Ship Swift
+					</span><br />
 					<span
-						class="relative -mr-3 inline-block -rotate-1 border-2 border-rose-deep bg-paper px-3 py-0.5 leading-[1.02] shadow-[5px_5px_0_rgba(112,55,77,0.14)]"
+						class="relative -mr-3 inline-block -rotate-1 border-2 border-rose-deep bg-paper px-3 pt-1 pb-2 shadow-[5px_5px_0_rgba(112,55,77,0.14)]"
 					>
 						anywhere.
 					</span>
 				</h1>
 
-				<p class="mt-6 max-w-xl text-[15px] leading-relaxed text-plum/85 sm:text-base">
-					Swift Bundler turns Swift Package Manager executables into distributable
-					apps and installers for seven platforms, with a single config file.
+				<p class="mt-6 max-w-xl text-[15px] text-plum/85 sm:text-[17px]">
+					Swift Bundler provides everything you need to build and ship Swift apps for every major platform.
 				</p>
 
 				<div class="max-w-lg">
@@ -59,8 +60,8 @@
 					</Button>
 				</div>
 
-				<div class="mt-4 text-[12px] text-plum">
-					Enjoying SwiftCrossUI?
+				<div class="mt-4 text-[14px] text-plum">
+					Enjoying Swift Bundler?
 					<a
 						href={openCollectiveUrl}
 						target="_blank"
@@ -75,14 +76,6 @@
 
 			<div class="relative min-w-0 px-2 sm:px-0 lg:pl-4">
 				<ShippingLabel />
-				<a
-					href="{githubUrl}/releases/tag/{release.tag}"
-					class="label-type group absolute -bottom-10 right-2 hidden items-center gap-0.5 text-muted-foreground hover:text-plum sm:inline-flex"
-					target="_blank"
-				>
-					View 3.0.0 release notes
-					<ArrowUpRight class="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-				</a>
 			</div>
 		</div>
 	</div>
