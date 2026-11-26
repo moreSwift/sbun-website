@@ -41,7 +41,9 @@
 		<a href="/" class="group flex items-center gap-3" aria-label="Swift Bundler home">
 			<Logo size={38} class="transition-transform group-hover:-rotate-6" />
 			<span class="flex items-center gap-2">
-				<span class="font-display text-[17px] font-semibold tracking-[-0.02em] text-plum sm:text-lg">
+				<span
+					class="whitespace-nowrap font-display text-[15px] font-semibold tracking-[-0.02em] text-plum min-[360px]:text-[17px] sm:text-lg"
+				>
 					Swift Bundler
 				</span>
 				<Badge

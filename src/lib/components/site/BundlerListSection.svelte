@@ -38,7 +38,7 @@
 		{#each bundlers as bundler}
 			{@const Icon = icons[bundler.id]}
 			<div
-				class="grid grid-cols-2 gap-x-4 gap-y-3 border-b border-plum/15 px-4 py-4 transition-colors last:border-b-0 hover:bg-cream/30 md:grid-cols-[1fr_1fr_1.5fr] md:items-center md:gap-4"
+				class="grid grid-cols-2 gap-x-4 gap-y-2.5 border-b border-plum/15 px-4 py-3.5 transition-colors last:border-b-0 hover:bg-cream/30 md:grid-cols-[1fr_1fr_1.5fr] md:items-center md:gap-4 md:py-4"
 			>
 				<div class="col-span-2 flex items-center gap-4 md:col-span-1">
 					<span
@@ -59,17 +59,21 @@
 					</span>
 				</div>
 
-				<div>
+				<div
+					class="col-span-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 md:col-span-1"
+				>
 					<p class="label-type text-plum/35 md:hidden">Destination</p>
-					<p class="mt-0.5 text-[15px] leading-relaxed text-plum/80">
+					<p class="text-[15px] leading-relaxed text-plum/80">
 						{bundler.platforms}
 					</p>
 				</div>
 
-				<div class="col-span-2 md:col-span-1">
+				<div
+					class="col-span-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 md:col-span-1"
+				>
 					<p class="label-type text-plum/35 md:hidden">Signing</p>
 					<p
-						class="mt-0.5 text-[15px] {bundler.signing.startsWith('Not supported')
+						class="text-[15px] {bundler.signing.startsWith('Not supported')
 							? 'text-plum/45'
 							: 'text-plum/80'}"
 					>
@@ -84,7 +88,7 @@
 		href="https://docs.swiftbundler.dev/documentation/swift-bundler/bundlers"
 		target="_blank"
 		rel="noreferrer"
-		class="group inline-flex text-[14px] md:float-right shrink-0 items-center gap-1/2 pt-1 pr-1 text-rose-deep hover:text-plum"
+		class="group inline-flex shrink-0 items-center gap-1 pt-1 pr-1 text-[14px] text-rose-deep hover:text-plum md:float-right"
 	>
 		Bundler reference
 		<ArrowUpRight class="size-4" />
