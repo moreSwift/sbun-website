@@ -1,0 +1,8 @@
+# Cloudflare Pages configuration.
+#
+# This site uses @sveltejs/adapter-static, so the deployable files are written to
+# `build` rather than the `.svelte-kit/cloudflare` directory used by
+# @sveltejs/adapter-cloudflare.
+name = "sbun-website"
+pages_build_output_dir = "build"
+compatibility_date = "2026-11-27"

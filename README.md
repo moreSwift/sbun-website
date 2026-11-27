@@ -21,6 +21,20 @@ bun run build
 bun run preview
 ```
 
+## Deploying to Cloudflare Pages
+
+The site is fully prerendered and deployed as static files with
+`@sveltejs/adapter-static`, not with `@sveltejs/adapter-cloudflare`. The Cloudflare
+Pages SvelteKit framework preset defaults to `.svelte-kit/cloudflare`. We use
+[`wrangler.toml`](wrangler.toml) to set `pages_build_output_dir = "build"` so that
+Pages uploads the correct directory.
+
+Cloudflare Pages settings:
+
+- Build command: `bun run build`
+- Build output directory: `build` (configured by `wrangler.toml`)
+- Node version: determined by [`.node-version`](.node-version) (Node 22)
+
 ## Release downloads
 
 The manual installation card gets its links from GitHub's `releases/latest`
